@@ -15,9 +15,7 @@ import DonatorCard from "./components/donator/donatorCard";
 function App() {
   return (
     <>
-      <Switch>
-        <Route path="/" element={<Donator />} />
-      </Switch>
+      <h1>Hello App</h1>
     </>
   );
 }
