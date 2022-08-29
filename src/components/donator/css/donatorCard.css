@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+
+
+
+
+.courses-container {}
+
+.fade{
+max-height: 500px;
+    overflow: auto;
+}
+.card{
+    /* width: 300px; */
+    width:1000px;
+    align-items: center;
+    font-family: 'Muli', sans-serif;
+   
+}
+.course {
+    background-color: #fff;
+    border-radius: 10px;
+box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    display: flex;
+    max-width: 100%;
+    margin: 20px;
+    overflow: hidden;
+    width: 700px;
+}
+
+.course h6 {
+    opacity: 0.6;
+    margin: 0;
+   
+}
+
+.course h2 {
+    /* letter-spacing: 1px; */
+    margin: 10px 0;
+font-weight: 1000;
+    font-family: 'Poppins', sans-serif;
+}
+
+.course-preview {
+    background-color: #2A265F;
+    color: #fff;
+    padding: 30px;
+    max-width: 250px;
+}
+
+.course-preview a {
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    opacity: 0.6;
+    margin-top: 30px;
+    text-decoration: none;
+}
+
+.course-info {
+    padding: 30px;
+    position: relative;
+    width: 100%;
+}
+
+.progress-container {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    text-align: right;
+    width: 150px;
+    justify-content: left;
+    justify-items: flex-start;
+}
+
+.progress {
+    background-color: #ddd;
+    border-radius: 3px;
+    height: 5px;
+    width: 100%;
+}
+
+.progress::after {
+    border-radius: 3px;
+    background-color: #2A265F;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5px;
+    width: 66%;
+}
+
+.progress-text {
+    font-size: 10px;
+    opacity: 0.6;
+    letter-spacing: 1px;
+}
+
+
+
+.timeleft{
+    color: red;
+    cursor: pointer
+}
+.timeleft:hover{
+    color: rgb(171, 8, 41);
+}
+
+.seereq{
+    color:blue;
+    cursor: pointer;
+}
+
+.seereq:hover{
+    color: #2A265F;
+}
+
+.completed{
+    color: green;
+    cursor: pointer;
+}
+
+.completed:hover{
+    color: rgb(3, 49, 3);
+}
+
+
+
+@media screen and (max-width: 480px) {
+
+    .social-panel-container.visible {
+        transform: translateX(0px);
+    }
+
+    .floating-btn {
+        right: 10px;
+    }
+}
