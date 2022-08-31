@@ -14,6 +14,7 @@ import {
 import img from "./banner.png";
 import swal from "sweetalert";
 import Footer from "../Footer";
+import NavBar from "../NavBar";
 
 export default function DonatorCard() {
   const [donations, setDonations] = useState([]);
@@ -162,6 +163,9 @@ export default function DonatorCard() {
 
   return (
     <>
+    <nav>
+      <NavBar />
+    </nav>
       <div class="card">
         <div class="card-body">
           <ul
