@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import img from "./banner.png";
 import swal from "sweetalert";
+import Footer from "../Footer";
 
 export default function DonatorCard() {
   const [donations, setDonations] = useState([]);
@@ -376,7 +377,11 @@ export default function DonatorCard() {
             </div>
           </div>
         </div>
+        
       </div>
+      <footer>
+          <Footer />
+        </footer>
     </>
   );
 }
