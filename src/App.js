@@ -11,12 +11,13 @@ import {
 } from "react-router-dom";
 import Requester from "./routes/requester.routes";
 import DonatorCard from "./components/donator/donatorCard";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <>
+    <div>
       <h1>Hello App</h1>
-    </>
+    </div>
   );
 }
 
