@@ -12,6 +12,7 @@
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.5.25",
     "react": "^18.2.0",
+    "react-detect-offline": "^2.4.5",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
