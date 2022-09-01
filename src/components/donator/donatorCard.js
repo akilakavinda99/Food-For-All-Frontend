@@ -14,6 +14,7 @@ import {
 import img from "./banner.png";
 import swal from "sweetalert";
 import Footer from "../Footer";
+import NoItems from "./noItems";
 
 export default function DonatorCard() {
   const [donations, setDonations] = useState([]);
@@ -26,10 +27,12 @@ export default function DonatorCard() {
         if (res.data.length > 0) {
           setDonations(res.data);
           console.log(res.data);
+          console.log(donations);
         }
       })
       .catch((e) => {
         console.log(e);
+        console.log(donations);
       });
   }, []);
 
@@ -219,22 +222,32 @@ export default function DonatorCard() {
                 class="d-flex justify-content-between"
                 style={{ marginTop: 10 }}
               >
-                .
-                <button onClick={() => generateCompletedReport(donations)}>
-                  Generate Report
-                </button>
-                <div class="head1" style={{ paddingLeft: "10px", width: 500 }}>
-                  <i class="fas fa-search" aria-hidden="true"></i>
-                  <input
-                    class="form-control form-control-sm ml-3 w-75"
-                    type="text"
-                    placeholder="Search Items  "
-                    aria-label="Search"
-                    onChange={(e) => {
-                      setsearchTerm(e.target.value);
-                    }}
-                  />{" "}
-                </div>
+                {donations.length == 0 ? (
+                  <>
+                    <NoItems />
+                  </>
+                ) : (
+                  <>
+                    <button onClick={() => generateCompletedReport(donations)}>
+                      Generate Report
+                    </button>
+                    <div
+                      class="head1"
+                      style={{ paddingLeft: "10px", width: 500 }}
+                    >
+                      <i class="fas fa-search" aria-hidden="true"></i>
+                      <input
+                        class="form-control form-control-sm ml-3 w-75"
+                        type="text"
+                        placeholder="Search Items  "
+                        aria-label="Search"
+                        onChange={(e) => {
+                          setsearchTerm(e.target.value);
+                        }}
+                      />{" "}
+                    </div>
+                  </>
+                )}
               </div>
               {donations
                 .filter((val) => {
@@ -248,11 +261,15 @@ export default function DonatorCard() {
                       .toLowerCase()
                       .includes(searchTerm.toLowerCase())
                   ) {
-                    return val;
+                    return (
+                      <>
+                        <h2>Nooasa</h2>
+                      </>
+                    );
                   }
                 })
                 .map(function (f) {
-                  return donations.length == 0 ? (
+                  return f == null ? (
                     <h1>No items</h1>
                   ) : (
                     <div class="courses-container">
@@ -377,11 +394,10 @@ export default function DonatorCard() {
             </div>
           </div>
         </div>
-        
       </div>
       <footer>
-          <Footer />
-        </footer>
+        <Footer />
+      </footer>
     </>
   );
 }
