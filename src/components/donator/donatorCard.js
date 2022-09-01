@@ -169,7 +169,7 @@ export default function DonatorCard() {
     <nav>
       <NavBar />
     </nav>
-      <div class="card">
+      <div class="kgcard">
         <div class="card-body">
           <ul
             class="nav nav-tabs"

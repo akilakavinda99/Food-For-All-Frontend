@@ -12,7 +12,7 @@
 max-height: 500px;
     overflow: auto;
 }
-.card{
+.kgcard{
     /* width: 300px; */
     width:1000px;
     align-items: center;
