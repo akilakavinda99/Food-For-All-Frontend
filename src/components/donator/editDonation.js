@@ -1,36 +1,50 @@
 import axios from "axios";
-import React, { useState } from "react";
-import FileBase64 from "react-file-base64";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-export default function CreateDonation() {
+export default function EditDonation() {
   const [donationTitle, setDonationTitle] = useState("");
   const [email, setEmail] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [donationDescription, setDonationDescription] = useState("");
 
-  let filesarr = [];
-  const fileUpload = (files) => {
-    filesarr = files;
-    // console.log(filesarr.base64);
-  };
+  const { id } = useParams();
 
-  const createDonation = (e) => {
+  useEffect(() => {
+    // setIsLoaded(true);
+    const fetchUser = async () => {
+      await axios
+        .get(`http://localhost:8070/donator/getOneDonation/${id}`)
+        .then((res) => {
+          setDonationTitle(res.data.donation.donationTitle);
+          setEmail(res.data.donation.email);
+          setContactNumber(res.data.donation.contactNumber);
+          setDonationDescription(res.data.donation.donationDescription);
+
+          //   setDonationTitle();
+        })
+        .catch(() => {
+          // history.push(path);
+          // swal({
+          //   title: "unauthorized",
+          //   text: "Please Login First",
+          //   icon: "warning",
+          // });
+        });
+    };
+    fetchUser();
+  }, []);
+
+  const editDonation = async (e) => {
     e.preventDefault();
-    const donationImage = filesarr.base64;
-    console.log(donationImage);
-    const userID = 123;
-
     const donation = {
-      userID,
       donationTitle,
       email,
       contactNumber,
-      donationImage,
       donationDescription,
     };
-
-    axios
-      .post("http://localhost:8070/donator/createDonation", donation)
+    await axios
+      .put(`http://localhost:8070/donator/updateDonation/${id}`, donation)
       .then((res) => {
         console.log(res);
       })
@@ -41,13 +55,12 @@ export default function CreateDonation() {
 
   return (
     <>
-      {/* <span class="mask bg-gradient-dark opacity-6"></span> */}
       <div class="container my-auto">
         <div class="row">
           <div class="mx-auto">
             <div class="card z-index-0 fadeIn3 fadeInBottom">
               <div class="card-body">
-                <form role="form" class="text-start" onSubmit={createDonation}>
+                <form role="form" class="text-start" onSubmit={editDonation}>
                   <div class="d-flex justify-content-center">
                     <h4>Create Donation</h4>
                   </div>
@@ -67,6 +80,7 @@ export default function CreateDonation() {
                       onChange={(e) => {
                         setDonationTitle(e.target.value);
                       }}
+                      value={donationTitle}
                       required
                     />
                   </div>
@@ -93,6 +107,7 @@ export default function CreateDonation() {
                       onChange={(e) => {
                         setContactNumber(e.target.value);
                       }}
+                      value={contactNumber}
                       required
                     />
                   </div>
@@ -106,6 +121,7 @@ export default function CreateDonation() {
                       onChange={(e) => {
                         setEmail(e.target.value);
                       }}
+                      value={email}
                       required
                     />
                   </div>
@@ -130,11 +146,12 @@ export default function CreateDonation() {
                       onChange={(e) => {
                         setDonationDescription(e.target.value);
                       }}
+                      value={donationDescription}
                       required
                     ></textarea>
                   </div>
                   <div>Thumbnail Image</div>
-                  <FileBase64 onDone={(files) => fileUpload(files)} />
+                  {/* <FileBase64 onDone={(files) => fileUpload(files)} /> */}
 
                   <div class="text-center">
                     <button type="submit" class="btn btn-secondary">
