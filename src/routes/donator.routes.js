@@ -10,6 +10,7 @@ export default function Donator() {
       <Routes>
         <Route path="/card" element={<DonatorCard />} />
         <Route path="/createDonation" element={<CreateDonation />} />
+        <Route path="/dashboard" element={<DonatorDashboard />} />
       </Routes>
     </>
   );
