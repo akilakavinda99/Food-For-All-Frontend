@@ -11,7 +11,7 @@ import { multiStepContext } from '../../components/organization/registration/Ste
 
 export default function RegisterOrganization() {
 
-    const { currentStep, finalData } = useContext(multiStepContext);
+    const { currentStep, setCurrentStep } = useContext(multiStepContext);
 
     function showStep(step) {
         switch (step) {
@@ -28,34 +28,41 @@ export default function RegisterOrganization() {
         }
     }
 
+    function clickStepLabel(step) {
+        if (step < currentStep) {
+            setCurrentStep(step);
+        }
+    }
+
     return (
         <>
             <NavBar />
             <h3>Register as an organization</h3>
             {/* <div className='d-flex justify-content-center'> */}
-            <Stepper style={{ width: '100%' }} activeStep={currentStep - 1} alternativeLabel>
-                <Step>
-                    <StepLabel>Step One</StepLabel>
-                </Step>
-                <Step>
-                    <StepLabel>Step Two</StepLabel>
-                </Step>
-                <Step>
-                    <StepLabel>Step Three</StepLabel>
-                </Step>
-                <Step>
-                    <StepLabel>Step Four</StepLabel>
-                </Step>
-            </Stepper>
+            <div className="container my-auto">
+                <div className="row">
+                    <div className="mx-auto">
+                        <div className="card z-index-0 fadeIn3 fadeInBottom">
+                            <Stepper style={{ width: '100%' }} activeStep={currentStep - 1} alternativeLabel>
+                                <Step onClick={() => clickStepLabel(1)} className='cursor-pointer'>
+                                    <StepLabel></StepLabel>
+                                </Step>
+                                <Step onClick={() => clickStepLabel(2)} className='cursor-pointer'>
+                                    <StepLabel></StepLabel>
+                                </Step>
+                                <Step onClick={() => clickStepLabel(3)} className='cursor-pointer'>
+                                    <StepLabel></StepLabel>
+                                </Step>
+                                <Step onClick={() => clickStepLabel(4)} className='cursor-pointer'>
+                                    <StepLabel></StepLabel>
+                                </Step>
+                            </Stepper>
 
-            {/* <StepOne />
-            <StepTwo />
-            <StepThree />
-            <StepFour /> */}
-
-            {showStep(currentStep)}
-
-            {/* </div> */}
+                            {showStep(currentStep)}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     );
 }
