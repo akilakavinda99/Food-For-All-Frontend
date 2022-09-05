@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Donator from "./routes/donator.routes";
 import Requester from "./routes/requester.routes";
 import Organization from "./routes/organization.routes";
+import Fund from "./routes/fund.routes";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,6 +17,7 @@ root.render(
       <Route path="/donator/*" element={<Donator />} />
       <Route path="/requester/*" element={<Requester />} />
       <Route path="/organization/*" element={<Organization />} />
+      <Route path="/fund/*" element={<Fund />} />
     </Routes>
   </BrowserRouter>
 );

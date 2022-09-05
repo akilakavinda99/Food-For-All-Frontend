@@ -8,9 +8,7 @@ export default function Organization() {
     <>
       <Routes>
         <Route path="/dashboard" element={<OrganizationDashboard />} />
-        
-          <Route path="/new" element={<StepContex><RegisterOrganization /></StepContex>} />
-        
+        <Route path="/new" element={<StepContex><RegisterOrganization /></StepContex>} />
       </Routes>
     </>
   );
