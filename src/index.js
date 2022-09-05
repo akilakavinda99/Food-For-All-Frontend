@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Donator from "./routes/donator.routes";
 import Requester from "./routes/requester.routes";
 import Organization from "./routes/organization.routes";
+import Admin from "./routes/admin.routes";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,6 +17,7 @@ root.render(
       <Route path="/donator/*" element={<Donator />} />
       <Route path="/requester/*" element={<Requester />} />
       <Route path="/organization/*" element={<Organization />} />
+      <Route path="/admin/*" element={<Admin />}/>
     </Routes>
   </BrowserRouter>
 );
