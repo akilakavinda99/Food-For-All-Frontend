@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { newOrganization } from '../../../api/organization.api';
 import RegisterOrganization from '../../../pages/organization/registerOrganization';
 
 export const multiStepContext = React.createContext()
@@ -8,8 +9,14 @@ export default function StepContex() {
     const [userData, setUserData] = useState({});
     const [imageFile, setImageFile] = useState(null);
 
-    function submitData() {
+    function submitData(e) {
         console.log(userData);
+        e.preventDefault();
+        newOrganization(userData).then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.log(err);
+        })
     }
 
     return (

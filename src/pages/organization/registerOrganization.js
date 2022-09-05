@@ -1,4 +1,5 @@
 import NavBar from '../../components/NavBar';
+import Footer from '../../components/Footer';
 
 import StepFour from '../../components/organization/registration/StepFour';
 import StepOne from '../../components/organization/registration/StepOne';
@@ -28,21 +29,26 @@ export default function RegisterOrganization() {
         }
     }
 
+    // function to navigate to the relevant step in the stepper on the top of the form
     function clickStepLabel(step) {
-        if (step < currentStep) {
-            setCurrentStep(step);
-        }
+        // can navigate only for the previous steps
+        // if (step < currentStep) {
+        //     setCurrentStep(step);
+        // }
+
+        // can navigate to any step
+        setCurrentStep(step);
     }
 
     return (
         <>
             <NavBar />
-            <h3>Register as an organization</h3>
+            <h3 className="font-weight-bolder mt-5 mb-3 text-center">Register as an organization</h3>
             {/* <div className='d-flex justify-content-center'> */}
             <div className="container my-auto">
                 <div className="row">
                     <div className="mx-auto">
-                        <div className="card z-index-0 fadeIn3 fadeInBottom">
+                        <div className="card z-index-0 fadeIn3 fadeInBottom ">
                             <Stepper style={{ width: '100%' }} activeStep={currentStep - 1} alternativeLabel>
                                 <Step onClick={() => clickStepLabel(1)} className='cursor-pointer'>
                                     <StepLabel></StepLabel>
@@ -63,6 +69,7 @@ export default function RegisterOrganization() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     );
 }
