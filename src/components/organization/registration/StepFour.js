@@ -25,17 +25,17 @@ export default function StepFour() {
                             onChange={(e) => { setUserData({ ...userData, "repassword": e.target.value }) }} />
                     </div>
                     <div className="form-check">
-                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" required/>
                             <label className="form-check-label" htmlFor="flexCheckDefault">
                                 I agree with Terms and Conditions and the privacy policy
                             </label>
                     </div>
-                    <div className="row">
-                        <div className='col-5'>
+                    <div className="row d-flex justify-content-center">
+                        <div className='w-30'>
                             <button type="button" onClick={() => setCurrentStep(3)} className="btn bg-gradient-secondary w-100 my-4 mb-2">Back</button>
                         </div>
-                        <div className='col-7'>
-                            <button type="button" onClick={() => submitData()} className="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
+                        <div className='w-30'>
+                            <button type="button" onClick={submitData} className="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
                         </div>
                     </div>
                 </form>

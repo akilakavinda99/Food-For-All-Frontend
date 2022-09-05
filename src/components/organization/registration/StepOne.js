@@ -3,8 +3,32 @@ import { multiStepContext } from "./StepContex"
 
 export default function StepOne() {
     const { setCurrentStep, userData, setUserData } = useContext(multiStepContext)
+
+    const testData = (e) => {
+        e.preventDefault()
+        userData.name = "test org"
+        userData.address = "kalutara"
+        userData.country = "sri lanka"
+        userData.zipCode = "12000"
+        userData.contactNumber = "0123456789"
+        userData.email = "test@test.com"
+        userData.registrationNumber = "abc/123"
+        userData.registrationDate = "2016-10-05"
+        userData.presidentName = "pres name"
+        userData.presidentEmail = "pres@test.com"
+        userData.presidentContactNumber = "0123456789"
+        userData.secretaryName = "secr"
+        userData.secretaryEmail = "secr@test.com"
+        userData.secretaryContactNumber = "0123456789"
+        userData.password = "123"
+        userData.repassword = "123"
+    }
+
+
+
     return (
         <>
+            <button className="bg-danger text-white p-3" onClick={(e)=>{testData(e)}}>Test data</button>
             <div className="card-body">
                 <form className="text-start">
                     <div className="form-group text-center pb-3">Organization Details</div>
@@ -77,7 +101,7 @@ export default function StepOne() {
                     </div>
 
                     <div className="text-center">
-                        <button type="button" onClick={() => setCurrentStep(2)} className="btn bg-gradient-primary w-100 my-4 mb-2">Next</button>
+                        <button type="button" onClick={() => setCurrentStep(2)} className="btn bg-gradient-primary w-30 my-4 mb-2">Next</button>
                     </div>
                 </form>
             </div>
