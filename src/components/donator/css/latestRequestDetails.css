@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@100&family=Poppins&family=Roboto+Condensed&display=swap');
+
+.detailsDiv {
+    width: 680px;
+    margin-left: 10px;
+    
+    
+}
+
+.dTitle{
+    color: black;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.dFrom{
+    color: grey;
+    font-family: 'Anek Telugu', sans-serif;
+}
