@@ -62,12 +62,7 @@ export default function EditDonation() {
               <div class="card-body">
                 <form role="form" class="text-start" onSubmit={editDonation}>
                   <div class="d-flex justify-content-center">
-                    <h4>Create Donation</h4>
-                  </div>
-                  <div class="d-flex justify-content-between">
-                    <div></div>
-                    <div></div>
-                    <h6>* Required Fields</h6>
+                    <h4>Edit Donation</h4>
                   </div>
 
                   <div class="input-group mb-3 input-group input-group-outline mb-3">
