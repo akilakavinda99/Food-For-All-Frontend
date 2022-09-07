@@ -8,7 +8,7 @@ export default function RequesterSignUp() {
       <nav>
         <NavBar />
       </nav>
-    <div class="container-signup d-flex justify-content-center pt-5 pb-5">
+    <div class="container d-flex justify-content-center pt-5 pb-5">
       
     <div className="card z-index-0 fadeIn3 fadeInBottom ">
     <div className="card-body">
