@@ -1,8 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
 import FileBase64 from "react-file-base64";
+import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
+import DonatorDashboard from "./donatorDashboard";
 
 export default function CreateDonation() {
+  const navigate = useNavigate();
   const [donationTitle, setDonationTitle] = useState("");
   const [email, setEmail] = useState("");
   const [contactNumber, setContactNumber] = useState("");
@@ -32,24 +36,34 @@ export default function CreateDonation() {
     axios
       .post("http://localhost:8070/donator/createDonation", donation)
       .then((res) => {
-        console.log(res);
+        swal("Donation Succesfully Created", "", "success").then((value) => {
+          if (value) {
+          }
+        });
       })
       .catch((err) => {
         console.log(err);
+        swal("Donation creation failed", "Please try again", "error").then(
+          (value) => {
+            if (value) {
+              navigate("../dashboard");
+            }
+          }
+        );
       });
   };
 
   return (
     <>
       {/* <span class="mask bg-gradient-dark opacity-6"></span> */}
-      <div class="container my-auto">
+      <div class="container my-auto" style={{ paddingTop: 30 }}>
         <div class="row">
           <div class="mx-auto">
             <div class="card z-index-0 fadeIn3 fadeInBottom">
               <div class="card-body">
                 <form role="form" class="text-start" onSubmit={createDonation}>
                   <div class="d-flex justify-content-center">
-                    <h4>Create Donation</h4>
+                    <h4>Create Your Donation</h4>
                   </div>
                   <div class="d-flex justify-content-between">
                     <div></div>
@@ -84,17 +98,32 @@ export default function CreateDonation() {
                     />
                   </div>
                   <div class="input-group mb-3 input-group input-group-outline mb-3">
-                    <input
+                    {/* <input
                       type="number"
                       class="form-control"
                       placeholder="Contact Number*"
                       aria-label="Contact Number"
                       aria-describedby="basic-addon1"
+                      maxlength="10"
+                      pattern="\d{10}"
                       onChange={(e) => {
                         setContactNumber(e.target.value);
                       }}
                       required
+                    /> */}
+                    <input
+                      type="text"
+                      placeholder="Contact Number*"
+                      aria-label="Contact Number"
+                      aria-describedby="basic-addon1"
+                      title="Error Message"
+                      pattern="[1-9]{1}[0-9]{9}"
+                      class="form-control"
+                      onChange={(e) => {
+                        setContactNumber(e.target.value);
+                      }}
                     />
+                    {/* <input type="text" name="country_code"></input> */}
                   </div>
                   <div class="input-group mb-3 input-group input-group-outline mb-3">
                     <input

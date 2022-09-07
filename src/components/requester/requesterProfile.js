@@ -11,9 +11,11 @@ export default function requesterProfile() {
       </nav>
       <h4 className="pt-3 ms-4">Account settings</h4>
       <hr/>
+
     <div class="container d-flex justify-content-center pt-4 pb-5">
     <div className="card z-index-0 fadeIn3 fadeInBottom ">
     <div className="card-body">
+
         <form class="form-control form-profile m-3">
 
         <div class="row pt-5"> 
@@ -27,12 +29,14 @@ export default function requesterProfile() {
             <div class="col ms-2 pe-5 border-end">
                 <div class="row">
                     <div class="col">
+
                         <div class="row input-group input-group-outline mb-4">
                             <label for="formFile">First name</label> 
                             <input type="text" class="form-control"/> 
                         </div> 
                     </div>
                     <div class="col">
+
                         <div class="row input-group input-group-outline mb-4"> 
                             <label for="formFile">Last name</label>
                             <input type="text" class="form-control"/> 
@@ -68,7 +72,9 @@ export default function requesterProfile() {
             </div>
         </div>
             <div class="row pt-5"> 
+
               <div class="mb-4 d-flex justify-content-center"> 
+
                 <div class="btn btn-primary d-block px-5"> Save changes </div> 
               </div> 
            </div>
@@ -76,6 +82,7 @@ export default function requesterProfile() {
       </div>
       </div>
       </div>
+
 
   <footer>
     <Footer />

@@ -1,0 +1,14 @@
+.ltreqcard{
+    width: 700px;
+    height: 400px;
+    border-radius: 20px;
+    background-color:white;
+    margin-top: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.Reqtitle{
+    padding-top: 5px;
+    align-items: center;
+    text-align: center;
+}
