@@ -1,0 +1,83 @@
+.DashTable {
+  margin-left: 5%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  width: 85%;
+  height: auto;
+}
+.Table {
+  width: 100%;
+}
+table,
+tr,
+th,
+td {
+  border-bottom: 1px solid rgb(228, 211, 211);
+}
+
+.Table tr th {
+  text-align: center;
+  padding: 10px 5px;
+  background-color: #e8e1e1;
+}
+
+.Table tr td {
+  text-align: center;
+  padding: 5px 5px;
+}
+#ActionSec {
+  width: 25%;
+}
+.ActionBtnSec {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px;
+}
+
+.ActionBtn1 {
+  width: 40%;
+  border-radius: 6px;
+  height: 35px;
+  background-color: rgb(122, 146, 225);
+  color: #ffffff;
+}
+.ActionBtn2 {
+  width: 40%;
+  border-radius: 6px;
+  height: 35px;
+  background-color: #ec407a;
+  color: #ffffff;
+}
+
+.searchbar{
+  border-left: 10%;
+  padding-inline-end: 10px;
+  border-radius: 8px;
+  background-color: none;
+  outline: none;
+  background-color: #ffffff;
+  outline: 1px solids #ec407a;
+}
+
+.searchbarposition{
+  margin-left: 72%;
+}
+
+@media (max-width: 768px) {
+  .DashTable {
+    margin-left: 0px;
+    margin: 10px;
+    width: 95%;
+  }
+}
+@media (max-width: 426px) {
+  .ActionBtnSec {
+    flex-direction: column;
+  }
+  .ActionBtn1,
+  .ActionBtn2 {
+    width: 100%;
+  }
+}
