@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { newFund } from '../../../api/fund.api';
 import NewFund from '../../../pages/fund/newFund';
-import { formValidation } from '../../common/formValidation';
+import { formValidation } from './formValidation';
 
 export const multiStepContext = React.createContext()
 

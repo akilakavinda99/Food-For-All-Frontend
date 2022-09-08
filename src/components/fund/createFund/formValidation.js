@@ -3,14 +3,10 @@ export const formValidation = (values) => {
     const errors = {};
     // email validation pattern
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    // password validation pattern
-    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     // phone validation pattern
-    const phonePattern = /^[0-9]{10}$/;
+    const phonePattern = /^[0]{1}[0-9]{9}$/;
     // can only contain numbers
     const numberPattern = /^[0-9]*$/;
-    // can only contain letters
-    const letterPattern = /^[a-zA-Z]*$/;
 
     if (!values.title) {
         errors.title = 'Title is required';
@@ -24,13 +20,13 @@ export const formValidation = (values) => {
         errors.target = 'Target is required';
     } else if (values.target.length < 10) {
         errors.target = 'Title must be at least 3 characters';
-    } 
+    }
 
     if (!values.description) {
         errors.description = 'Description is required';
     } else if (values.description.length < 10) {
         errors.description = 'Title must be at least 3 characters';
-    } 
+    }
 
     if (!values.budget) {
         errors.budget = 'Budget is required';

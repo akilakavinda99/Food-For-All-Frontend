@@ -3,7 +3,7 @@ import { multiStepContext } from './StepContex'
 import { FileUploader } from "react-drag-drop-files";
 
 export default function StepThree() {
-  const { setCurrentStep, userData, setUserData, imageFile, setImageFile } = useContext(multiStepContext)
+  const { setCurrentStep, userData, setUserData, imageFile, setImageFile, formErrors } = useContext(multiStepContext)
   const fileTypes = ["JPEG", "JPG", "PNG"];
 
 
@@ -34,11 +34,11 @@ export default function StepThree() {
         <div>
           <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
           <p>{imageFile ? `File name: ${imageFile.name}` : "No files uploaded yet"}</p>
-          <p>{imageFile ? 
-          <img className='rounded img-fluid' src={userData.registrationCertificate} alt={imageFile.name} /> : ""}</p>
-
-          
-
+          <p>{imageFile ?
+            <img className='rounded img-fluid' src={userData.registrationCertificate} alt={imageFile.name} /> : ""}</p>
+        </div>
+        <div className="text-danger form-label mb-3">
+          {formErrors.registrationCertificate}
         </div>
         <div className="row d-flex justify-content-center">
           <div className='w-30'>
