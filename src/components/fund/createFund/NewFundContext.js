@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { newFund } from '../../../api/fund.api';
 import NewFund from '../../../pages/fund/newFund';
 
 export const multiStepContext = React.createContext()
@@ -11,6 +12,7 @@ export default function NewFundContext() {
     function submitData(e) {
         e.preventDefault();
         console.log(fundData);
+        newFund(fundData)
     }
 
     return (
