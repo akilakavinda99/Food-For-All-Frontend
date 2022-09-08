@@ -2,8 +2,8 @@ import axios from 'axios';
 import { API_URL } from './config';
 
 const API = axios.create({
-    baseURL: API_URL + '/organization',
+    baseURL: API_URL + '/fund',
     // withCredentials: true
 });
 
-export const newOrganization = (organization) => API.post("/register", organization);
+export const newFund = (organization) => API.post("/create", organization);
