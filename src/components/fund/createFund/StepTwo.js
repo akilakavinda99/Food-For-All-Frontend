@@ -37,19 +37,21 @@ export default function StepTwo() {
                 </div>
 
                 <div className="form-group text-center pb-3">Contact Information</div>
+                <label className="form-label">Email</label>
                 <div className="input-group input-group-outline mb-3">
                     <input
                         type="email"
                         className="form-control"
-                        placeholder="Email"
+                        placeholder=""
                         value={fundData['contactEmail']}
                         onChange={(e) => { setFundData({ ...fundData, "contactEmail": e.target.value }) }} />
                 </div>
+                <label className="form-label">Contact Number</label>
                 <div className="input-group input-group-outline mb-3">
                     <input
                         type="contact"
                         className="form-control"
-                        placeholder="Contact Number"
+                        placeholder=""
                         value={fundData['contactNumber']}
                         onChange={(e) => { setFundData({ ...fundData, "contactNumber": e.target.value }) }} />
                 </div>
