@@ -12,13 +12,12 @@ export default function requestStepTwo() {
       </nav>
 
       <h4 className="pt-3 ms-4">Request Funds</h4>
-      <p className='pt-3 ms-4'>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-         It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-         It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,</p>
-      <hr/>
+      <p className='text-dark font-weight-normal mx-4'>Millions of children are dying every day from hunger and diseases that are made worse by undernutrition.
+       No child should ever go hungry or suffer from preventable sickness and disease because their basic nutritional needs go unmet.
+       The statistics are discouraging, but Feed God’s Hungry Children knows that even the smallest gift of compassion can change lives one child at a time.</p>
+      <hr className='hr-request-fund mx-4'/>
 
-    <div class="container d-flex justify-content-center pt-3 pb-5">
+    <div class="container d-flex justify-content-center pt-5 pb-5">
       
     <div className="card z-index-0 fadeIn3 fadeInBottom ">
     <div className="card-body">

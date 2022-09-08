@@ -7,7 +7,6 @@ import RequesterSignIn from "../components/requester/requesterSignIn"
 import RequesterProfile from "../components/requester/requesterProfile";
 import RequestStepOne from "../components/requester/request/requestStepOne";
 import RequestStepTwo from "../components/requester/request/requestStepTwo";
-import AboutUs from "../components/requester/aboutus";
 
 export default function Requester() {
   return (
@@ -19,7 +18,6 @@ export default function Requester() {
         <Route path="/profile" element={<RequesterProfile />} />
         <Route path="request/step1" element={<RequestStepOne />} />
         <Route path="request/step2" element={<RequestStepTwo />} />
-        <Route path="/us" element={<AboutUs />} />
       </Routes>
     </>
   )

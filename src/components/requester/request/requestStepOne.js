@@ -10,11 +10,10 @@ export default function requestStepOne() {
       </nav>
 
       <h4 className="pt-3 ms-4">Request Funds</h4>
-      <p className='pt-3 ms-4'>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-         It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-         It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,</p>
-      <hr/>
+      <p className='text-dark font-weight-normal fw-bold mx-4'>Millions of children are dying every day from hunger and diseases that are made worse by undernutrition. 
+      No child should ever go hungry or suffer from preventable sickness and disease because their basic nutritional needs go unmet. The statistics are discouraging, 
+      but Feed God’s Hungry Children knows that even the smallest gift of compassion can change lives one child at a time.</p>
+      <hr className='hr-request-fund mx-4'/>
 
     <div class="container d-flex justify-content-center pt-4 pb-5">
       
@@ -27,36 +26,36 @@ export default function requestStepOne() {
 
             <div class="row input-group input-group-outline m-0 px-4"> 
               <div class="col-md-6 mb-4 ps-0"> 
-                <input class="form-control" type="text" placeholder="First Name"/>
+                <input class="form-control" type="text"/>
               </div>
               <div class="col-md-6 mb-4 pe-0">
-                <input class="form-control" type="text" placeholder="Lirst Name"/>
-              </div> 
-            </div>
-
-            <div class="input-group input-group-outline mb-4 px-4"> 
-              <input type="email" placeholder="Email address" class="form-control"/> 
-            </div> 
-
-            <p class="text-center d-flex ms-3 text-muted fw-bold "> Benificiary's contact information </p> 
-
-            <div class="row input-group input-group-outline m-0 px-4"> 
-              <div class="col-md-6 mb-4 ps-0"> 
-                <input class="form-control" type="text" placeholder="First Name"/>
-              </div>
-              <div class="col-md-6 mb-4 pe-0">
-                <input class="form-control" type="text" placeholder="Lirst Name"/>
+                <input class="form-control" type="text"/>
               </div> 
             </div>
 
             <div class="input-group input-group-outline mb-4 px-4"> 
               <input type="text" placeholder="Telephone number" class="form-control"/> 
             </div> 
+
+            <p class="text-center d-flex ms-3 text-muted fw-bold "> Benificiary's contact information </p> 
+
+            <div class="row input-group input-group-outline m-0 px-4"> 
+              <div class="col-md-6 mb-4 ps-0"> 
+                <input class="form-control" type="text" placeholder="Country"/>
+              </div>
+              <div class="col-md-6 mb-4 pe-0">
+                <input class="form-control" type="text" placeholder="Zip code"/>
+              </div> 
+            </div>
+
             <div class="input-group input-group-outline mb-4 px-4"> 
-              <input type="password" placeholder="Password" class="form-control"/> 
+              <input type="text" placeholder="Address" class="form-control"/> 
             </div> 
             <div class="input-group input-group-outline mb-4 px-4"> 
-              <input type="password" placeholder="Confirm Password" class="form-control"/> 
+              <input type="email" placeholder="Email Address" class="form-control"/> 
+            </div> 
+            <div class="input-group input-group-outline mb-4 px-4"> 
+              <input type="text" placeholder="Telephone number" class="form-control"/> 
             </div> 
           
            <div class="row"> 

@@ -10,3 +10,19 @@
 .input-group-description{
     height: 100px;
 }
+
+.hr-request-fund{
+    background-color:#e91e63;
+    height: 3px;
+    opacity: 55%;
+}
+
+.img-footer{
+    width: 200px;
+    height:auto;
+}
+
+.img-navbar{
+    width: 170px;
+    height: auto;
+}
