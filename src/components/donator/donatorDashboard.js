@@ -18,7 +18,7 @@ import NavBar from "../NavBar";
 
 import NoItems from "./noItems";
 import NavButton from "../NavButton";
-import SideNav from "../organization/sideNav";
+import SideNav from "./sideNav";
 
 export default function DonatorDashboard() {
   const [donations, setDonations] = useState([]);
@@ -126,50 +126,6 @@ export default function DonatorDashboard() {
       });
   }, []);
 
-  const editDonation = () => {
-    console.log("sd");
-    return (
-      <div
-        class="modal fade"
-        id="exampleModalCenter"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">
-                Modal title
-              </h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">...</div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
   return (
     <>
       <SideNav />
@@ -222,7 +178,116 @@ export default function DonatorDashboard() {
                       role="tabpanel"
                       aria-labelledby="profile-tab"
                     >
-                      ...
+                      <div
+                        class="d-flex justify-content-between"
+                        style={{ marginTop: 10 }}
+                      >
+                        {donations.length == 0 ? (
+                          <>
+                            <NoItems />
+                          </>
+                        ) : (
+                          <>
+                            <button
+                              onClick={() => generateCompletedReport(donations)}
+                            >
+                              Generate Report
+                            </button>
+                            <div
+                              class="head1"
+                              style={{ paddingLeft: "10px", width: 500 }}
+                            >
+                              <i class="fas fa-search" aria-hidden="true"></i>
+                              <input
+                                class="form-control form-control-sm ml-3 w-75"
+                                type="text"
+                                placeholder="Search Items  "
+                                aria-label="Search"
+                                onChange={(e) => {
+                                  setsearchTerm(e.target.value);
+                                }}
+                              />{" "}
+                            </div>
+                          </>
+                        )}
+                      </div>
+                      {donations
+                        .filter((val) => {
+                          if (searchTerm === "") {
+                            return val;
+                          } else if (
+                            val.donationTitle
+                              .toLowerCase()
+                              .includes(searchTerm.toLowerCase()) ||
+                            val.donationDescription
+                              .toLowerCase()
+                              .includes(searchTerm.toLowerCase())
+                          ) {
+                            return (
+                              <>
+                                <h2>Nooasa</h2>
+                              </>
+                            );
+                          }
+                        })
+                        .map(function (f) {
+                          return f == null ? (
+                            <h1>No items</h1>
+                          ) : (
+                            <div class="courses-container">
+                              <div class="course">
+                                <div class="course-info">
+                                  <div class="progress-container">
+                                    {/* <div class="progress"></div> */}
+
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="16"
+                                      height="16"
+                                      fill="red"
+                                      class="bi bi-trash-fill"
+                                      viewBox="0 0 16 16"
+                                    >
+                                      <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                    </svg>
+
+                                    <span onClick={() => deleteDonation(f._id)}>
+                                      {" "}
+                                      Delete
+                                    </span>
+                                    <br />
+
+                                    {/* <Link
+                                      to={`/donator/dashboard/donator/editDonation/${f._id}`}
+                                    >
+                                      <span
+                                        data-toggle="modal"
+                                        data-target="#exampleModalCenter"
+                                      >
+                                        {" "}
+                                        Edit
+                                      </span>
+                                    </Link> */}
+                                    {/* <span class="progress-text">6/9 Challenges</span> */}
+                                  </div>
+                                  <Link
+                                    to={"/inbound/updateinbound/" + f._id}
+                                    style={{
+                                      textDecoration: "none",
+                                      color: "black",
+                                    }}
+                                  >
+                                    {" "}
+                                    <h2>{f.donationTitle}</h2>{" "}
+                                  </Link>
+                                  <h6>{f.donationDescription}</h6>
+                                  <br></br>
+                                </div>
+                                <br />
+                              </div>
+                            </div>
+                          );
+                        })}
                     </div>
                     <div
                       class="tab-pane fade"
@@ -289,13 +354,6 @@ export default function DonatorDashboard() {
                           ) : (
                             <div class="courses-container">
                               <div class="course">
-                                {/* <div class="course-preview">
-            <h6>Course</h6>
-            <h2>JavaScript Fundamentals</h2>
-            <a href="#">
-              View all chapters <i class="fas fa-chevron-right"></i>
-            </a>
-          </div> */}
                                 <div class="course-info">
                                   <div class="progress-container">
                                     {/* <div class="progress"></div> */}

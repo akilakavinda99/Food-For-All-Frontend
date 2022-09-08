@@ -1,16 +1,18 @@
 import React from 'react'
-import Footer from '../Footer'
-import NavBar from '../NavBar'
+import Footer from '../../Footer'
+import NavBar from '../../NavBar'
 
-export default function RequesterSignUp() {
+export default function requestStepTwo() {
   return (
     <div>
       <nav>
         <NavBar />
       </nav>
 
-    <div class="container d-flex justify-content-center pt-5 pb-5">
+      <h4 className="pt-3 ms-4">Request Funds</h4>
+      <hr/>
 
+    <div class="container d-flex justify-content-center pt-5 pb-5">
       
     <div className="card z-index-0 fadeIn3 fadeInBottom ">
     <div className="card-body">
