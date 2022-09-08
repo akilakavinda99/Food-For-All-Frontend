@@ -1,4 +1,6 @@
 import React from "react";
+import Logo from "./logo-footer.png"
+import "./requester/footer.css"
 
 function Footer() {
     return (
@@ -39,18 +41,17 @@ function Footer() {
     
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
      
-          <h6 class="text-uppercase fw-bold mb-4">
+          <h6 class="text-reset text-uppercase fw-bold mb-4">
             <i class="fas fa-gem me-3"></i>Food For All
           </h6>
-          <p>
-            Here you can use rows and columns to organize your footer content. Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit.
-          </p>
+          <div className="">
+            <img className="img-footer" src={Logo} />
+          </div>
         </div>
 
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
    
-          <h6 class="text-uppercase fw-bold mb-4">
+          <h6 class="text-reset text-uppercase fw-bold mb-4">
             Products
           </h6>
           <p>
@@ -64,7 +65,7 @@ function Footer() {
 
         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
        
-          <h6 class="text-uppercase fw-bold mb-4">
+          <h6 class="text-reset text-uppercase fw-bold mb-4">
             Useful links
           </h6>
           <p>
@@ -77,13 +78,13 @@ function Footer() {
         </div>
 
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-          <p><i class="bi bi-geo-alt-fill"></i> Colombo, Sri Lanka</p>
+          <h6 class="text-reset text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="bi bi-geo-alt-fill pe-3"></i> Colombo, Sri Lanka</p>
           <p>
-          <i class="bi bi-envelope-fill"></i> info@example.com
+          <i class="bi bi-envelope-fill pe-3"></i> info@example.com
           </p>
-          <p><i class="bi bi-phone-fill"></i> + 01 234 567 88</p>
-          <p><i class="bi bi-telephone-fill"></i> + 01 234 567 89</p>
+          <p><i class="bi bi-phone-fill pe-3"></i> + 01 234 567 88</p>
+          <p><i class="bi bi-telephone-fill pe-3"></i> + 01 234 567 89</p>
         </div>
       </div>
     </div>
