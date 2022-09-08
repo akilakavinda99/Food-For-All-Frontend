@@ -45,9 +45,9 @@ export default function RegisterOrganization() {
             <NavBar />
             <h3 className="font-weight-bolder mt-5 mb-3 text-center">Register as an organization</h3>
             {/* <div className='d-flex justify-content-center'> */}
-            <div className="container my-auto">
+            <div className="container my-auto mb-5">
                 <div className="row">
-                    <div className="mx-auto">
+                    <div className="mx-auto col-lg-10">
                         <div className="card z-index-0 fadeIn3 fadeInBottom ">
                             <Stepper style={{ width: '100%' }} activeStep={currentStep - 1} alternativeLabel>
                                 <Step onClick={() => clickStepLabel(1)} className='cursor-pointer'>
