@@ -10,8 +10,8 @@ export default function requesterSignIn() {
         <NavBar />
       </nav>
       
-    <div class="container container-signin pt-5 pb-5">
-      <div className="card z-index-0 fadeIn3 fadeInBottom ">
+    <div class="container d-flex justify-content-center pt-5 pb-5">
+      <div className="card card-signin z-index-0 fadeIn3 fadeInBottom ">
          
         <form class="form-control p-5"> 
           <p class="h3 fw-bold text-center mb-2 pb-4 border-bottom">Sign in </p>
