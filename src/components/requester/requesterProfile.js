@@ -1,6 +1,9 @@
 import React from 'react'
 import Footer from '../Footer'
 import NavBar from '../NavBar'
+import Profile from './profile.png';
+import "./footer.css"
+
 
 
 export default function requesterProfile() {
@@ -10,7 +13,7 @@ export default function requesterProfile() {
         <NavBar />
       </nav>
       <h4 className="pt-3 ms-4">Account settings</h4>
-      <hr/>
+      <hr className='hr-request-fund mx-4'/>
 
     <div class="container d-flex justify-content-center pt-4 pb-5">
     <div className="card z-index-0 fadeIn3 fadeInBottom ">
@@ -18,14 +21,14 @@ export default function requesterProfile() {
 
         <form class="form-control form-profile m-3">
 
-        <div class="row pt-5"> 
-              <div class="d-flex justify-content-center ps-5 ms-2"> 
-                <h1 class=" btn btn-secondary btn-lg rounded-circle"><i class="bi bi-person-plus-fill"></i></h1>
+        <div class="row pt-4"> 
+              <div class="d-flex justify-content-center ps-2 ms-2"> 
+                {/* <h1 class=" btn btn-secondary btn-lg rounded-circle"><i class="bi bi-person-plus-fill"></i></h1> */}
+                <img className='profile-image' src={Profile} />
               </div> 
         </div>
-        <p class="h6 text-center ms-5 pt-3 mb-5">Add a profile picture</p> 
 
-          <div class="row m-auto">
+          <div class="row m-auto pt-5">
             <div class="col ms-2 pe-5 border-end">
                 <div class="row">
                     <div class="col">
@@ -75,7 +78,7 @@ export default function requesterProfile() {
 
               <div class="mb-4 d-flex justify-content-center"> 
 
-                <div class="btn btn-primary d-block px-5"> Save changes </div> 
+                <div class="btn btn-primary d-block px-5"> Edit Profile </div> 
               </div> 
            </div>
         </form>
