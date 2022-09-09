@@ -26,9 +26,9 @@ export default function NewFund() {
 
     return (
         <div>
-            <SideNav />
+            <SideNav fund="true" />
             <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-                <NavButton />
+                <NavButton path="Organization / Funds" page="New Fund" />
                 <div className="container-fluid" onClick={toggleSidenav}>
                     <h3 className="font-weight-bolder mt-4 mb-3 text-center">Create a new fund</h3>
                     <div className="my-auto pb-5">
