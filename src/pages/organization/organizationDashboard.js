@@ -6,8 +6,8 @@ import SideNav from "../../components/organization/sideNav";
 export default function OrganizationDashboard() {
     return (
         <>
-            <SideNav />
-            <Dashboard/>
+            <SideNav dashboard="true" />
+            <Dashboard />
         </>
     );
 }

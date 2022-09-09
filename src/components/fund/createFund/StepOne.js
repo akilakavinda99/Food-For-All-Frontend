@@ -9,8 +9,23 @@ import Box from '@mui/material/Box';
 export default function StepOne() {
     const { setCurrentStep, fundData, setFundData, formErrors } = useContext(multiStepContext)
 
+    const testData = (e) => {
+        e.preventDefault()
+        setFundData({
+            ...fundData,
+            "title": "test fund",
+            "target": "test target",
+            "description": "test description",
+            "endingDate": "2021-10-05",
+            "budget": " 100000",
+            "contactEmail": "test@test.com",
+            "contactNumber": "0123456789",
+        })
+    }
+
     return (
         <>
+            <button className="bg-danger text-white p-3 m-3" onClick={(e) => { testData(e) }}>Test data</button>
             <div className="card-body">
                 <form className="text-start">
                     <div className="form-group text-center pb-3">Fundraising Details</div>
@@ -92,7 +107,7 @@ export default function StepOne() {
                     </div>
 
                     <div className="row d-flex justify-content-center">
-                        <div className='w-30'>
+                        <div className='col-lg-4 col-md-4 col-sm-4'>
                             <button type="button" onClick={() => setCurrentStep(2)} className="btn bg-gradient-primary w-100 my-4 mb-2">Next</button>
                         </div>
                     </div>
