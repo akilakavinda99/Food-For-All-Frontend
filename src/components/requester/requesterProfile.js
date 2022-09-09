@@ -1,4 +1,8 @@
-import React from 'react'
+import React from 'react';
+// import axios from "axios";
+// import { Link, useNavigate } from "react-router-dom";
+// import { useParams } from 'react-router-dom';
+import swal from "sweetalert";
 import Footer from '../Footer'
 import NavBar from '../NavBar'
 import Profile from './profile.png';
@@ -7,6 +11,8 @@ import "./footer.css"
 
 
 export default function requesterProfile() {
+    // const { id } = useParams();
+
   return (
     <div>
       <nav>
@@ -35,26 +41,42 @@ export default function requesterProfile() {
 
                         <div class="row input-group input-group-outline mb-4">
                             <label for="formFile">First name</label> 
-                            <input type="text" class="form-control"/> 
+                            <input type="text" 
+                                    class="form-control"
+                                    defaultValue={"thushal"}
+                                    readOnly
+                                    /> 
                         </div> 
                     </div>
                     <div class="col">
 
                         <div class="row input-group input-group-outline mb-4"> 
                             <label for="formFile">Last name</label>
-                            <input type="text" class="form-control"/> 
+                            <input type="text" 
+                                    class="form-control"
+                                    defaultValue={"shaminda"}
+                                    readOnly
+                                    /> 
                         </div>
                     </div>
                 </div>
 
                 <div class="row input-group input-group-outline mb-4">
                     <label for="formFile">Telephone number</label>
-                    <input type="text" class="form-control"/> 
+                    <input type="text" 
+                            class="form-control"
+                            defaultValue={"0771234567"}
+                            readOnly
+                            /> 
                 </div>
 
                 <div class="row input-group input-group-outline mb-4"> 
                     <label for="formFile" >Email Address</label>
-                    <input type="email" class="form-control"/> 
+                    <input type="email" 
+                            class="form-control"
+                            defaultValue={"thushal@gmail.com"}
+                            readOnly
+                            /> 
                 </div>
 
             </div>
@@ -62,15 +84,23 @@ export default function requesterProfile() {
             <div class="row input-group input-group-outline col align-self-end me-5">
             <div class="mb-4 ms-5">
                 <label for="formFile">Current Password</label>
-                <input type="password" class="form-control"/> 
+                <input type="password" 
+                        class="form-control"
+                        defaultValue={"123"}
+                        readOnly
+                        /> 
             </div> 
             <div class="mb-4 ms-5"> 
                 <label for="formFile">New Password</label>
-                <input type="password" placeholder="New password" class="form-control"/> 
+                <input type="password" 
+                        placeholder="New password" 
+                        class="form-control"/> 
             </div> 
             <div class="mb-4 ms-5"> 
                 <label for="formFile">Confirm Password</label>
-                <input type="password" placeholder="Confirm password" class="form-control"/> 
+                <input type="password" 
+                      placeholder="Confirm password" 
+                      class="form-control"/> 
             </div> 
             </div>
         </div>
