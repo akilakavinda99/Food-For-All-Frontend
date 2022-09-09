@@ -5,6 +5,7 @@ import RequesterCard from "../components/requester/requesterDashboard";
 import RequesterSignUp from "../components/requester/requesterSignUp";
 import RequesterSignIn from "../components/requester/requesterSignIn"
 import RequesterProfile from "../components/requester/requesterProfile";
+import RequesterProfileUpdate from "../components/requester/updateProfileDetails";
 import RequestStepOne from "../components/requester/request/requestStepOne";
 import RequestStepTwo from "../components/requester/request/requestStepTwo";
 
@@ -16,6 +17,7 @@ export default function Requester() {
         <Route path="/signup" element={<RequesterSignUp />} />
         <Route path="/signin" element={<RequesterSignIn />} />
         <Route path="/profile" element={<RequesterProfile />} />
+        <Route path="/profile/update" element={<RequesterProfileUpdate/>} />
         <Route path="request/step1" element={<RequestStepOne />} />
         <Route path="request/step2" element={<RequestStepTwo />} />
       </Routes>
