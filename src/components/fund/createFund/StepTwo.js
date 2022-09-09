@@ -30,8 +30,10 @@ export default function StepTwo() {
             <div className="card-body">
                 <form className="text-start">
                     <div className="form-group text-center pb-3">Fund Image</div>
-                    <div>
-                        <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
+                    <div className='text-center'>
+                        <div className='d-flex justify-content-center'>
+                            <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
+                        </div>
                         <p>{fundImage ? `File name: ${fundImage.name}` : "No files uploaded yet"}</p>
                         <p>{fundImage ?
                             <img className='rounded img-fluid' src={fundData.fundImage} alt={fundImage.name} /> : ""}</p>
@@ -67,10 +69,10 @@ export default function StepTwo() {
                     </div>
 
                     <div className="row d-flex justify-content-center">
-                        <div className='w-30'>
+                        <div className='col-lg-4 col-md-4 col-sm-4'>
                             <button type="button" onClick={() => setCurrentStep(1)} className="btn bg-gradient-secondary w-100 my-4 mb-2">Back</button>
                         </div>
-                        <div className='w-30'>
+                        <div className='col-lg-4 col-md-4 col-sm-4'>
                             <button type="button" onClick={submitData} className="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
                         </div>
                     </div>
