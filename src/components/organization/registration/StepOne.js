@@ -11,27 +11,30 @@ export default function StepOne() {
 
     const testData = (e) => {
         e.preventDefault()
-        userData.name = "test org"
-        userData.address = "kalutara"
-        userData.country = "sri lanka"
-        userData.zipCode = "12000"
-        userData.contactNumber = "0123456789"
-        userData.email = "test@test.com"
-        userData.registrationNumber = "abc/123"
-        userData.registrationDate = "2016-10-05"
-        userData.presidentName = "pres name"
-        userData.presidentEmail = "pres@test.com"
-        userData.presidentContactNumber = "0123456789"
-        userData.secretaryName = "secr"
-        userData.secretaryEmail = "secr@test.com"
-        userData.secretaryContactNumber = "0123456789"
-        userData.password = "123"
-        userData.repassword = "123"
+        setUserData({
+            ...userData,
+            "name": "test org",
+            "address": "kalutara",
+            "country": "sri lanka",
+            "zipCode": "12000",
+            "contactNumber": "0123456789",
+            "email": "test@test.com",
+            "registrationNumber": "abc/123",
+            "registrationDate": "2016-10-05",
+            "presidentName": "pres name",
+            "presidentEmail": "pres@test.com",
+            "presidentContactNumber": "0123456789",
+            "secretaryName": "secr",
+            "secretaryEmail": "secr@test.com",
+            "secretaryContactNumber": "0123456789",
+            "password": "123456789",
+            "repassword": "123456789",
+        })
     }
 
     return (
         <>
-            <button className="bg-danger text-white p-3 w-10 m-3" onClick={(e) => { testData(e) }}>Test data</button>
+            <button className="bg-danger text-white p-3 m-3" onClick={(e) => { testData(e) }}>Test data</button>
             <div className="card-body">
                 <form className="text-start">
                     <div className="form-group text-center pb-3">Organization Details</div>
@@ -150,8 +153,10 @@ export default function StepOne() {
                         {formErrors.registrationDate}
                     </div>
 
-                    <div className="text-center">
-                        <button type="button" onClick={() => setCurrentStep(2)} className="btn bg-gradient-primary w-30 my-4 mb-2">Next</button>
+                    <div className="row d-flex justify-content-center">
+                        <div className="col-lg-4 col-md-4 col-sm-4">
+                            <button type="button" onClick={() => setCurrentStep(2)} className="btn bg-gradient-primary w-100 my-4 mb-2">Next</button>
+                        </div>
                     </div>
                 </form>
             </div>

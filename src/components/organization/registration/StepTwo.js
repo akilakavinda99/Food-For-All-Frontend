@@ -90,10 +90,10 @@ export default function StepTwo() {
                     </div>
 
                     <div className="row d-flex justify-content-center">
-                        <div className='w-30'>
+                        <div className='col-lg-4 col-md-4 col-sm-4'>
                             <button type="button" onClick={() => setCurrentStep(1)} className="btn bg-gradient-secondary w-100 my-4 mb-2">Back</button>
                         </div>
-                        <div className='w-30'>
+                        <div className='col-lg-4 col-md-4 col-sm-4'>
                             <button type="button" onClick={() => setCurrentStep(3)} className="btn bg-gradient-primary w-100 my-4 mb-2">Next</button>
                         </div>
                     </div>
