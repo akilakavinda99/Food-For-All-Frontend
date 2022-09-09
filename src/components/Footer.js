@@ -1,5 +1,4 @@
 import React from "react";
-import Logo from "./logo-footer.png"
 import Logo2 from '../assets/images/logo-2-white.png'
 import "./requester/footer.css"
 
