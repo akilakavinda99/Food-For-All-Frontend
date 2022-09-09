@@ -4,7 +4,7 @@ import NavBar from '../NavBar'
 import Profile from './profile.png';
 import "./footer.css"
 
-export default function updateProfileDetails() {
+export default function requesterProfileUpdated() {
   return (
     <div>
       <nav>
@@ -36,6 +36,7 @@ export default function updateProfileDetails() {
                             <input type="text" 
                                     class="form-control"
                                     defaultValue={"thushal"}
+                                    readOnly
                                     /> 
                         </div> 
                     </div>
@@ -46,6 +47,7 @@ export default function updateProfileDetails() {
                             <input type="text" 
                                     class="form-control"
                                     defaultValue={"shaminda"}
+                                    readOnly
                                     /> 
                         </div>
                     </div>
@@ -56,6 +58,7 @@ export default function updateProfileDetails() {
                     <input type="text" 
                             class="form-control"
                             defaultValue={"0771234567"}
+                            readOnly
                             /> 
                 </div>
 
@@ -63,7 +66,8 @@ export default function updateProfileDetails() {
                     <label for="formFile" >Email Address</label>
                     <input type="email" 
                             class="form-control"
-                            defaultValue={"thushal@gmail.com"}
+                            defaultValue={"shaminda@gmail.com"}
+                            readOnly
                             /> 
                 </div>
 
@@ -75,6 +79,7 @@ export default function updateProfileDetails() {
                 <input type="password" 
                         class="form-control"
                         defaultValue={"123"}
+                        readOnly
                         /> 
             </div> 
             <div class="mb-4 ms-5"> 
@@ -97,7 +102,7 @@ export default function updateProfileDetails() {
 
               <div class="mb-4 d-flex justify-content-center"> 
 
-                <div class="btn btn-primary d-block px-5"> Save Changes </div> 
+                <div class="btn btn-primary d-block px-5"> Edit Profile </div> 
               </div> 
            </div>
         </form>
