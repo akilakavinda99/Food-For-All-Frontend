@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { newFund } from '../../../api/fund.api';
 import NewFund from '../../../pages/fund/newFund';
 import { formValidation } from './formValidation';
+import swal from "sweetalert";
 
 export const multiStepContext = React.createContext()
 
@@ -22,8 +23,24 @@ export default function NewFundContext() {
     useEffect(() => {
         // console.log(formErrors);
         if (Object.keys(formErrors).length === 0 && isSubmit) {
-            console.log(fundData);
-            newFund(fundData);
+            // console.log(fundData);
+            newFund(fundData).then(res => {
+                // console.log(res);
+                swal(
+                    "Fund successfully created!",
+                    "",
+                    "success"
+                )
+
+            }).catch(err => {
+                console.log(err);
+                swal(
+                    "Fund creation failed!",
+                    err.response.data.message,
+                    "error"
+                )
+
+            })
         }
     }, [formErrors])
 
