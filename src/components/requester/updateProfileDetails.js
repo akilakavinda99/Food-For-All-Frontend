@@ -3,8 +3,12 @@ import Footer from '../Footer'
 import NavBar from '../NavBar'
 import Profile from './profile.png';
 import "./footer.css"
+import { Link } from "react-router-dom";
 
-export default function updateProfileDetails() {
+export default function UpdateProfileDetails() {
+
+   
+
   return (
     <div>
       <nav>
@@ -97,7 +101,9 @@ export default function updateProfileDetails() {
 
               <div class="mb-4 d-flex justify-content-center"> 
 
-                <div class="btn btn-primary d-block px-5"> Save Changes </div> 
+              <Link to="/requester/profile/updated/631aa3f99d2dc36d4c12a8f0" ><button className="btn btn-success">
+                    SAVE CHANGES
+                  </button></Link>
               </div> 
            </div>
         </form>

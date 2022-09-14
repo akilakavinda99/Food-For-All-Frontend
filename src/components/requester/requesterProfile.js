@@ -7,6 +7,7 @@ import Footer from '../Footer'
 import NavBar from '../NavBar'
 import Profile from './profile.png';
 import "./footer.css"
+import { Link } from "react-router-dom";
 
 
 
@@ -107,8 +108,7 @@ export default function requesterProfile() {
             <div class="row pt-5"> 
 
               <div class="mb-4 d-flex justify-content-center"> 
-
-                <div class="btn btn-primary d-block px-5"> Edit Profile </div> 
+                <Link to="/requester/profile/update/631aa3f99d2dc36d4c12a8f0"><button class="btn btn-primary d-block px-5"> Edit Profile </button></Link>
               </div> 
            </div>
         </form>
