@@ -2,6 +2,7 @@ import React from 'react';
 import Footer from '../Footer';
 import NavBar from '../NavBar';
 import "./footer.css"
+import { Link } from "react-router-dom";
 
 export default function requesterSignIn() {
   return (
@@ -26,7 +27,7 @@ export default function requesterSignIn() {
 
            <div class="row border-bottom"> 
               <div class="mb-4 d-flex justify-content-center"> 
-                <div class="btn btn-primary d-block "> SIGN IN </div> 
+                <Link to ="/requester/request/step1"><button class="btn btn-primary d-block "> SIGN IN </button> </Link>
               </div> 
            </div>
            <p class="text-center mb-3 pt-2"> Forgot your password?</p> 

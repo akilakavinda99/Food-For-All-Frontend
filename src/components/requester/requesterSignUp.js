@@ -17,6 +17,7 @@ export default function RequesterSignUp() {
 
   const registerUser = (e) => {
     e.preventDefault();
+    console.log("afdaf")
 
     const signup = {
       firstName,
@@ -71,7 +72,7 @@ export default function RequesterSignUp() {
               <div className="col-md-6 mb-4 pe-0">
                 <input className="form-control" 
                         type="text" 
-                        placeholder="Lirst Name"
+                        placeholder="Last Name"
                         onChange={(e) => {
                           setLastName(e.target.value);
                       }}
@@ -128,7 +129,7 @@ export default function RequesterSignUp() {
               <div className="mb-3 d-flex justify-content-center"> 
                
                   <button type='submit' className="btn btn-primary d-block">
-                    SIGN IN
+                    SIGN UP
                   </button>
            
               </div> 

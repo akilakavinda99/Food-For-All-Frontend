@@ -1,10 +1,15 @@
 import React from 'react'
 import { FileUploader } from 'react-drag-drop-files';
 import "../footer.css"
-import Footer from '../../Footer'
-import NavBar from '../../NavBar'
+import Footer from '../../Footer';
+import NavBar from '../../NavBar';
+import swal from "sweetalert";
 
 export default function requestStepTwo() {
+
+  const fundrequest = () => {
+    swal("Succesfully Requested", "", "success");
+  }
   return (
     <div>
       <nav>
@@ -21,12 +26,12 @@ export default function requestStepTwo() {
       
     <div className="card z-index-0 fadeIn3 fadeInBottom ">
     <div className="card-body">
-        <form class="form-control"> 
+        <form class="form-control" onSubmit={fundrequest}> 
           <p class="h3 fw-bold text-center mb-2 pt-4"> Let's make a request </p>
           <p class="text-center d-flex ms-3 pt-4 text-muted fw-bold"> Request details </p> 
             
             <div class="input-group input-group-outline mb-4 px-4"> 
-              <input type="email" placeholder="Request title" class="form-control"/> 
+              <input type="text" placeholder="Request title" class="form-control"/> 
             </div> 
             <div class="input-group input-group-description input-group-outline mb-4 px-4"> 
               <input type="text" placeholder="Tell your story (Description)" class="form-control"/> 
@@ -44,7 +49,7 @@ export default function requestStepTwo() {
 
            <div class="row"> 
               <div class="mb-3 d-flex justify-content-center"> 
-                <div class="btn btn-primary d-block "> SUBMIT </div> 
+                <button type='submit' class="btn btn-primary d-block "> SUBMIT </button> 
               </div> 
            </div>
            

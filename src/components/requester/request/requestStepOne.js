@@ -1,9 +1,9 @@
 import React from 'react'
 import Footer from '../../Footer'
 import NavBar from '../../NavBar'
+import { Link } from "react-router-dom";
 
 export default function requestStepOne() {
-
   
   return (
     <div>
@@ -28,25 +28,45 @@ export default function requestStepOne() {
 
             <div class="row input-group input-group-outline m-0 px-4"> 
               <div class="col-md-6 mb-4 ps-0"> 
-                <input class="form-control" type="text"/>
+                <input class="form-control" 
+                type="text"
+                defaultValue={"thushal"}
+                readOnly
+                />
               </div>
               <div class="col-md-6 mb-4 pe-0">
-                <input class="form-control" type="text"/>
+                <input class="form-control" 
+                type="text"
+                defaultValue={"shaminda"}
+                readOnly
+                />
               </div> 
             </div>
 
             <div class="input-group input-group-outline mb-4 px-4"> 
-              <input type="text" placeholder="Telephone number" class="form-control"/> 
+              <input type="text" 
+                    placeholder="Telephone number" 
+                    class="form-control"
+                    required
+                    /> 
             </div> 
 
             <p class="text-center d-flex ms-3 text-muted fw-bold "> Benificiary's contact information </p> 
 
             <div class="row input-group input-group-outline m-0 px-4"> 
               <div class="col-md-6 mb-4 ps-0"> 
-                <input class="form-control" type="text" placeholder="Country"/>
+                <input class="form-control" 
+                        type="text" 
+                        placeholder="Country"
+                        required
+                        />
               </div>
               <div class="col-md-6 mb-4 pe-0">
-                <input class="form-control" type="text" placeholder="Zip code"/>
+                <input class="form-control" 
+                      type="text" 
+                      placeholder="Zip code"
+                      required
+                      />
               </div> 
             </div>
 
@@ -62,7 +82,7 @@ export default function requestStepOne() {
           
            <div class="row"> 
               <div class="mb-3 d-flex justify-content-center"> 
-                <div class="btn btn-primary d-block "> NEXT </div> 
+                <Link to = "/requester/request/step2"><button class="btn btn-primary d-block "> NEXT </button> </Link>
               </div> 
            </div>
            

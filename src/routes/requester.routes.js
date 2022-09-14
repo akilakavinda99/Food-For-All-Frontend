@@ -17,9 +17,9 @@ export default function Requester() {
         <Route path="/card" element={<RequesterCard />} />
         <Route path="/signup" element={<RequesterSignUp />} />
         <Route path="/signin" element={<RequesterSignIn />} />
-        <Route path="/profile" element={<RequesterProfile />} />
-        <Route path="/profile/update" element={<RequesterProfileUpdate/>} />
-        <Route path="/profile/updated" element={<RequesterProfileUpdated/>} />
+        <Route path="/profile/631aa3f99d2dc36d4c12a8f0" element={<RequesterProfile />} />
+        <Route path="/profile/update/631aa3f99d2dc36d4c12a8f0" element={<RequesterProfileUpdate/>} />
+        <Route path="/profile/updated/631aa3f99d2dc36d4c12a8f0" element={<RequesterProfileUpdated/>} />
         <Route path="request/step1" element={<RequestStepOne />} />
         <Route path="request/step2" element={<RequestStepTwo />} />
       </Routes>
