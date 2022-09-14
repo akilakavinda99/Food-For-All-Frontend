@@ -40,10 +40,6 @@ function Footer() {
       <div className="row mt-3">
     
         <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-     
-          <h6 className="text-reset text-uppercase fw-bold mb-4">
-            <i className="fas fa-gem me-3"></i>Food For All
-          </h6>
           <div className="">
             <img className="img-footer" src={Logo2} />
           </div>
@@ -52,13 +48,16 @@ function Footer() {
         <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
    
           <h6 className="text-reset text-uppercase fw-bold mb-4">
-            Products
+            Learn more
           </h6>
           <p>
-            <a href="#!" className="text-reset">test 1</a>
+            <a href="#!" className="text-reset">How it works</a>
           </p>
           <p>
-            <a href="#!" className="text-reset">test 2</a>
+            <a href="#!" className="text-reset">Common questions</a>
+          </p>
+          <p>
+            <a href="#!" className="text-reset">Pricing</a>
           </p>
 
         </div>
@@ -66,13 +65,16 @@ function Footer() {
         <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
        
           <h6 className="text-reset text-uppercase fw-bold mb-4">
-            Useful links
+            Resourses
           </h6>
           <p>
-            <a href="#!" className="text-reset">test 1</a>
+            <a href="#!" className="text-reset">Blog</a>
           </p>
           <p>
-            <a href="#!" className="text-reset">test 2</a>
+            <a href="#!" className="text-reset">Careers</a>
+          </p>
+          <p>
+            <a href="#!" className="text-reset">About</a>
           </p>
 
         </div>

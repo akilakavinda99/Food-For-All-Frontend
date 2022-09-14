@@ -1,5 +1,6 @@
 import React from 'react';
 import Logo from "../assets/images/logo-nav.png"
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   return (
@@ -24,14 +25,15 @@ export default function NavBar() {
                         <li className="nav-item ms-3">
                             <a className="nav-link" href="#">About us</a>
                         </li>
-                        <li className="nav-item dropdown">
+                        <li className="nav-item dropdown ms-3">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Profile
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a className="dropdown-item" href="#">Action</a></li>
-                                <li><a className="dropdown-item" href="#">Another action</a></li>
-                                <li><a className="dropdown-item" href="#">Something else here</a></li>
+                                <li><a className="dropdown-item" href="#">Your Fund Request</a></li>
+                                <Link to="/requester/profile/631aa3f99d2dc36d4c12a8f0"><li><a className="dropdown-item" href="#">Account Settings</a></li></Link>
+                                <li><a className="dropdown-item" href="#">Help center</a></li>
+                                <Link to="/requester/signin"><li><a className="dropdown-item" href="#">Sign out</a></li></Link>
                             </ul>
                         </li>
                     </ul>
