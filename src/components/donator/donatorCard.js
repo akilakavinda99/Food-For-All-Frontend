@@ -85,7 +85,7 @@ export default function DonatorCard() {
   const deleteDonation = (id) => {
     swal({
       title: "Are you sure?",
-      text: "Item Is Not Available Once Deleted...",
+      text: "Donation Is Not Available Once Deleted...",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -95,12 +95,12 @@ export default function DonatorCard() {
           .delete(`http://localhost:8070/donator/deleteDonation/${id}`)
           .then((res) => {
             if (willDelete) {
-              swal("Item Succesfully Deleted!!", {
+              swal("Donation Succesfully Deleted!!", {
                 icon: "success",
               });
-              // setTimeout(function () {
-              //   window.location.reload();
-              // }, 1000);
+              setTimeout(function () {
+                window.location.reload();
+              }, 1000);
               console.log(res);
             }
             // } else {
@@ -166,9 +166,9 @@ export default function DonatorCard() {
 
   return (
     <>
-    <nav>
-      <NavBar />
-    </nav>
+      <nav>
+        <NavBar />
+      </nav>
       <div class="kgcard">
         <div class="card-body">
           <ul
@@ -208,7 +208,7 @@ export default function DonatorCard() {
           </ul>
           <div class="tab-content" id="myTabContent">
             <div
-              class="tab-pane fade"
+              class="tab-pane "
               id="home"
               role="tabpanel"
               aria-labelledby="profile-tab"
@@ -216,7 +216,7 @@ export default function DonatorCard() {
               ...
             </div>
             <div
-              class="tab-pane fade"
+              class="tab-pane "
               id="profile"
               role="tabpanel"
               aria-labelledby="contact-tab"
