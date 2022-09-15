@@ -43,9 +43,9 @@ export default function DonatorDashboard() {
               swal("Item Succesfully Deleted!!", {
                 icon: "success",
               });
-              // setTimeout(function () {
-              //   window.location.reload();
-              // }, 1000);
+              setTimeout(function () {
+                window.location.reload();
+              }, 1000);
               console.log(res);
             }
             // } else {
@@ -129,12 +129,21 @@ export default function DonatorDashboard() {
   return (
     <>
       <SideNav />
-      <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+      <main
+        className="main-content position-relative max-height-vh-100 h-100 border-radius-lg "
+        style={{ overflow: "hidden" }}
+      >
         <NavButton />
         <div className="container-fluid py-4" onClick={toggleSidenav}>
           <div className="row align-items-center">
             <>
-              <div class="kgcard">
+              <div
+                class="kgcard"
+                style={{
+                  marginLeft: 150,
+                  overflow: "hidden",
+                }}
+              >
                 <div class="card-body">
                   <ul
                     class="nav nav-tabs"
@@ -153,7 +162,7 @@ export default function DonatorDashboard() {
                         aria-controls="home"
                         aria-selected="true"
                       >
-                        Ongoing
+                        Completed
                       </button>
                     </li>
                     <li class="nav-item" role="presentation">
@@ -167,13 +176,13 @@ export default function DonatorDashboard() {
                         aria-controls="profile"
                         aria-selected="false"
                       >
-                        Completed
+                        Ongoing
                       </button>
                     </li>
                   </ul>
                   <div class="tab-content" id="myTabContent">
                     <div
-                      class="tab-pane fade"
+                      class="tab-pane active "
                       id="home"
                       role="tabpanel"
                       aria-labelledby="profile-tab"
@@ -182,9 +191,10 @@ export default function DonatorDashboard() {
                         class="d-flex justify-content-between"
                         style={{ marginTop: 10 }}
                       >
-                        {donations.length == 0 ? (
+                        <NoItems />
+                        {/* {donations.length == 0 ? (
                           <>
-                            <NoItems />
+                           
                           </>
                         ) : (
                           <>
@@ -240,7 +250,7 @@ export default function DonatorDashboard() {
                                   <div class="progress-container">
                                     {/* <div class="progress"></div> */}
 
-                                    <svg
+                        {/* <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       width="16"
                                       height="16"
@@ -255,9 +265,9 @@ export default function DonatorDashboard() {
                                       {" "}
                                       Delete
                                     </span>
-                                    <br />
+                                    <br /> */}
 
-                                    {/* <Link
+                        {/* <Link
                                       to={`/donator/dashboard/donator/editDonation/${f._id}`}
                                     >
                                       <span
@@ -268,26 +278,15 @@ export default function DonatorDashboard() {
                                         Edit
                                       </span>
                                     </Link> */}
-                                    {/* <span class="progress-text">6/9 Challenges</span> */}
-                                  </div>
+                        {/* <span class="progress-text">6/9 Challenges</span> */}
+                        {/* </div>
                                   <Link
                                     to={"/inbound/updateinbound/" + f._id}
                                     style={{
                                       textDecoration: "none",
                                       color: "black",
-                                    }}
-                                  >
-                                    {" "}
-                                    <h2>{f.donationTitle}</h2>{" "}
-                                  </Link>
-                                  <h6>{f.donationDescription}</h6>
-                                  <br></br>
-                                </div>
-                                <br />
-                              </div>
-                            </div>
-                          );
-                        })}
+                                    }} */}
+                      </div>
                     </div>
                     <div
                       class="tab-pane fade"
@@ -307,24 +306,26 @@ export default function DonatorDashboard() {
                         ) : (
                           <>
                             <button
+                              class="btn btn-danger"
                               onClick={() => generateCompletedReport(donations)}
                             >
                               Generate Report
                             </button>
                             <div
                               class="head1"
-                              style={{ paddingLeft: "10px", width: 500 }}
+                              style={{ marginRight: "555px", width: 400 }}
                             >
-                              <i class="fas fa-search" aria-hidden="true"></i>
-                              <input
-                                class="form-control form-control-sm ml-3 w-75"
-                                type="text"
-                                placeholder="Search Items  "
-                                aria-label="Search"
-                                onChange={(e) => {
-                                  setsearchTerm(e.target.value);
-                                }}
-                              />{" "}
+                              <div class="input-group mb-3 input-group input-group-outline mb-3">
+                                <input
+                                  class="form-control form-control-sm ml-3 w-75"
+                                  type="text"
+                                  placeholder="Search Items  "
+                                  aria-label="Search"
+                                  onChange={(e) => {
+                                    setsearchTerm(e.target.value);
+                                  }}
+                                />{" "}
+                              </div>
                             </div>
                           </>
                         )}
@@ -373,6 +374,7 @@ export default function DonatorDashboard() {
                                       {" "}
                                       Delete
                                     </span>
+
                                     <br />
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
@@ -404,7 +406,6 @@ export default function DonatorDashboard() {
                                   <Link
                                     to={"/inbound/updateinbound/" + f._id}
                                     style={{
-                                      textDecoration: "none",
                                       color: "black",
                                     }}
                                   >

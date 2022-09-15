@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import FileBase64 from "react-file-base64";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import NavBar from "../NavBar";
 import DonatorDashboard from "./donatorDashboard";
 
 export default function CreateDonation() {
@@ -38,6 +39,7 @@ export default function CreateDonation() {
       .then((res) => {
         swal("Donation Succesfully Created", "", "success").then((value) => {
           if (value) {
+            navigate("../dashboard");
           }
         });
       })
@@ -56,6 +58,7 @@ export default function CreateDonation() {
   return (
     <>
       {/* <span class="mask bg-gradient-dark opacity-6"></span> */}
+      <NavBar />
       <div class="container my-auto" style={{ paddingTop: 30 }}>
         <div class="row">
           <div class="mx-auto">
