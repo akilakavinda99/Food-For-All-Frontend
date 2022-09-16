@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./dashTable.module.css";
 
-const DashTable = () => {
+const DashTable2 = () => {
   return (
     <div className={classes.DashTable}>
       <div className={classes.TableBack}>
@@ -29,4 +29,4 @@ const DashTable = () => {
   );
 };
 
-export default DashTable;
+export default DashTable2;

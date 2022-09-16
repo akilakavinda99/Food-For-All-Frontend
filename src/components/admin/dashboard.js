@@ -1,5 +1,6 @@
 import React from "react";
-import NavButton from "../NavButton";
+import NavButton from "./NavButton";
+import classes from "../admin/dashCard/DashCard"
 
 export default function Dashboard() {
     const toggleSidenav = (e) => {

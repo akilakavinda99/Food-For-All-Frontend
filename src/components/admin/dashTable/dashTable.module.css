@@ -1,24 +1,31 @@
 .DashTable {
   margin-left: 5%;
   background-color: #ffffff;
-  border-radius: 10px;
+  border-radius: 7px;
   width: 85%;
   height: auto;
+  outline: 1px solid rgb(182, 182, 186);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
 }
 .Table {
   width: 100%;
+  border-radius: 10px;
 }
 table,
 tr,
 th,
 td {
   border-bottom: 1px solid rgb(228, 211, 211);
+  border-radius: 5px;
+  border-bottom: rgb(182, 182, 186) 1px solid;
 }
 
 .Table tr th {
   text-align: center;
   padding: 10px 5px;
   background-color: #e8e1e1;
+  
 }
 
 .Table tr td {

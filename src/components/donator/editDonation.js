@@ -43,14 +43,15 @@ export default function EditDonation() {
       contactNumber,
       donationDescription,
     };
-    await axios
-      .put(`http://localhost:8070/donator/updateDonation/${id}`, donation)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    console.log(donation);
+    // await axios
+    //   .put(`http://localhost:8070/donator/updateDonation/${id}`, donation)
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
 
   return (

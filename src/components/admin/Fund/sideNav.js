@@ -1,5 +1,5 @@
 import React from "react";
-import "../../assets/css/dashboard.css";
+import "../../../assets/css/dashboard.css";
 
 export default function SideNav() {
     
@@ -17,7 +17,7 @@ export default function SideNav() {
                     <div className="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <a className="nav-link text-white active bg-gradient-primary" href="http://localhost:3000/admin/dashboard">
+                                <a className="nav-link text-white " href="http://localhost:3000/admin/dashboard">
                                     <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                         <i className="material-icons opacity-10">dashboard</i>
                                     </div>
@@ -33,7 +33,7 @@ export default function SideNav() {
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-white " href="http://localhost:3000/admin/regfund">
+                                <a className="nav-link text-white active bg-gradient-primary" href="http://localhost:3000/admin/regfund">
                                     <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                         <i className="material-icons opacity-10">table_view</i>
                                     </div>
