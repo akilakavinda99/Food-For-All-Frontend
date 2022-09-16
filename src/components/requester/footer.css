@@ -1,7 +1,37 @@
-.form-control{
-    max-width: 500px;
-}
 
 .form-control.form-profile{
     max-width: 1000px;
+}
+
+.container-signin{
+    width: 500px;
+}
+
+.input-group-description{
+    height: 100px;
+}
+
+.hr-request-fund{
+    background-color:#e91e63;
+    height: 3px;
+    opacity: 55%;
+}
+
+.img-footer{
+    width: 200px;
+    height:auto;
+}
+
+.img-navbar{
+    width: 170px;
+    height: auto;
+}
+
+.profile-image{
+    width: 110px;
+    height: auto;
+}
+
+.card-signin{
+    width: 500px;
 }

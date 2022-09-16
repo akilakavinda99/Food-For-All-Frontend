@@ -1,11 +1,13 @@
 import React from 'react';
+import Logo from "../assets/images/logo-nav.png"
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   return (
     <div>
         <div className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container">
-                {/* <img src = {logo} height="37" /> */}
+                <img className="img-navbar"src = {Logo} />
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
@@ -23,16 +25,17 @@ export default function NavBar() {
                         <li className="nav-item ms-3">
                             <a className="nav-link" href="#">About us</a>
                         </li>
-                        {/* <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Profile
-                        </a>
-                        <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a className="dropdown-item" href="#">Action</a></li>
-                            <li><a className="dropdown-item" href="#">Another action</a></li>
-                            <li><a className="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                        </li> */}
+                        <li className="nav-item dropdown ms-3">
+                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Profile
+                            </a>
+                            <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a className="dropdown-item" href="#">Your Fund Request</a></li>
+                                <Link to="/requester/profile/631aa3f99d2dc36d4c12a8f0"><li><a className="dropdown-item" href="#">Account Settings</a></li></Link>
+                                <li><a className="dropdown-item" href="#">Help center</a></li>
+                                <Link to="/requester/signin"><li><a className="dropdown-item" href="#">Sign out</a></li></Link>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>

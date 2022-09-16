@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import NavButton from "../NavButton";
-import { Line, Bar } from 'react-chartjs-2';
 import FundraisingChart from "./dashboard/FundraisingChart";
 import LatestContributions from "./dashboard/LatestContributions";
 import DashboardSummary from "./dashboard/DashboardSummary";
@@ -14,9 +13,8 @@ export default function Dashboard() {
 
     return (
         <>
-
             <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-                <NavButton />
+                <NavButton page="Dashboard" path="Organization" />
                 <div className="container-fluid py-4 " onClick={toggleSidenav}>
                     <DashboardSummary />
                     <hr className="dark horizontal my-3" />

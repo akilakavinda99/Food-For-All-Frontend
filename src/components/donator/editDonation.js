@@ -1,8 +1,11 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+
+import swal from "sweetalert";
 
 export default function EditDonation() {
+  const navigate = useNavigate();
   const [donationTitle, setDonationTitle] = useState("");
   const [email, setEmail] = useState("");
   const [contactNumber, setContactNumber] = useState("");
@@ -43,20 +46,23 @@ export default function EditDonation() {
       contactNumber,
       donationDescription,
     };
-    console.log(donation);
-    // await axios
-    //   .put(`http://localhost:8070/donator/updateDonation/${id}`, donation)
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    await axios
+      .put(`http://localhost:8070/donator/updateDonation/${id}`, donation)
+      .then((res) => {
+        swal("Donation update succesfully", "", "success").then((value) => {
+          if (value) {
+            navigate("../dashboard");
+          }
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
     <>
-      <div class="container my-auto">
+      <div class="container my-auto" style={{ paddingTop: 30 }}>
         <div class="row">
           <div class="mx-auto">
             <div class="card z-index-0 fadeIn3 fadeInBottom">
@@ -81,7 +87,7 @@ export default function EditDonation() {
                     />
                   </div>
                   <div class="input-group mb-3 input-group input-group-outline mb-3">
-                    <input
+                    {/* <input
                       type="text"
                       class="form-control"
                       placeholder="Location*"
@@ -91,7 +97,7 @@ export default function EditDonation() {
                       //   setLocation(e.target.value);
                       // }}
                       required
-                    />
+                    /> */}
                   </div>
                   <div class="input-group mb-3 input-group input-group-outline mb-3">
                     <input
@@ -122,7 +128,7 @@ export default function EditDonation() {
                     />
                   </div>
                   <div class="input-group mb-3 input-group input-group-outline mb-3">
-                    <input
+                    {/* <input
                       placeholder="Donation End Date"
                       class="form-control"
                       type="text"
@@ -131,7 +137,7 @@ export default function EditDonation() {
                       //   setDonationEndDate(e.target.value);
                       // }}
                       id="date"
-                    />
+                    /> */}
                   </div>
                   <div class="input-group mb-3 input-group input-group-outline mb-3">
                     <textarea
@@ -146,12 +152,12 @@ export default function EditDonation() {
                       required
                     ></textarea>
                   </div>
-                  <div>Thumbnail Image</div>
+
                   {/* <FileBase64 onDone={(files) => fileUpload(files)} /> */}
 
                   <div class="text-center">
-                    <button type="submit" class="btn btn-secondary">
-                      Create Donation
+                    <button type="submit" class="btn btn-warning">
+                      Edit Donation
                     </button>
                   </div>
                 </form>
