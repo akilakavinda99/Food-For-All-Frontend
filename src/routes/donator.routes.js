@@ -6,6 +6,7 @@ import ActiveDonations from "../components/donator/DashboardComponents/activeDon
 import DonatorCard from "../components/donator/donatorCard";
 import DonatorDashboard from "../components/donator/donatorDashboard";
 import EditDonation from "../components/donator/editDonation";
+import DonationView from "../components/donator/DonationView/donationView";
 
 export default function Donator() {
   return (
@@ -20,6 +21,7 @@ export default function Donator() {
         />
         <Route path="/dashboard/card" element={<DashboardCard />} />
         <Route path="/dashboard/active" element={<ActiveDonations />} />
+        <Route path="/view" element={<DonationView />} />
       </Routes>
     </>
   );
