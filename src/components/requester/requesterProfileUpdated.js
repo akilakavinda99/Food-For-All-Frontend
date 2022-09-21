@@ -1,19 +1,10 @@
-import React from 'react';
-// import axios from "axios";
-// import { Link, useNavigate } from "react-router-dom";
-// import { useParams } from 'react-router-dom';
-import swal from "sweetalert";
+import React from 'react'
 import Footer from '../Footer'
 import NavBar from '../NavBar'
 import Profile from './profile.png';
 import "./footer.css"
-import { Link } from "react-router-dom";
 
-
-
-export default function requesterProfile() {
-    // const { id } = useParams();
-
+export default function requesterProfileUpdated() {
   return (
     <div>
       <nav>
@@ -75,7 +66,7 @@ export default function requesterProfile() {
                     <label for="formFile" >Email Address</label>
                     <input type="email" 
                             class="form-control"
-                            defaultValue={"thushal@gmail.com"}
+                            defaultValue={"shaminda@gmail.com"}
                             readOnly
                             /> 
                 </div>
@@ -95,20 +86,23 @@ export default function requesterProfile() {
                 <label for="formFile">New Password</label>
                 <input type="password" 
                         placeholder="New password" 
-                        class="form-control"/> 
+                        class="form-control"
+                        /> 
             </div> 
             <div class="mb-4 ms-5"> 
                 <label for="formFile">Confirm Password</label>
                 <input type="password" 
-                      placeholder="Confirm password" 
-                      class="form-control"/> 
+                        placeholder="Confirm password" 
+                        class="form-control"
+                        /> 
             </div> 
             </div>
         </div>
             <div class="row pt-5"> 
 
               <div class="mb-4 d-flex justify-content-center"> 
-                <Link to="/requester/profile/update/631aa3f99d2dc36d4c12a8f0"><button class="btn btn-primary d-block px-5"> Edit Profile </button></Link>
+
+                <div class="btn btn-primary d-block px-5"> Edit Profile </div> 
               </div> 
            </div>
         </form>
