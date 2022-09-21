@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { newOrganization } from '../../../api/organization.api';
 import RegisterOrganization from '../../../pages/organization/registerOrganization';
 import { formValidation } from './formValidation';
+import swal from "sweetalert";
 
 export const multiStepContext = React.createContext()
 
@@ -22,11 +23,23 @@ export default function StepContex() {
     useEffect(() => {
         // console.log(formErrors);
         if (Object.keys(formErrors).length === 0 && isSubmit) {
-            console.log(userData);
+            // console.log(userData);
             newOrganization(userData).then(res => {
-                console.log(res);
+                // console.log(res);
+                swal(
+                    "Details successfully recorded!",
+                    "Please wait until review your application.",
+                    "success"
+                )
+
             }).catch(err => {
                 console.log(err);
+                swal(
+                    "Organization registration failed!",
+                    err.response.data.message,
+                    "error"
+                )
+
             })
         }
     }, [formErrors])

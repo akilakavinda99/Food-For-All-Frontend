@@ -17,7 +17,7 @@ export default function StepOne() {
             "target": "test target",
             "description": "test description",
             "endingDate": "2021-10-05",
-            "budget": " 100000",
+            "budget": "100000",
             "contactEmail": "test@test.com",
             "contactNumber": "0123456789",
         })
@@ -25,7 +25,7 @@ export default function StepOne() {
 
     return (
         <>
-            <button className="bg-danger text-white p-3 m-3" onClick={(e) => { testData(e) }}>Test data</button>
+            <button className="bg-secondary text-white p-3 m-3" onClick={(e) => { testData(e) }}>Test data</button>
             <div className="card-body">
                 <form className="text-start">
                     <div className="form-group text-center pb-3">Fundraising Details</div>
