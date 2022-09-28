@@ -16,7 +16,7 @@ export default function OrganizationFunds(props) {
             <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
                 <NavButton page="Funds" path="Organization" />
 
-                <div className="container-fluid container-lg py-4 " onClick={toggleSidenav}>
+                <div className="container-fluid py-4 " onClick={toggleSidenav}>
                     <Link to="/fund/new" className="btn btn-primary mb-3">Create new fund</Link>
                     <div className="card-body">
                         <ul

@@ -279,6 +279,10 @@
     color: var(--bs-link-hover-color);
     text-decoration: none;
   }
+
+  .disable-hover-color:hover {
+    color: inherit !important;
+  }
   
   a:not([href]):not([class]),
   a:not([href]):not([class]):hover {
