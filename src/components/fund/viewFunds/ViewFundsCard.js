@@ -1,31 +1,11 @@
-import moment from 'moment';
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { getRemainingTime } from '../../common/getRemainingTime';
 
 export default function ViewFundsCard({ fund }) {
-    // Calculate the remaining time to endthe fundraising
-    const getRemainingTime = (endingDate) => {
-        // endingDate = '2022-09-28';
-        var timeDiff = moment(endingDate).diff(moment(), 'days');
-        if (timeDiff === 0) {
-            timeDiff = moment(endingDate).diff(moment(), 'hours');
-            if (timeDiff === 0) {
-                timeDiff = moment(endingDate).diff(moment(), 'minutes');
-                if (timeDiff === 0) {
-                    timeDiff = moment(endingDate).diff(moment(), 'seconds');
-                    return timeDiff + ' second(s)';
-                }
-                return timeDiff + ' minute(s)';
-            }
-            return timeDiff + ' hour(s)';
-        }
-        return timeDiff + ' day(s)';
-
-    }
-
     return (
-        <div className='col-xxl-6 col-lg-10 col-sm-12'>
-            <Link to={'/fund/viewFund'} state={fund} className="disable-hover-color">
+        <div className='col-xxl-6 col-lg-10 col-sm-12 h-100'>
+            <Link to={`/fund/${fund._id}`} className="disable-hover-color">
                 <div className="card mb-3">
                     <div className="row g-0">
                         <div className="col-md-4">
