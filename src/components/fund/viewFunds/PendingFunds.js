@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getFundByOrganizationAndStatus } from '../../../api/fund.api';
 import NoItems from '../../common/noItems/noItems';
-import PendingFundCard from './PendingFundCard';
+import ViewFundsCard from './ViewFundsCard';
 
 export default function PendingFunds(props) {
 
@@ -55,7 +55,7 @@ export default function PendingFunds(props) {
           <div className="row d-flex">
             {
               showingFunds.map(fund =>
-                <PendingFundCard key={fund._id} fund={fund} />
+                <ViewFundsCard key={fund._id} fund={fund} />
               )
             }
           </div>
