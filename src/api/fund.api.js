@@ -9,3 +9,4 @@ const API = axios.create({
 export const newFund = (organization) => API.post("/create", organization);
 export const getFundByOrganizationAndStatus = (organizationID, status) => API.get(`/${organizationID}/status/${status}`);
 export const getFundByID = (fundID) => API.get(`/${fundID}`);
+export const updateFund = (fundID, fund) => API.put(`/update/${fundID}`, fund);

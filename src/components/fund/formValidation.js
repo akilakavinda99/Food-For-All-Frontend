@@ -1,12 +1,13 @@
+var errors = {};
+// email validation pattern
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+// phone validation pattern
+const phonePattern = /^[0]{1}[0-9]{9}$/;
+// can only contain numbers
+const numberPattern = /^[0-9]*$/;
 
-export const formValidation = (values) => {
-    const errors = {};
-    // email validation pattern
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    // phone validation pattern
-    const phonePattern = /^[0]{1}[0-9]{9}$/;
-    // can only contain numbers
-    const numberPattern = /^[0-9]*$/;
+export const formValidationStep1 = (values) => {
+    errors = {}
 
     if (!values.title) {
         errors.title = 'Title is required';
@@ -19,13 +20,13 @@ export const formValidation = (values) => {
     if (!values.target) {
         errors.target = 'Target is required';
     } else if (values.target.length < 10) {
-        errors.target = 'Title must be at least 3 characters';
+        errors.target = 'Target must be at least 10 characters';
     }
 
     if (!values.description) {
         errors.description = 'Description is required';
     } else if (values.description.length < 10) {
-        errors.description = 'Title must be at least 3 characters';
+        errors.description = 'Description must be at least 10 characters';
     }
 
     if (!values.budget) {
@@ -33,6 +34,13 @@ export const formValidation = (values) => {
     } else if (!numberPattern.test(values.budget)) {
         errors.budget = 'Budget can only contain numbers';
     }
+
+    return errors;
+}
+
+// validation for step 2
+export const formValidationStep2 = (values) => {
+    errors = {}
 
     if (!values.fundImage) {
         errors.fundImage = 'Fund Image is required';
