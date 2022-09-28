@@ -3,10 +3,13 @@ import { newFund } from '../../../api/fund.api';
 import NewFund from '../../../pages/fund/newFund';
 import { formValidation } from './formValidation';
 import swal from "sweetalert";
+import { useNavigate } from 'react-router-dom';
 
 export const multiStepContext = React.createContext()
 
 export default function NewFundContext() {
+    const navigate = useNavigate()
+
     const [currentStep, setCurrentStep] = useState(1);
     const [fundData, setFundData] = useState({});
     const [fundImage, setFundImage] = useState(null);
@@ -30,7 +33,10 @@ export default function NewFundContext() {
                     "Fund successfully created!",
                     "",
                     "success"
-                )
+                ).then((value) => {
+                    navigate('/organization/funds')
+                })
+
 
             }).catch(err => {
                 console.log(err);
