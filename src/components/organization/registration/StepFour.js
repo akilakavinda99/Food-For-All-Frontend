@@ -36,7 +36,8 @@ export default function StepFour() {
                     </div>
 
                     <div className="form-check">
-                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                        <input className="form-check-input" type="checkbox" id="flexCheckDefault"
+                            value={userData['terms']}
                             onChange={(e) => { setUserData({ ...userData, "terms": e.target.checked }) }} />
                         <label className="form-check-label ms-3" htmlFor="flexCheckDefault">
                             I agree with Terms and Conditions and the privacy policy

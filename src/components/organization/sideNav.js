@@ -34,13 +34,13 @@ export default function SideNav(props) {
                         </li>
                         <li className="nav-item">
                             {props.fund ?
-                                (<Link className="nav-link text-white active bg-gradient-primary" to="/fund/myfund">
+                                (<Link className="nav-link text-white active bg-gradient-primary" to="/organization/funds">
                                     <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                         <i className="material-icons opacity-10">table_view</i>
                                     </div>
                                     <span className="nav-link-text ms-1">Funds</span>
                                 </Link>)
-                                : (<Link className="nav-link text-white" to="/fund/myfund">
+                                : (<Link className="nav-link text-white" to="/organization/funds">
                                     <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                         <i className="material-icons opacity-10">table_view</i>
                                     </div>
