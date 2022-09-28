@@ -2,28 +2,27 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
-// Calculate the remaining time to endthe fundraising
-const getRemainingTime = (endingDate) => {
-    // endingDate = '2022-09-28';
-    var timeDiff = moment(endingDate).diff(moment(), 'days');
-    if (timeDiff === 0) {
-        timeDiff = moment(endingDate).diff(moment(), 'hours');
-        if (timeDiff === 0) {
-            timeDiff = moment(endingDate).diff(moment(), 'minutes');
-            if (timeDiff === 0) {
-                timeDiff = moment(endingDate).diff(moment(), 'seconds');
-                return timeDiff + ' second(s)';
-            }
-            return timeDiff + ' minute(s)';
-        }
-        return timeDiff + ' hour(s)';
-    }
-    return timeDiff + ' day(s)';
-
-}
-
-
 export default function OngoingFundCard({ fund }) {
+    // Calculate the remaining time to endthe fundraising
+    const getRemainingTime = (endingDate) => {
+        // endingDate = '2022-09-28';
+        var timeDiff = moment(endingDate).diff(moment(), 'days');
+        if (timeDiff === 0) {
+            timeDiff = moment(endingDate).diff(moment(), 'hours');
+            if (timeDiff === 0) {
+                timeDiff = moment(endingDate).diff(moment(), 'minutes');
+                if (timeDiff === 0) {
+                    timeDiff = moment(endingDate).diff(moment(), 'seconds');
+                    return timeDiff + ' second(s)';
+                }
+                return timeDiff + ' minute(s)';
+            }
+            return timeDiff + ' hour(s)';
+        }
+        return timeDiff + ' day(s)';
+
+    }
+
     return (
         <>
             <div className='col-xxl-6 col-lg-10 col-sm-12'>
@@ -32,7 +31,7 @@ export default function OngoingFundCard({ fund }) {
                         <div className="col-md-4">
                             {/* <img src="http://res.cloudinary.com/dicjf8jjn/image/upload/v1662719471/akila/rzqn8pfinjs05zq1ccpk.png"
                                 className="img-fluid rounded p-3" alt="test" /> */}
-                            <img src={fund.fundImage} className="img-fluid rounded p-3" alt={fund.title} />
+                            <img src={fund.fundImage} className="img-fluid card-image" alt={fund.title} />
                         </div>
                         <div className="col-md-8">
                             <div className="card-body">
