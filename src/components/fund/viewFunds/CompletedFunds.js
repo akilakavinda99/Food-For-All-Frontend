@@ -53,11 +53,13 @@ export default function CompletedFunds(props) {
                 completedFunds.length > 0 && showingFunds.length === 0 ? (
                     <NoItems message="No result found." />
                 ) :
-                    showingFunds.map(fund =>
-                        <div className="row d-fllex">
-                            <CompletedFundCard key={fund._id} fund={fund} />
-                        </div>
-                    )
+                    <div className="row d-fllex">
+                        {
+                            showingFunds.map(fund =>
+                                <CompletedFundCard key={fund._id} fund={fund} />
+                            )
+                        }
+                    </div>
             }
         </>
 

@@ -29,9 +29,9 @@ export default function CompletedFundCard({fund}) {
                                         <h5 className='text-success'>Completed</h5>
                                     </div>
                                     <div className='col-sm-6 col-md-4'>
-                                        <div>Created on</div>
+                                        <div>Completed on</div>
                                         {
-                                            new Date(fund.createdOn).toISOString().split('T')[0]
+                                            new Date(fund.completedOn).toISOString().split('T')[0]
                                         }
                                     </div>
                                 </div>
