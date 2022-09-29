@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { newFund } from '../../../api/fund.api';
-import NewFund from '../../../pages/fund/newFund';
+import { newFund, updateFund } from '../../../api/fund.api';
+import EditFund from '../../../pages/fund/editFundDetails';
 import { formValidationStep1, formValidationStep2 } from '../formValidation';
 import swal from "sweetalert";
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-export const multiStepContext = React.createContext()
+export const multiStepContextEdit = React.createContext()
 
-export default function NewFundContext() {
+export default function EditFundContext() {
     const navigate = useNavigate()
+    const location = useLocation();
 
     const [currentStep, setCurrentStep] = useState(1);
     const [fundData, setFundData] = useState({});
@@ -31,6 +32,13 @@ export default function NewFundContext() {
         setIsNext(true);
     }
 
+    // To get data send from the link
+    useEffect(() => {
+        location.state ?
+            setFundData({ ...fundData, ...location.state })
+            : navigate('/organization/funds')
+    }, [])
+
     // To handle the next button in step 1
     useEffect(() => {
         if (Object.keys(formErrorsStep1).length === 0 && isNext) {
@@ -46,10 +54,10 @@ export default function NewFundContext() {
         // console.log(formErrors);
         if (Object.keys(formErrorsStep2).length === 0 && isSubmit) {
             // console.log(fundData);
-            newFund(fundData).then(res => {
+            updateFund(fundData._id, fundData).then(res => {
                 // console.log(res);
                 swal(
-                    "Fund successfully created!",
+                    "Fund successfully updated!",
                     "",
                     "success"
                 ).then((value) => {
@@ -60,7 +68,7 @@ export default function NewFundContext() {
             }).catch(err => {
                 console.log(err);
                 swal(
-                    "Fund creation failed!",
+                    "Failed to update fund!",
                     err.response.data.message,
                     "error"
                 )
@@ -73,9 +81,9 @@ export default function NewFundContext() {
 
     return (
         <div>
-            <multiStepContext.Provider value={{ currentStep, setCurrentStep, fundData, setFundData, submitData, fundImage, setFundImage, formErrorsStep1, formErrorsStep2, handleNext }}>
-                <NewFund />
-            </multiStepContext.Provider>
+            <multiStepContextEdit.Provider value={{ currentStep, setCurrentStep, fundData, setFundData, submitData, fundImage, setFundImage, formErrorsStep1, formErrorsStep2, handleNext }}>
+                <EditFund />
+            </multiStepContextEdit.Provider>
         </div>
     )
 }

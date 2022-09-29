@@ -7,3 +7,4 @@ const API = axios.create({
 });
 
 export const newOrganization = (organization) => API.post("/register", organization);
+export const getOrganizationByID = (organizationID) => API.get(`/${organizationID}`);
