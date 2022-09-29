@@ -1,13 +1,14 @@
 import React, { useContext } from 'react'
-import { multiStepContext } from '../../components/fund/createFund/NewFundContext';
-import StepOne from '../../components/fund/createFund/StepOne';
-import StepTwo from '../../components/fund/createFund/StepTwo';
+import { useNavigate } from 'react-router-dom';
+import { multiStepContextEdit } from '../../components/fund/editFund/EditFundContext';
+import StepOne from '../../components/fund/editFund/StepOne';
+import StepTwo from '../../components/fund/editFund/StepTwo';
 import NavButton from '../../components/NavButton';
 import SideNav from '../../components/organization/sideNav';
 
-export default function NewFund() {
-    const { currentStep } = useContext(multiStepContext);
-
+export default function EditFundDetails() {
+    const { currentStep } = useContext(multiStepContextEdit);
+    const navigate = useNavigate();
     const toggleSidenav = (e) => {
         e.preventDefault();
         document.body.classList.remove("g-sidenav-pinned");
@@ -28,9 +29,11 @@ export default function NewFund() {
         <div>
             <SideNav fund="true" />
             <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-                <NavButton path="Organization / Funds" page="New Fund" />
+                <NavButton path="Organization / Funds" page="Update Fund" />
                 <div className="container-fluid" onClick={toggleSidenav}>
-                    <h3 className="font-weight-bolder mt-4 mb-3 text-center">Create a new fund</h3>
+                    <i className="bi bi-arrow-left-circle fs-4 cursor-pointer"
+                        onClick={() => navigate(-1)}> Go back</i>
+                    <h3 className="font-weight-bolder mt-4 mb-3 text-center">Update fund details</h3>
                     <div className="my-auto pb-5">
                         <div className="row">
                             <div className="mx-auto col-lg-8 col-md-10 col-sm-12">

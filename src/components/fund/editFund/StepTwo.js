@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import { FileUploader } from 'react-drag-drop-files';
-import { multiStepContext } from './NewFundContext'
+import { multiStepContextEdit } from './EditFundContext'
 
 export default function StepTwo() {
-    const { setCurrentStep, fundData, setFundData, submitData, fundImage, setFundImage, formErrorsStep2 } = useContext(multiStepContext);
+    const { setCurrentStep, fundData, setFundData, submitData, fundImage, setFundImage, formErrorsStep2 } = useContext(multiStepContextEdit);
     const fileTypes = ["JPEG", "JPG", "PNG"];
 
     // Convert file into base64
@@ -24,6 +24,7 @@ export default function StepTwo() {
             // let output = result;
             setFundData({ ...fundData, "fundImage": result })
         })
+        fundData.imageIsUpdated = true;
     }
     return (
         <div>
@@ -34,9 +35,12 @@ export default function StepTwo() {
                         <div className='d-flex justify-content-center'>
                             <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
                         </div>
-                        <p>{fundImage ? `File name: ${fundImage.name}` : "No files uploaded yet"}</p>
-                        <p>{fundImage ?
-                            <img className='rounded img-fluid' src={fundData.fundImage} alt={fundImage.name} /> : ""}</p>
+                        {/* <p>{fundImage ? `File name: ${fundImage.name}` : "No files uploaded yet"}</p> */}
+                        <p>{
+                            fundImage ?
+                                <img className='rounded img-fluid' src={fundData.fundImage} alt={fundImage.name} /> :
+                                <img className='rounded img-fluid' src={fundData.fundImage} alt={fundData.title} />
+                        }</p>
                     </div>
                     <div className="text-danger form-label mb-3">
                         {formErrorsStep2.fundImage}
