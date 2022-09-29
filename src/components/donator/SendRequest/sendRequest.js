@@ -1,14 +1,19 @@
-import React from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import React, { useState } from "react";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import swal from "sweetalert";
+import { newRequest } from "../../../api/donator.api";
+import NavBar from "../../NavBar";
 
 export default function SendRequest() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [donationTitle, setDonationTitle] = useState("");
-  const [email, setEmail] = useState("");
-  const [contactNumber, setContactNumber] = useState("");
-  const [donationDescription, setDonationDescription] = useState("");
+  const [requesterEmail, setEmail] = useState("");
+  const [requesterName, setName] = useState("");
+
+  const [requesterContact, setContactNumber] = useState("");
+  const [requestDescription, setRequestDescription] = useState("");
 
   let filesarr = [];
   const fileUpload = (files) => {
@@ -21,20 +26,20 @@ export default function SendRequest() {
     const donationImage = filesarr.base64;
     console.log(donationImage);
     const userID = 123;
-    const donationId = id;
+    const donationID = "633566f938fccd1be022498a";
 
     const request = {
-      donationId,
-      email,
-      contactNumber,
+      donationID,
+      requesterName,
+      requesterEmail,
+      requesterContact,
       requestDescription,
     };
-    axios
-      .post("http://localhost:8070/donator/createDonation", request)
+    newRequest(request)
       .then((res) => {
         swal("Donation Succesfully Created", "", "success").then((value) => {
           if (value) {
-            navigate("../dashboard");
+            // navigate("../dashboard");
           }
         });
       })
@@ -58,11 +63,7 @@ export default function SendRequest() {
           <div class="mx-auto">
             <div class="card z-index-0 fadeIn3 fadeInBottom">
               <div class="card-body">
-                <form
-                  role="form"
-                  class="text-start"
-                  // onSubmit={createDonation}
-                >
+                <form role="form" class="text-start" onSubmit={createDonation}>
                   <div class="d-flex justify-content-center">
                     <h4>Send a Request</h4>
                   </div>
@@ -80,26 +81,13 @@ export default function SendRequest() {
                       aria-label="Donation Title"
                       aria-describedby="basic-addon1"
                       onChange={(e) => {
-                        setDonationTitle(e.target.value);
+                        setName(e.target.value);
                       }}
                       required
                     />
                   </div>
 
                   <div class="input-group mb-3 input-group input-group-outline mb-3">
-                    {/* <input
-                      type="number"
-                      class="form-control"
-                      placeholder="Contact Number*"
-                      aria-label="Contact Number"
-                      aria-describedby="basic-addon1"
-                      maxlength="10"
-                      pattern="\d{10}"
-                      onChange={(e) => {
-                        setContactNumber(e.target.value);
-                      }}
-                      required
-                    /> */}
                     <input
                       type="text"
                       placeholder="Contact Number*"
@@ -135,7 +123,7 @@ export default function SendRequest() {
                       id="exampleFormControlTextarea1"
                       rows="3"
                       onChange={(e) => {
-                        setDonationDescription(e.target.value);
+                        setRequestDescription(e.target.value);
                       }}
                       required
                     ></textarea>

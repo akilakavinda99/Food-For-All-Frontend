@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../../assets/css/dashboard.css";
 
-export default function SideNav() {
+export default function SideNav(props) {
   return (
     <>
       <aside
@@ -36,39 +37,102 @@ export default function SideNav() {
         >
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a
-                className="nav-link text-white active bg-gradient-primary"
-                href="../pages/dashboard.html"
-              >
-                <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                  <i className="material-icons opacity-10">dashboard</i>
-                </div>
-                <span className="nav-link-text ms-1">Dashboard</span>
-              </a>
+              {props.dashboard ? (
+                <Link
+                  className="nav-link text-white active bg-gradient-primary"
+                  to="/donator/dashboard"
+                >
+                  <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i className="material-icons opacity-10">dashboard</i>
+                  </div>
+                  <span className="nav-link-text ms-1">Dashboard</span>
+                </Link>
+              ) : (
+                <Link className="nav-link text-white" to="/donator/dashboard">
+                  <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i className="material-icons opacity-10">dashboard</i>
+                  </div>
+                  <span className="nav-link-text ms-1">Dashboard</span>
+                </Link>
+              )}
             </li>
             <li className="nav-item">
-              <a className="nav-link text-white " href="../pages/tables.html">
-                <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                  <i className="material-icons opacity-10">table_view</i>
-                </div>
-                <span className="nav-link-text ms-1">My Donations</span>
-              </a>
+              {props.myDonations ? (
+                <Link
+                  className="nav-link text-white active bg-gradient-primary"
+                  to="/donator/myDonations"
+                >
+                  <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i className="material-icons opacity-10">dashboard</i>
+                  </div>
+                  <span className="nav-link-text ms-1">My Donations</span>
+                </Link>
+              ) : (
+                <Link className="nav-link text-white" to="/donator/myDonations">
+                  <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i className="material-icons opacity-10">dashboard</i>
+                  </div>
+                  <span className="nav-link-text ms-1">My Donations</span>
+                </Link>
+              )}
             </li>
             <li className="nav-item">
-              <a className="nav-link text-white " href="../pages/billing.html">
+              {props.pending ? (
+                <Link
+                  className="nav-link text-white active bg-gradient-primary"
+                  to="/organization/dashboard"
+                >
+                  <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i className="material-icons opacity-10">receipt_long</i>
+                  </div>
+                  <span className="nav-link-text ms-1">Pending Donations</span>
+                </Link>
+              ) : (
+                <Link
+                  className="nav-link text-white"
+                  to="/organization/dashboard"
+                >
+                  <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i className="material-icons opacity-10">receipt_long</i>
+                  </div>
+                  <span className="nav-link-text ms-1">Pending Donations</span>
+                </Link>
+              )}
+              {/* <a className="nav-link text-white " href="../pages/billing.html">
                 <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="material-icons opacity-10">receipt_long</i>
                 </div>
                 <span className="nav-link-text ms-1">Pending Donations</span>
-              </a>
+              </a> */}
             </li>
             <li className="nav-item">
-              <a className="nav-link text-white " href="../pages/billing.html">
+              {props.rejected ? (
+                <Link
+                  className="nav-link text-white active bg-gradient-primary"
+                  to="/organization/dashboard"
+                >
+                  <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i className="material-icons opacity-10">receipt_long</i>
+                  </div>
+                  <span className="nav-link-text ms-1">Rejected Donations</span>
+                </Link>
+              ) : (
+                <Link
+                  className="nav-link text-white"
+                  to="/organization/dashboard"
+                >
+                  <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i className="material-icons opacity-10">receipt_long</i>
+                  </div>
+                  <span className="nav-link-text ms-1">Rejected Donations</span>
+                </Link>
+              )}
+              {/* <a className="nav-link text-white " href="../pages/billing.html">
                 <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="material-icons opacity-10">receipt_long</i>
                 </div>
                 <span className="nav-link-text ms-1">Rejected Donations</span>
-              </a>
+              </a> */}
             </li>
             <li className="nav-item mt-3">
               <h6 className="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">

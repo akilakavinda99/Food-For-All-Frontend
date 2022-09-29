@@ -8,6 +8,7 @@ import DonatorDashboard from "../components/donator/donatorDashboard";
 import EditDonation from "../components/donator/editDonation";
 import DonationView from "../components/donator/DonationView/donationView";
 import SeeRequests from "../components/donator/SeeRequests/seeRequests";
+import SendRequest from "../components/donator/SendRequest/sendRequest";
 
 export default function Donator() {
   return (
@@ -15,15 +16,16 @@ export default function Donator() {
       <Routes>
         <Route path="/card" element={<DonatorCard />} />
         <Route path="/createDonation" element={<CreateDonation />} />
-        <Route path="/dashboard" element={<DonatorDashboard />} />
+        <Route path="/myDonations" element={<DonatorDashboard />} />
         <Route
           path="/dashboard/donator/editDonation/:id"
           element={<EditDonation />}
         />
         <Route path="/dashboard/card" element={<DashboardCard />} />
-        <Route path="/dashboard/active" element={<ActiveDonations />} />
+        <Route path="/dashboard" element={<ActiveDonations />} />
         <Route path="/view" element={<DonationView />} />
         <Route path="/viewRequest" element={<SeeRequests />} />
+        <Route path="/sendRequest/:id" element={<SendRequest />} />
       </Routes>
     </>
   );
