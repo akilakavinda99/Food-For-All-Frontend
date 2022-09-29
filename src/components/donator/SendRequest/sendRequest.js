@@ -1,6 +1,54 @@
 import React from "react";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
+import swal from "sweetalert";
 
 export default function SendRequest() {
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const [donationTitle, setDonationTitle] = useState("");
+  const [email, setEmail] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
+  const [donationDescription, setDonationDescription] = useState("");
+
+  let filesarr = [];
+  const fileUpload = (files) => {
+    filesarr = files;
+    // console.log(filesarr.base64);
+  };
+
+  const createDonation = (e) => {
+    e.preventDefault();
+    const donationImage = filesarr.base64;
+    console.log(donationImage);
+    const userID = 123;
+    const donationId = id;
+
+    const request = {
+      donationId,
+      email,
+      contactNumber,
+      requestDescription,
+    };
+    axios
+      .post("http://localhost:8070/donator/createDonation", request)
+      .then((res) => {
+        swal("Donation Succesfully Created", "", "success").then((value) => {
+          if (value) {
+            navigate("../dashboard");
+          }
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        swal("Donation creation failed", "Please try again", "error").then(
+          (value) => {
+            if (value) {
+              navigate("../dashboard");
+            }
+          }
+        );
+      });
+  };
   return (
     <>
       {/* <span class="mask bg-gradient-dark opacity-6"></span> */}
@@ -83,7 +131,7 @@ export default function SendRequest() {
                   <div class="input-group mb-3 input-group input-group-outline mb-3">
                     <textarea
                       class="form-control"
-                      placeholder="Description about the donation*"
+                      placeholder="Description about the request*"
                       id="exampleFormControlTextarea1"
                       rows="3"
                       onChange={(e) => {
