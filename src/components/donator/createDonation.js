@@ -14,8 +14,11 @@ export default function CreateDonation() {
   const [donationTitle, setDonationTitle] = useState("");
   const [email, setEmail] = useState("");
   const [contactNumber, setContactNumber] = useState("");
+  const [location, setLocation] = useState("");
   const [donationDescription, setDonationDescription] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [donationEndDate, setDonationEndDate] = useState("");
+
+  const [loading, setLoading] = useState(false);
 
   let filesarr = [];
   const fileUpload = (files) => {
@@ -34,11 +37,13 @@ export default function CreateDonation() {
       userID,
       donationTitle,
       email,
+      location,
+      donationEndDate,
       contactNumber,
       donationImage,
       donationDescription,
     };
-
+    console.log(donation);
     await newDonation(donation)
       .then((res) => {
         setLoading(false);
@@ -118,9 +123,9 @@ export default function CreateDonation() {
                         placeholder="Location*"
                         aria-label="Location"
                         aria-describedby="basic-addon1"
-                        // onChange={(e) => {
-                        //   setLocation(e.target.value);
-                        // }}
+                        onChange={(e) => {
+                          setLocation(e.target.value);
+                        }}
                         required
                       />
                     </div>
@@ -171,9 +176,9 @@ export default function CreateDonation() {
                         class="form-control"
                         type="text"
                         onFocus={(e) => (e.target.type = "date")}
-                        // onChange={(e) => {
-                        //   setDonationEndDate(e.target.value);
-                        // }}
+                        onChange={(e) => {
+                          setDonationEndDate(e.target.value);
+                        }}
                         id="date"
                       />
                     </div>

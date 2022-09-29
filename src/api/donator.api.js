@@ -7,3 +7,5 @@ const API = axios.create({
 });
 
 export const newDonation = (donation) => API.post("/createDonation", donation);
+export const newRequest = (request) => API.post("/sendRequest", request);
+export const getRequests = (donationID) => API.get(`getRequests/${donationID}`);
