@@ -8,6 +8,7 @@ export default function RequestCard() {
         style={{
           width: 500,
           height: 330,
+          marginBottom: 20,
         }}
       >
         <div class="card-body">
