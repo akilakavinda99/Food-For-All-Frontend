@@ -9,6 +9,7 @@ import RequesterProfileUpdate from "../components/requester/updateProfileDetails
 import RequestStepOne from "../components/requester/request/requestStepOne";
 import RequestStepTwo from "../components/requester/request/requestStepTwo";
 import RequesterProfileUpdated from "../components/requester/requesterProfileUpdated";
+import MyRequests from "../components/requester/myRequests";
 
 export default function Requester() {
   return (
@@ -22,6 +23,7 @@ export default function Requester() {
         <Route path="/profile/updated/631aa3f99d2dc36d4c12a8f0" element={<RequesterProfileUpdated/>} />
         <Route path="request/step1" element={<RequestStepOne />} />
         <Route path="request/step2" element={<RequestStepTwo />} />
+        <Route path="/my/requests" element={<MyRequests />} />
       </Routes>
     </>
   )
