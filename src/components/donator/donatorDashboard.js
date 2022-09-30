@@ -135,7 +135,7 @@ export default function DonatorDashboard() {
       .get(`http://localhost:8070/donator/getOngoingDonations/${userId}`)
       .then((res) => {
         if (res.data.length > 0) {
-          setDonations(res.data);
+          setOngoingDonations(res.data);
           console.log(res.data);
           console.log(donations);
         }
@@ -557,10 +557,14 @@ export default function DonatorDashboard() {
                                         />
                                         <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
                                       </svg>
-                                      <span className="seereq">
-                                        {" "}
-                                        See requests
-                                      </span>
+                                      <Link
+                                        to={"/donator/viewRequest/" + f._id}
+                                      >
+                                        <span className="seereq">
+                                          {" "}
+                                          See requests
+                                        </span>
+                                      </Link>
                                     </div>
                                     <div>
                                       <svg

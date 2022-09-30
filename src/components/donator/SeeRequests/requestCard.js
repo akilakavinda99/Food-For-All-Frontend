@@ -1,7 +1,72 @@
 import React from "react";
+import swal from "sweetalert";
+import {
+  acceptDonationRequest,
+  rejectDonationRequest,
+} from "../../../api/donator.api";
 
 export default function RequestCard(props) {
-  const acceptRequest = () => {};
+  const acceptRequest = (id) => {
+    swal({
+      title: "Are you sure?",
+      text: "Request Will Be Accepted",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        acceptDonationRequest(id)
+          .then((res) => {
+            if (willDelete) {
+              swal("Item Succesfully Deleted!!", {
+                icon: "success",
+              });
+              setTimeout(function () {
+                window.location.reload();
+              }, 1000);
+              console.log(res);
+            }
+            // } else {
+            //               swal("File Is Not Deleted");
+            //             }
+          })
+          .catch((e) => {
+            swal("File Is Not Deleted");
+          });
+      }
+    });
+  };
+
+  const rejectedRequest = (id) => {
+    swal({
+      title: "Are you sure?",
+      text: "Request Will Be Accepted",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        rejectDonationRequest(id)
+          .then((res) => {
+            if (willDelete) {
+              swal("Item Succesfully Deleted!!", {
+                icon: "success",
+              });
+              setTimeout(function () {
+                window.location.reload();
+              }, 1000);
+              console.log(res);
+            }
+            // } else {
+            //               swal("File Is Not Deleted");
+            //             }
+          })
+          .catch((e) => {
+            swal("File Is Not Deleted");
+          });
+      }
+    });
+  };
   return (
     <>
       <div
@@ -37,10 +102,22 @@ export default function RequestCard(props) {
               marginTop: 20,
             }}
           >
-            <button type="button" class="btn btn-success">
+            <button
+              type="button"
+              class="btn btn-success"
+              onClick={() => {
+                acceptRequest(props.id);
+              }}
+            >
               Accept Request
             </button>
-            <button type="button" class="btn btn-danger">
+            <button
+              type="button"
+              class="btn btn-danger"
+              onClick={() => {
+                rejectedRequest(props.id);
+              }}
+            >
               Reject Request
             </button>
           </div>
