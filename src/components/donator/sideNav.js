@@ -80,7 +80,7 @@ export default function SideNav(props) {
               {props.pending ? (
                 <Link
                   className="nav-link text-white active bg-gradient-primary"
-                  to="/organization/dashboard"
+                  to="/donator/pendingDonations"
                 >
                   <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i className="material-icons opacity-10">receipt_long</i>
@@ -90,7 +90,7 @@ export default function SideNav(props) {
               ) : (
                 <Link
                   className="nav-link text-white"
-                  to="/organization/dashboard"
+                  to="/donator/pendingDonations"
                 >
                   <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i className="material-icons opacity-10">receipt_long</i>
@@ -109,7 +109,7 @@ export default function SideNav(props) {
               {props.rejected ? (
                 <Link
                   className="nav-link text-white active bg-gradient-primary"
-                  to="/organization/dashboard"
+                  to="/donator/rejectedDonations"
                 >
                   <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i className="material-icons opacity-10">receipt_long</i>
@@ -119,7 +119,7 @@ export default function SideNav(props) {
               ) : (
                 <Link
                   className="nav-link text-white"
-                  to="/organization/dashboard"
+                  to="/donator/rejectedDonations"
                 >
                   <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i className="material-icons opacity-10">receipt_long</i>
