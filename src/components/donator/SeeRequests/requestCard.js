@@ -1,6 +1,7 @@
 import React from "react";
 
-export default function RequestCard() {
+export default function RequestCard(props) {
+  const acceptRequest = () => {};
   return (
     <>
       <div
@@ -25,13 +26,10 @@ export default function RequestCard() {
               marginLeft: 40,
             }}
           >
-            <h6>Name - Akila Kavinda</h6>
-            <h6>Email - akilakavinda@gmail.com</h6>
-            <h6>Contact - 0716287765</h6>
-            <h6>
-              Description - Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Vel quia error sequi,
-            </h6>
+            <h6>Name - {props.name}</h6>
+            <h6>Email - {props.email}</h6>
+            <h6>Contact - {props.contact}</h6>
+            <h6>Description - {props.description}</h6>
           </div>
           <div
             class="d-flex justify-content-around"

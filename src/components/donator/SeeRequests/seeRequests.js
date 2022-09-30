@@ -6,12 +6,14 @@ import RequestCard from "./requestCard";
 export default function SeeRequests() {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(false);
+  const id = "633566f938fccd1be022498a";
   useEffect(() => {
     setLoading(true);
     //fetching all inbound item data from the database
     getRequests(id)
       .then((res) => {
         setLoading(false);
+        console.log(res);
         if (res.data.length > 0) {
           setRequests(res.data);
           console.log(res.data);
@@ -43,7 +45,17 @@ export default function SeeRequests() {
       {loading ? (
         <div></div>
       ) : requests.length == 0 ? (
-        <NoItems />
+        <h4
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            alignContent: "center",
+          }}
+        >
+          No Requests Yet
+        </h4>
       ) : (
         <div
           class="row row-cols-2"
@@ -64,7 +76,12 @@ export default function SeeRequests() {
               // }}
               >
                 <div class="col">
-                  <RequestCard />
+                  <RequestCard
+                    name={f.requesterName}
+                    email={f.requesterEmail}
+                    contact={f.requesterContact}
+                    description={f.requestDescription}
+                  />
                 </div>
               </div>
             );
