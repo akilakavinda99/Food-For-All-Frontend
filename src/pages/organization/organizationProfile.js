@@ -13,7 +13,7 @@ export default function OrganizationProfile() {
                         <SideNav profile="true" />
                         <Profile />
                     </>
-                ) : <Unauthorized />
+                ) : <Profile />
             }
         </div>
     )

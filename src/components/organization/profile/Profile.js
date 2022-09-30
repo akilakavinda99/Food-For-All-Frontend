@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
-import { getNFunds } from '../../../api/fund.api';
 import { getOrganizationByID } from '../../../api/organization.api';
 import { getCookie } from '../../common/getCookie';
 import { toggleSidenav } from '../../common/toggleSidenav';
 import NavButton from '../../NavButton';
 import LatestContributions from "../dashboard/LatestContributions";
-import FundCard from './FundCard';
 import NewFundraisings from './NewFundraisings';
+import ChangePassoword from './ChangePassoword';
 
 export default function Profile() {
     const params = useParams();
     const [organizationID, setOrganizationID] = useState({});
     const [organization, setOrganization] = useState({ registrationDate: "2022-09-27T12:20:02.029+00:00" });
+
 
     // console.log("organizationID: " + organizationID);
 
@@ -21,8 +21,9 @@ export default function Profile() {
             setOrganizationID(params.organizationID);
         } else {
             setOrganizationID(getCookie("_id"));
+            // console.log(organizationID);
         }
-    }, [params.organizationID]);
+    }, [organizationID, params.organizationID]);
 
     useEffect(() => {
         getOrganizationByID(organizationID)
@@ -37,7 +38,9 @@ export default function Profile() {
     return (
         <>
             <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-                <NavButton page="Profile" path="Organization" />
+                {
+                    organizationID === getCookie("_id") ? (<NavButton page="Profile" path="Organization" />) : null
+                }
                 <div className="container-fluid py-4 " onClick={toggleSidenav}>
                     <div className="card card-body">
                         <div className="row gx-4 mb-2">
@@ -59,18 +62,22 @@ export default function Profile() {
                             </div>
                             {
                                 organizationID === getCookie("_id") ? (
-                                    <div className="col-lg-2 col-sm-3 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
-                                        <div className="nav-wrapper position-relative end-0">
-                                            <ul className="nav nav-pills nav-fill p-1" role="tablist">
-                                                <li className="nav-item">
-                                                    <Link className="nav-link mb-0 px-0 py-1 text-primary">
-                                                        <i className="material-icons text-lg position-relative">edit</i>
-                                                        <span className="ms-1">Change Password</span>
-                                                    </Link>
-                                                </li>
-                                            </ul>
+                                    <>
+                                        <div className="col-lg-2 col-sm-3 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+                                            <div className="nav-wrapper position-relative end-0">
+                                                <ul className="nav nav-pills nav-fill p-1" role="tablist">
+                                                    <li className="nav-item">
+                                                        <Link className="nav-link mb-0 px-0 py-1 text-primary">
+                                                            {/* <i className="material-icons text-lg position-relative">edit</i> */}
+                                                            <button className="btn btn-secondary m-0"
+                                                                type="button" data-bs-toggle="modal" data-bs-target="#passModel"
+                                                            >Change Password</button>
+                                                        </Link>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </>
                                 ) : null
                             }
                         </div>
@@ -86,9 +93,9 @@ export default function Profile() {
                                                 {
                                                     organizationID === getCookie("_id") ? (
                                                         <div className="col-md-4 text-end">
-                                                            <a href="#">
-                                                                <i className="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
-                                                            </a>
+                                                            {/* <a href="#"> */}
+                                                            <i className="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
+                                                            {/* </a> */}
                                                         </div>
                                                     ) : null
                                                 }
@@ -164,6 +171,30 @@ export default function Profile() {
                             </div>
                         </div>
                     </div>
+
+
+                    {/* Models */}
+
+                    {/* Password change */}
+                    <div className="modal " id="passModel" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h4 className="modal-title">Change Password</h4>
+                                    <button
+                                        type="button" className="btn fs-4" data-bs-dismiss="modal" aria-label="Close"
+                                    >&times;</button>
+                                </div>
+                                <div className="modal-body">
+                                    <ChangePassoword organizationId={organizationID} />
+                                </div>
+                                {/* <div className="modal-footer">
+                                    <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                                </div> */}
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" data-bs-target="#my-modal" aria-label="Close"></button>
                 </div>
             </main>
         </>

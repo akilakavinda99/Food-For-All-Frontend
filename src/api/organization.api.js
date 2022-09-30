@@ -8,3 +8,4 @@ const API = axios.create({
 
 export const newOrganization = (organization) => API.post("/register", organization);
 export const getOrganizationByID = (organizationID) => API.get(`/${organizationID}`);
+export const changeOrganizationPassword = (organizationID, newpassword) => API.put(`/update/changePassword/${organizationID}`, newpassword);

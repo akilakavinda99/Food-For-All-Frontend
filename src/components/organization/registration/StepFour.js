@@ -7,7 +7,7 @@ export default function StepFour() {
         <>
             <div className="card-body">
                 <form className="text-start">
-                    <div className="form-group text-center pb-3">President's Details</div>
+                    <div className="form-group text-center pb-3">Security</div>
 
                     <label className="form-label">Password</label>
                     <div className="input-group input-group-outline mb-1">
@@ -55,8 +55,6 @@ export default function StepFour() {
                         </div>
                     </div>
                 </form>
-            </div>
-            <div>
             </div>
         </>
     )
