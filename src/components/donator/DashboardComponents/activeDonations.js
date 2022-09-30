@@ -13,7 +13,7 @@ export default function ActiveDonations() {
   };
   return (
     <>
-      <SideNav />
+      <SideNav dashboard="true" />
       <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <NavButton />
         <div className="container-fluid py-4" onClick={toggleSidenav}>
