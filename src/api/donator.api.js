@@ -8,4 +8,9 @@ const API = axios.create({
 
 export const newDonation = (donation) => API.post("/createDonation", donation);
 export const newRequest = (request) => API.post("/sendRequest", request);
-export const getRequests = (donationID) => API.get(`getRequests/${donationID}`);
+export const getRequests = (donationID) =>
+  API.get(`getPendingRequests/${donationID}`);
+export const acceptDonationRequest = (requestID) =>
+  API.put(`acceptRequest/${requestID}`);
+export const rejectDonationRequest = (requestID) =>
+  API.put(`rejectRequest/${requestID}`);

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { getRequests } from "../../../api/donator.api";
+import LoadingSpinner from "../../common/LoadingSpinner";
 import NoItems from "../noItems";
 import RequestCard from "./requestCard";
 
 export default function SeeRequests() {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(false);
-  const id = "633566f938fccd1be022498a";
+  const { id } = useParams();
   useEffect(() => {
     setLoading(true);
     //fetching all inbound item data from the database
@@ -43,7 +45,19 @@ export default function SeeRequests() {
         Donation Title - I woulkd like to donate
       </h3>
       {loading ? (
-        <div></div>
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            bottom: 0,
+            left: 0,
+            right: 0,
+
+            margin: "auto",
+          }}
+        >
+          <LoadingSpinner />
+        </div>
       ) : requests.length == 0 ? (
         <h4
           style={{
@@ -81,6 +95,7 @@ export default function SeeRequests() {
                     email={f.requesterEmail}
                     contact={f.requesterContact}
                     description={f.requestDescription}
+                    id={f._id}
                   />
                 </div>
               </div>
