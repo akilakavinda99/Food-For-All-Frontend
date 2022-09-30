@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getOrganizationByID, updateOrganization } from '../../../api/organization.api';
+import { getOrganizationByID, updateOrganizationBoard } from '../../../api/organization.api';
 import { formValidationStep2 } from '../formValidation';
 
 export default function UpdateBoardInfo({ organizationId }) {
@@ -27,7 +27,7 @@ export default function UpdateBoardInfo({ organizationId }) {
     useEffect(() => {
         if (Object.keys(formErrors).length === 0 && isSubmit) {
             // console.log(userData);
-            updateOrganization(organizationId, userData)
+            updateOrganizationBoard(organizationId, userData)
                 .then((res) => {
                     // console.log(res.data);
                     setAlert({
@@ -41,6 +41,7 @@ export default function UpdateBoardInfo({ organizationId }) {
                         message: err.response.data.message
                     })
                 })
+            setIsSubmit(false);
         } else {
             setIsSubmit(false);
         }

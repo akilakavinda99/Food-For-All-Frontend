@@ -41,6 +41,7 @@ export default function UpdateOrgInfo({ organizationId }) {
             message: err.response.data.message
           })
         })
+      setIsSubmit(false);
     } else {
       setIsSubmit(false);
     }
