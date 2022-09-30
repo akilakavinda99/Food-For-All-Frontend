@@ -1,15 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { toggleSidenav } from '../../common/toggleSidenav';
 import NavButton from '../../NavButton'
 import CompletedFunds from './CompletedFunds';
 import OngoingFunds from './OngoingFunds';
 import PendingFunds from './PendingFunds';
 
 export default function OrganizationFunds(props) {
-    const toggleSidenav = (e) => {
-        e.preventDefault();
-        document.body.classList.remove("g-sidenav-pinned");
-    };
 
     return (
         <>

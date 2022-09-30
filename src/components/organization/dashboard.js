@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavButton from "../NavButton";
 import FundraisingChart from "./dashboard/FundraisingChart";
 import LatestContributions from "./dashboard/LatestContributions";
 import DashboardSummary from "./dashboard/DashboardSummary";
 import NewFundraisings from "./profile/NewFundraisings";
+import { getCookie } from "../common/getCookie";
+import { toggleSidenav } from "../common/toggleSidenav";
 
 export default function Dashboard() {
-    const [organizationId, setOrganizationId] = useState("631b45ab9d2dc36d4c12a8f3");
+    const [organizationId, setOrganizationId] = useState("");
 
-    const toggleSidenav = (e) => {
-        e.preventDefault();
-        document.body.classList.remove("g-sidenav-pinned");
-    };
+    useEffect(() => {
+        setOrganizationId(getCookie("_id"))
+    }, []);
 
     return (
         <>

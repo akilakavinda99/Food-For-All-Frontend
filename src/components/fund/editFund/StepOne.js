@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { multiStepContextEdit } from './EditFundContext'
 
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -8,6 +8,12 @@ import Box from '@mui/material/Box';
 
 export default function StepOne() {
     const { fundData, setFundData, formErrorsStep1, handleNext } = useContext(multiStepContextEdit)
+
+    useEffect(() => {
+        if (fundData.budget < fundData.currentAmount) {
+            formErrorsStep1.budget = "Budget must be greater than currently collected amount. (Rs." + fundData.currentAmount + ")"
+        }
+    }, [formErrorsStep1, fundData.budget, fundData.currentAmount])
 
     return (
         <>
