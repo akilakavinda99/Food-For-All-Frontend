@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { getOrganizationByID, updateOrganization, updateOrganizationBoard } from '../../../api/organization.api';
+import { getOrganizationByID, updateOrganizationBoard } from '../../../api/organization.api';
 import { formValidationStep2 } from '../formValidation';
 
-export default function UpdateOrgInfo({ organizationId }) {
+export default function UpdateBoardInfo({ organizationId }) {
     const [userData, setUserData] = useState({})
     const [formErrors, setFormErrors] = useState({})
     const [alert, setAlert] = useState({})

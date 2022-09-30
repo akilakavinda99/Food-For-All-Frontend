@@ -8,6 +8,7 @@ import LatestContributions from "../dashboard/LatestContributions";
 import NewFundraisings from './NewFundraisings';
 import ChangePassoword from './ChangePassoword';
 import UpdateBoardInfo from './UpdateBoardInfo';
+import UpdateOrgInfo from './UpdateOrgInfo';
 
 export default function Profile() {
     const params = useParams();
@@ -91,7 +92,7 @@ export default function Profile() {
                                                 {
                                                     organizationID === getCookie("_id") ? (
                                                         <div className="col-md-4 text-end">
-                                                            <a href="#">
+                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#orgModel">
                                                                 <i className="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
                                                             </a>
                                                         </div>
@@ -205,6 +206,26 @@ export default function Profile() {
                                 </div>
                                 <div className="modal-body">
                                     <UpdateBoardInfo organizationId={organizationID} />
+                                </div>
+                                {/* <div className="modal-footer">
+                                    <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                                </div> */}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Organization details change */}
+                    <div className="modal " id="orgModel" tabIndex="-1" aria-labelledby="orgModel" aria-hidden="true" data-bs-backdrop="static">
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h4 className="modal-title">Organization Details</h4>
+                                    <button
+                                        type="button" className="btn fs-4" data-bs-dismiss="modal" aria-label="Close"
+                                    >&times;</button>
+                                </div>
+                                <div className="modal-body">
+                                    <UpdateOrgInfo organizationId={organizationID} />
                                 </div>
                                 {/* <div className="modal-footer">
                                     <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
