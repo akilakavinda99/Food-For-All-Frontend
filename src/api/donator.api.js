@@ -16,5 +16,12 @@ export const rejectDonationRequest = (requestID) =>
   API.put(`/rejectRequest/${requestID}`);
 export const getPendingDonations = (userId) =>
   API.get(`/getPendingDonations/${userId}`);
+
 export const getRejectedDonations = (userId) =>
   API.get(`/getRejectedDonations/${userId}`);
+
+export const markDonationAsCompleted = (donationID) =>
+  API.put(`/markAsCompleted/${donationID}`);
+
+export const getOngoingDonations = (donationID) =>
+  API.put(`/getOngoingDonations/${donationID}`);

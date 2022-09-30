@@ -1,4 +1,6 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
+import swal from "sweetalert";
 import { getRejectedDonations } from "../../../api/donator.api";
 import NavButton from "../../NavButton";
 import NoItems from "../noItems";
@@ -28,7 +30,7 @@ export default function RejectedDonationView() {
   };
   return (
     <div>
-      <SideNav pending="true" />
+      <SideNav rejected="true" />
       <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <NavButton />
         <div className="container-fluid py-4" onClick={toggleSidenav}>
@@ -36,25 +38,28 @@ export default function RejectedDonationView() {
             {donations.length == 0 ? (
               <NoItems />
             ) : (
-              <div
-                class="row row-cols-2"
-                style={{
-                  // marginLeft: 150,
-                  overflow: "hidden",
-                }}
-              >
-                {donations.map(function (f) {
-                  return (
-                    <div class="col">
-                      <RejectedDonationsCard
-                        donationTitle="sdsd"
-                        donationDescribe="dsdsd"
-                        _id="223"
-                      />
-                    </div>
-                  );
-                })}
-              </div>
+              <>
+                <h3>Pending Donations</h3>
+                <div
+                  class="row row-cols-2"
+                  style={{
+                    // marginLeft: 150,
+                    overflow: "hidden",
+                  }}
+                >
+                  {donations.map(function (f) {
+                    return (
+                      <div class="col">
+                        <RejectedDonationsCard
+                          donationTitle="sdsd"
+                          donationDescribe="dsdsd"
+                          _id="223"
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              </>
             )}
           </div>
         </div>
