@@ -4,7 +4,12 @@ import { Link } from "react-router-dom";
 export default function PendingDonationCard(props) {
   return (
     <div>
-      <div class="courses-container">
+      <div
+        class="courses-container"
+        // style={{
+        //   width: 500,
+        // }}
+      >
         <div class="course">
           <div class="course-info">
             <div class="progress-container">

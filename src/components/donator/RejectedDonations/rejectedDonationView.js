@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getPendingDonations } from "../../../api/donator.api";
+import { getRejectedDonations } from "../../../api/donator.api";
 import NavButton from "../../NavButton";
+import NoItems from "../noItems";
 import SideNav from "../sideNav";
-import PendingDonationCard from "./pendingDonationCard";
+import RejectedDonationsCard from "./rejectedDonationsCard";
 
-export default function PendingDonationView() {
+export default function RejectedDonationView() {
   const [donations, setDonations] = useState([]);
   const id = 123;
   useEffect(() => {
     //fetching all inbound item data from the database
-    getPendingDonations(id)
+    getRejectedDonations(id)
       .then((res) => {
         if (res.data.length > 0) {
           setDonations(res.data);
@@ -33,25 +33,29 @@ export default function PendingDonationView() {
         <NavButton />
         <div className="container-fluid py-4" onClick={toggleSidenav}>
           <div className="row align-items-center">
-            <div
-              class="row row-cols-2"
-              style={{
-                // marginLeft: 150,
-                overflow: "hidden",
-              }}
-            >
-              {donations.map(function (f) {
-                return (
-                  <div class="col">
-                    <PendingDonationCard
-                      donationTitle="sdsd"
-                      donationDescribe="dsdsd"
-                      _id="223"
-                    />
-                  </div>
-                );
-              })}
-            </div>
+            {donations.length == 0 ? (
+              <NoItems />
+            ) : (
+              <div
+                class="row row-cols-2"
+                style={{
+                  // marginLeft: 150,
+                  overflow: "hidden",
+                }}
+              >
+                {donations.map(function (f) {
+                  return (
+                    <div class="col">
+                      <RejectedDonationsCard
+                        donationTitle="sdsd"
+                        donationDescribe="dsdsd"
+                        _id="223"
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
       </main>
