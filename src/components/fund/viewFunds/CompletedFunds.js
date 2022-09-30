@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import NoItems from '../../common/noItems/noItems';
 import { getFundByOrganizationAndStatus } from '../../../api/fund.api';
-import CompletedFundCard from './CompletedFundCard';
+import ViewFundsCard from './ViewFundsCard';
 
 export default function CompletedFunds(props) {
 
@@ -56,7 +56,7 @@ export default function CompletedFunds(props) {
                     <div className="row d-fllex">
                         {
                             showingFunds.map(fund =>
-                                <CompletedFundCard key={fund._id} fund={fund} />
+                                <ViewFundsCard key={fund._id} fund={fund} />
                             )
                         }
                     </div>

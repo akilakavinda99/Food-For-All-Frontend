@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import NavButton from "../NavButton";
 import FundraisingChart from "./dashboard/FundraisingChart";
 import LatestContributions from "./dashboard/LatestContributions";
 import DashboardSummary from "./dashboard/DashboardSummary";
+import NewFundraisings from "./profile/NewFundraisings";
 
 export default function Dashboard() {
+    const [organizationId, setOrganizationId] = useState("631b45ab9d2dc36d4c12a8f3");
 
     const toggleSidenav = (e) => {
         e.preventDefault();
@@ -24,6 +26,11 @@ export default function Dashboard() {
                         </div>
                         <div className="col-lg-8 col-md-6 my-4">
                             <FundraisingChart />
+                        </div>
+                    </div>
+                    <div className="row mt-3">
+                        <div className="card">
+                            <NewFundraisings limit={4} organizationId={organizationId} />
                         </div>
                     </div>
                 </div>
