@@ -30,7 +30,7 @@ export default function PendingFunds(props) {
   return (
     <>
       {pendingFunds.length === 0 ? (
-        <NoItems message="No ongoing funds available." />
+        <NoItems message="No pending funds available." />
       ) : (
         <div className="row d-flex my-3 me-3">
           <div className="col-lg-4 col-md-6 col-sm-8">

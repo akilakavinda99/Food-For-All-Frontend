@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { getNFunds } from '../../../api/fund.api';
 import { getOrganizationByID } from '../../../api/organization.api';
+import { getCookie } from '../../common/getCookie';
+import { toggleSidenav } from '../../common/toggleSidenav';
 import NavButton from '../../NavButton';
 import LatestContributions from "../dashboard/LatestContributions";
 import FundCard from './FundCard';
@@ -9,11 +11,18 @@ import NewFundraisings from './NewFundraisings';
 
 export default function Profile() {
     const params = useParams();
-    const [organizationID, setOrganizationID] = useState("631b45ab9d2dc36d4c12a8f3");
+    const [organizationID, setOrganizationID] = useState({});
     const [organization, setOrganization] = useState({ registrationDate: "2022-09-27T12:20:02.029+00:00" });
-    const [fundraisings, setFundraisings] = useState([]);
 
     // console.log("organizationID: " + organizationID);
+
+    useEffect(() => {
+        if (params.organizationID) {
+            setOrganizationID(params.organizationID);
+        } else {
+            setOrganizationID(getCookie("_id"));
+        }
+    }, [params.organizationID]);
 
     useEffect(() => {
         getOrganizationByID(organizationID)
@@ -23,21 +32,7 @@ export default function Profile() {
             }).catch((err) => {
                 console.log(err);
             })
-
-        // get latest 4 fundraisings
-        getNFunds(4)
-            .then((res) => {
-                // console.log(res.data.funds);
-                setFundraisings(res.data.funds);
-            }).catch((err) => {
-                console.log(err);
-            })
     }, [organizationID]);
-
-    const toggleSidenav = (e) => {
-        e.preventDefault();
-        document.body.classList.remove("g-sidenav-pinned");
-    };
 
     return (
         <>
@@ -62,18 +57,22 @@ export default function Profile() {
                                     </p>
                                 </div>
                             </div>
-                            {/* <div className="col-lg-2 col-sm-3 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
-                                <div className="nav-wrapper position-relative end-0">
-                                    <ul className="nav nav-pills nav-fill p-1 btn btn-outline-primary" role="tablist">
-                                        <li className="nav-item">
-                                            <Link className="nav-link mb-0 px-0 py-1 text-primary">
-                                                <i className="material-icons text-lg position-relative">remove</i>
-                                                <span className="ms-1">Unregister</span>
-                                            </Link>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div> */}
+                            {
+                                organizationID === getCookie("_id") ? (
+                                    <div className="col-lg-2 col-sm-3 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+                                        <div className="nav-wrapper position-relative end-0">
+                                            <ul className="nav nav-pills nav-fill p-1" role="tablist">
+                                                <li className="nav-item">
+                                                    <Link className="nav-link mb-0 px-0 py-1 text-primary">
+                                                        <i className="material-icons text-lg position-relative">edit</i>
+                                                        <span className="ms-1">Change Password</span>
+                                                    </Link>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                ) : null
+                            }
                         </div>
                         <div className="row">
                             <div className="row">
@@ -84,11 +83,15 @@ export default function Profile() {
                                                 <div className="col-md-8 d-flex align-items-center">
                                                     <h6 className="mb-0 fs-5">Organization Information</h6>
                                                 </div>
-                                                <div className="col-md-4 text-end">
-                                                    <a href="javascript:;">
-                                                        <i className="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
-                                                    </a>
-                                                </div>
+                                                {
+                                                    organizationID === getCookie("_id") ? (
+                                                        <div className="col-md-4 text-end">
+                                                            <a href="#">
+                                                                <i className="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
+                                                            </a>
+                                                        </div>
+                                                    ) : null
+                                                }
                                             </div>
                                         </div>
                                         <hr className="horizontal full-dark m-0" />
@@ -125,11 +128,15 @@ export default function Profile() {
                                                 <div className="col-md-8 d-flex align-items-center">
                                                     <h6 className="mb-0 fs-5">Board Member Details</h6>
                                                 </div>
-                                                <div className="col-md-4 text-end">
-                                                    <a href="javascript:;">
-                                                        <i className="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
-                                                    </a>
-                                                </div>
+                                                {
+                                                    organizationID === getCookie("_id") ? (
+                                                        <div className="col-md-4 text-end">
+                                                            <a href="#">
+                                                                <i className="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
+                                                            </a>
+                                                        </div>
+                                                    ) : null
+                                                }
                                             </div>
                                         </div>
                                         <hr className="horizontal full-dark m-0" />
@@ -153,7 +160,7 @@ export default function Profile() {
                                         <LatestContributions />
                                     </div>
                                 </div>
-                                <NewFundraisings limit={4} organizationId={organizationID}/>
+                                <NewFundraisings limit={4} organizationId={organizationID} />
                             </div>
                         </div>
                     </div>
