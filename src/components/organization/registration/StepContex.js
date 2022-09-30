@@ -3,10 +3,13 @@ import { newOrganization } from '../../../api/organization.api';
 import RegisterOrganization from '../../../pages/organization/registerOrganization';
 import { formValidation } from './formValidation';
 import swal from "sweetalert";
+import { useNavigate } from 'react-router-dom';
 
 export const multiStepContext = React.createContext()
 
 export default function StepContex() {
+    const navigate = useNavigate()
+
     const [currentStep, setCurrentStep] = useState(1);
     const [userData, setUserData] = useState({});
     const [imageFile, setImageFile] = useState(null);
@@ -30,7 +33,9 @@ export default function StepContex() {
                     "Details successfully recorded!",
                     "Please wait until review your application.",
                     "success"
-                )
+                ).then((value) => {
+                    navigate('/requester/signin')
+                })
 
             }).catch(err => {
                 console.log(err);
