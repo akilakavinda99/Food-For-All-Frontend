@@ -9,6 +9,7 @@ import RequesterProfileUpdate from "../components/requester/updateProfileDetails
 import RequestStepOne from "../components/requester/request/requestStepOne";
 import RequestStepTwo from "../components/requester/request/requestStepTwo";
 import MyRequests from "../components/requester/myRequests";
+import AllRequests from "../components/requester/allRequests"
 
 export default function Requester() {
   return (
@@ -22,6 +23,7 @@ export default function Requester() {
         <Route path="request/step1" element={<RequestStepOne />} />
         <Route path="request/step2" element={<RequestStepTwo />} />
         <Route path="/my/requests" element={<MyRequests />} />
+        <Route path ="/all/requets" element={<AllRequests/>} />
       </Routes>
     </>
   )
