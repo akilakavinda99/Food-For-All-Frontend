@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { getOrgDashSummary } from '../../../api/organization.api'
 
-export default function DashboardSummary() {
+export default function DashboardSummary({ organizationId }) {
+    const [summary, setSummary] = useState({})
+
+    useEffect(() => {
+        getOrgDashSummary(organizationId)
+            .then(res => {
+                setSummary(res.data.summary)
+            }).catch(err => {
+                console.log(err)
+            })
+    }, [organizationId])
+
     return (
         <div>
             <div className="row">
@@ -12,13 +24,13 @@ export default function DashboardSummary() {
                                     <i className="material-icons opacity-10">attach_money</i>
                                 </div>
                                 <div className="text-end pt-1">
-                                    <p className="text-sm mb-0 text-capitalize">Funding this month</p>
-                                    <h4 className="mb-0">Rs. 52500.00</h4>
+                                    <p className="text-sm mb-0 text-capitalize">Total Funding</p>
+                                    <h4 className="mb-0">Rs. {summary.totalFundsAmount}</h4>
                                 </div>
                             </div>
                             <hr className="dark horizontal my-0" />
                             <div className="card-footer p-3">
-                                <p className="mb-0"><span className="text-success text-sm font-weight-bolder">+55% </span>than last week</p>
+                                {/* <p className="mb-0"><span className="text-success text-sm font-weight-bolder">+55% </span>than last week</p> */}
                             </div>
                         </div>
                     </div>
@@ -30,12 +42,12 @@ export default function DashboardSummary() {
                                 </div>
                                 <div className="text-end pt-1">
                                     <p className="text-sm mb-0 text-capitalize">Active funds</p>
-                                    <h4 className="mb-0">36</h4>
+                                    <h4 className="mb-0">{summary.activeFunds}</h4>
                                 </div>
                             </div>
                             <hr className="dark horizontal my-0" />
                             <div className="card-footer p-3">
-                                <p className="mb-0"><span className="text-success text-sm font-weight-bolder">+3% </span>than last month</p>
+                                {/* <p className="mb-0"><span className="text-success text-sm font-weight-bolder">+3% </span>than last month</p> */}
                             </div>
                         </div>
                     </div>
@@ -46,13 +58,13 @@ export default function DashboardSummary() {
                                     <i className="material-icons opacity-10">diversity_1</i>
                                 </div>
                                 <div className="text-end pt-1">
-                                    <p className="text-sm mb-0 text-capitalize">New contributors</p>
-                                    <h4 className="mb-0">6</h4>
+                                    <p className="text-sm mb-0 text-capitalize">Total contributors</p>
+                                    <h4 className="mb-0">{summary.totalDonors}</h4>
                                 </div>
                             </div>
                             <hr className="dark horizontal my-0" />
                             <div className="card-footer p-3">
-                                <p className="mb-0"><span className="text-danger text-sm font-weight-bolder">-2%</span> than yesterday</p>
+                                {/* <p className="mb-0"><span className="text-danger text-sm font-weight-bolder">-2%</span> than yesterday</p> */}
                             </div>
                         </div>
                     </div>
