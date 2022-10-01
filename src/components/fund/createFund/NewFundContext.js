@@ -4,6 +4,7 @@ import NewFund from '../../../pages/fund/newFund';
 import { formValidationStep1, formValidationStep2 } from '../formValidation';
 import swal from "sweetalert";
 import { useNavigate } from 'react-router-dom';
+import { getCookie } from '../../common/getCookie';
 
 export const multiStepContext = React.createContext()
 
@@ -11,7 +12,7 @@ export default function NewFundContext() {
     const navigate = useNavigate()
 
     const [currentStep, setCurrentStep] = useState(1);
-    const [fundData, setFundData] = useState({});
+    const [fundData, setFundData] = useState({ organizationID: getCookie("_id") });
     const [fundImage, setFundImage] = useState(null);
     const [formErrorsStep1, setFormErrorsStep1] = useState({});
     const [formErrorsStep2, setFormErrorsStep2] = useState({});
