@@ -11,3 +11,4 @@ export const getFundByOrganizationAndStatus = (organizationID, status) => API.ge
 export const getFundByID = (fundID) => API.get(`/${fundID}`);
 export const getNFunds = (organizationId, limit) => API.get(`/${organizationId}/limit/${limit}`);
 export const updateFund = (fundID, fund) => API.put(`/update/${fundID}`, fund);
+export const removeFund = (fundID) => API.put(`/remove/${fundID}`);
