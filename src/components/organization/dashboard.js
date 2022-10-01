@@ -23,7 +23,7 @@ export default function Dashboard() {
                     <hr className="dark horizontal my-3" />
                     <div className="row mt-3">
                         <div className="col-lg-4 col-md-6 my-4">
-                            <LatestContributions />
+                            <LatestContributions organizationId={organizationId} limit={6}/>
                         </div>
                         <div className="col-lg-8 col-md-6 my-4">
                             <FundraisingChart />

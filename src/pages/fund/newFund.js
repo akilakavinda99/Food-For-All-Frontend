@@ -1,9 +1,11 @@
 import React, { useContext } from 'react'
+import { getCookie } from '../../components/common/getCookie';
 import { multiStepContext } from '../../components/fund/createFund/NewFundContext';
 import StepOne from '../../components/fund/createFund/StepOne';
 import StepTwo from '../../components/fund/createFund/StepTwo';
 import NavButton from '../../components/NavButton';
 import SideNav from '../../components/organization/sideNav';
+import Unauthorized from "../../components/common/unauthorized";
 
 export default function NewFund() {
     const { currentStep } = useContext(multiStepContext);
@@ -26,22 +28,29 @@ export default function NewFund() {
 
     return (
         <div>
-            <SideNav fund="true" />
-            <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-                <NavButton path="Organization / Funds" page="New Fund" />
-                <div className="container-fluid" onClick={toggleSidenav}>
-                    <h3 className="font-weight-bolder mt-4 mb-3 text-center">Create a new fund</h3>
-                    <div className="my-auto pb-5">
-                        <div className="row">
-                            <div className="mx-auto col-lg-8 col-md-10 col-sm-12">
-                                <div className="card z-index-0 fadeIn3 fadeInBottom ">
-                                    {showStep(currentStep)}
+            {
+                getCookie("_id") && getCookie("access_token") && getCookie("roles") && getCookie("roles") === "5150" ? (
+                    <>
+                        <SideNav fund="true" />
+                        <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+                            <NavButton path="Organization / Funds" page="New Fund" />
+                            <div className="container-fluid" onClick={toggleSidenav}>
+                                <h3 className="font-weight-bolder mt-4 mb-3 text-center">Create a new fund</h3>
+                                <div className="my-auto pb-5">
+                                    <div className="row">
+                                        <div className="mx-auto col-lg-8 col-md-10 col-sm-12">
+                                            <div className="card z-index-0 fadeIn3 fadeInBottom ">
+                                                {showStep(currentStep)}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
+                        </main>
+                    </>
+                ) : <Unauthorized />
+            }
         </div>
+
     )
 }
