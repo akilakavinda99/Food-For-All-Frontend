@@ -163,7 +163,7 @@ export default function Profile() {
                                 </div>
                                 <div className="col-12 col-xl-4">
                                     <div className="card card-plain h-100">
-                                        <LatestContributions />
+                                        <LatestContributions organizationId={organizationID} limit={6} />
                                     </div>
                                 </div>
                                 <NewFundraisings limit={4} organizationId={organizationID} />

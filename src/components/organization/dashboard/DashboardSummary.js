@@ -58,7 +58,7 @@ export default function DashboardSummary({ organizationId }) {
                                     <i className="material-icons opacity-10">diversity_1</i>
                                 </div>
                                 <div className="text-end pt-1">
-                                    <p className="text-sm mb-0 text-capitalize">New contributors</p>
+                                    <p className="text-sm mb-0 text-capitalize">Total contributors</p>
                                     <h4 className="mb-0">{summary.totalDonors}</h4>
                                 </div>
                             </div>

@@ -26,7 +26,7 @@ export default function Dashboard() {
                             <LatestContributions organizationId={organizationId} limit={6} />
                         </div>
                         <div className="col-lg-8 col-md-6 my-4">
-                            <FundraisingChart />
+                            <FundraisingChart organizationId={organizationId} />
                         </div>
                     </div>
                     <div className="row mt-3">
