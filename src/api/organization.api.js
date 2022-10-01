@@ -12,3 +12,4 @@ export const changeOrganizationPassword = (organizationID, newpassword) => API.p
 export const updateOrganization = (organizationID, organization) => API.put(`/update/${organizationID}`, organization);
 export const updateOrganizationBoard = (organizationID, organization) => API.put(`/update/board/${organizationID}`, organization);
 export const getOrgLatestContribution = (organizationID, limit) => API.get(`/${organizationID}/latest/${limit}`);
+export const getOrgDashSummary = (organizationID) => API.get(`/summary/${organizationID}`);
