@@ -14,3 +14,4 @@ export const updateOrganizationBoard = (organizationID, organization) => API.put
 export const getOrgLatestContribution = (organizationID, limit) => API.get(`/${organizationID}/latest/${limit}`);
 export const getOrgDashSummary = (organizationID) => API.get(`/summary/${organizationID}`);
 export const getContributionChart = (organizationID) => API.get(`/contributionChart/${organizationID}`);
+export const getReport = (organizationID, month) => API.get(`/${organizationID}/report/${month}`);

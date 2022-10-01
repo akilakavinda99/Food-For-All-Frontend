@@ -58,10 +58,10 @@ export default function SelectedFund() {
               <div className="col-lg-2 col-sm-3 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
                 <div className="nav-wrapper position-relative end-0">
                   <ul className="nav nav-pills nav-fill p-1" role="tablist">
-                    <li class="nav-item">
-                      <Link class="nav-link mb-0 px-0 py-1 active" to={`/fund/editFund`} state={fund}>
-                        <i class="material-icons text-lg position-relative">edit</i>
-                        <span class="ms-1">Edit</span>
+                    <li className="nav-item">
+                      <Link className="nav-link mb-0 px-0 py-1 active" to={`/fund/editFund`} state={fund}>
+                        <i className="material-icons text-lg position-relative">edit</i>
+                        <span className="ms-1">Edit</span>
                       </Link>
                     </li>
                     <li className="nav-item">
