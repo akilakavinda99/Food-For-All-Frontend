@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import 'chart.js/auto';
 import { Chart } from 'react-chartjs-2';
 import { getContributionChart } from '../../../api/organization.api';
+import GenerateReport from './GenerateReport';
 
 export default function FundraisingChart({ organizationId }) {
 
@@ -109,6 +110,7 @@ export default function FundraisingChart({ organizationId }) {
                         </div>
                     </div>
                 </div>
+                <GenerateReport organizationId={organizationId} />
             </div>
         </div>
     )

@@ -163,7 +163,7 @@ export default function Profile() {
                                 </div>
                                 <div className="col-12 col-xl-4">
                                     <div className="card card-plain h-100">
-                                        <LatestContributions organizationId={organizationID} limit={6} />
+                                        <LatestContributions organizationId={organizationID} limit={5} />
                                     </div>
                                 </div>
                                 <NewFundraisings limit={4} organizationId={organizationID} />
@@ -171,68 +171,73 @@ export default function Profile() {
                         </div>
                     </div>
 
+                    {
+                        organizationID === getCookie("_id") ? (
+                            <>
+                                {/* Models */}
 
-                    {/* Models */}
-
-                    {/* Password change */}
-                    <div className="modal " id="passModel" tabIndex="-1" aria-labelledby="passModel" aria-hidden="true" data-bs-backdrop="static">
-                        <div className="modal-dialog">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h4 className="modal-title">Change Password</h4>
-                                    <button
-                                        type="button" className="btn fs-4" data-bs-dismiss="modal" aria-label="Close"
-                                    >&times;</button>
-                                </div>
-                                <div className="modal-body">
-                                    <ChangePassoword organizationId={organizationID} />
-                                </div>
-                                {/* <div className="modal-footer">
+                                {/* Password change */}
+                                <div className="modal " id="passModel" tabIndex="-1" aria-labelledby="passModel" aria-hidden="true" data-bs-backdrop="static">
+                                    <div className="modal-dialog">
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h4 className="modal-title">Change Password</h4>
+                                                <button
+                                                    type="button" className="btn fs-4" data-bs-dismiss="modal" aria-label="Close"
+                                                >&times;</button>
+                                            </div>
+                                            <div className="modal-body">
+                                                <ChangePassoword organizationId={organizationID} />
+                                            </div>
+                                            {/* <div className="modal-footer">
                                     <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
                                 </div> */}
-                            </div>
-                        </div>
-                    </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                    {/* Board member details change */}
-                    <div className="modal " id="memberModel" tabIndex="-1" aria-labelledby="memberModel" aria-hidden="true" data-bs-backdrop="static">
-                        <div className="modal-dialog">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h4 className="modal-title">Board Member Details</h4>
-                                    <button
-                                        type="button" className="btn fs-4" data-bs-dismiss="modal" aria-label="Close"
-                                    >&times;</button>
-                                </div>
-                                <div className="modal-body">
-                                    <UpdateBoardInfo organizationId={organizationID} />
-                                </div>
-                                {/* <div className="modal-footer">
+                                {/* Board member details change */}
+                                <div className="modal " id="memberModel" tabIndex="-1" aria-labelledby="memberModel" aria-hidden="true" data-bs-backdrop="static">
+                                    <div className="modal-dialog">
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h4 className="modal-title">Board Member Details</h4>
+                                                <button
+                                                    type="button" className="btn fs-4" data-bs-dismiss="modal" aria-label="Close"
+                                                >&times;</button>
+                                            </div>
+                                            <div className="modal-body">
+                                                <UpdateBoardInfo organizationId={organizationID} />
+                                            </div>
+                                            {/* <div className="modal-footer">
                                     <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
                                 </div> */}
-                            </div>
-                        </div>
-                    </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                    {/* Organization details change */}
-                    <div className="modal " id="orgModel" tabIndex="-1" aria-labelledby="orgModel" aria-hidden="true" data-bs-backdrop="static">
-                        <div className="modal-dialog">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h4 className="modal-title">Organization Details</h4>
-                                    <button
-                                        type="button" className="btn fs-4" data-bs-dismiss="modal" aria-label="Close"
-                                    >&times;</button>
-                                </div>
-                                <div className="modal-body">
-                                    <UpdateOrgInfo organizationId={organizationID} />
-                                </div>
-                                {/* <div className="modal-footer">
+                                {/* Organization details change */}
+                                <div className="modal " id="orgModel" tabIndex="-1" aria-labelledby="orgModel" aria-hidden="true" data-bs-backdrop="static">
+                                    <div className="modal-dialog">
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h4 className="modal-title">Organization Details</h4>
+                                                <button
+                                                    type="button" className="btn fs-4" data-bs-dismiss="modal" aria-label="Close"
+                                                >&times;</button>
+                                            </div>
+                                            <div className="modal-body">
+                                                <UpdateOrgInfo organizationId={organizationID} />
+                                            </div>
+                                            {/* <div className="modal-footer">
                                     <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
                                 </div> */}
-                            </div>
-                        </div>
-                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </>
+                        ) : null
+                    }
 
                 </div>
             </main>
