@@ -13,6 +13,7 @@ export default function Organization() {
         <Route path="/new" element={<StepContex><RegisterOrganization /></StepContex>} />
         <Route path="/funds" element={<ViewOrganizationFunds />} />
         <Route path="/profile" element={<OrganizationProfile />} />
+        <Route path="/profile/:organizationID" element={<OrganizationProfile />} />
       </Routes>
     </>
   );

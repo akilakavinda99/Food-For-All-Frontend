@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
-import { getFundByID } from '../../../api/fund.api';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { getFundByID, removeFund } from '../../../api/fund.api';
 import { getOrganizationByID } from '../../../api/organization.api';
 import NavButton from '../../NavButton';
 import ProgressBar from "@ramonak/react-progress-bar";
 import { getRemainingTime } from '../../common/getRemainingTime';
 import LoadingSpinner from '../../common/LoadingSpinner';
+import { getCookie } from '../../common/getCookie';
+import swal from "sweetalert";
 
 export default function SelectedFund() {
   const [fund, setFund] = useState({ organizationID: "", endingDate: "2022-09-27T12:20:02.029+00:00" });
@@ -39,16 +41,65 @@ export default function SelectedFund() {
     document.body.classList.remove("g-sidenav-pinned");
   };
 
+  const removeFundbtn = (e) => {
+    e.preventDefault();
+    swal({
+      title: "Are you sure?",
+      text: "If you remve the fundrais, all contributions collected so far will be lost and you wonn't be able to recover them.",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        removeFund(fundID).then(res => {
+          swal("Fund has been deleted!", {
+            icon: "success",
+          });
+          navigate("/organization/funds");
+        }).catch(err => {
+          swal("Something went wrong!", {
+            icon: "error",
+          });
+        })
+      }
+    });
+  }
+
 
   return (
     <>
       <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        <NavButton page="Funds" path="Organization" />
+        {
+          fund.organizationID === getCookie("_id") ? (<NavButton page="Funds" path="Organization" />) : null
+        }
+
 
         <div className="container-fluid" onClick={toggleSidenav}>
           <i className="bi bi-arrow-left-circle fs-4 cursor-pointer"
             onClick={() => navigate(-1)}> Go back</i>
           <h3 className='mt-3'>{fund.title}</h3>
+          {
+            fund.organizationID === getCookie("_id") && fund.status !== "completed" ? (
+              <div className="col-lg-2 col-sm-3 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+                <div className="nav-wrapper position-relative end-0">
+                  <ul className="nav nav-pills nav-fill p-1" role="tablist">
+                    <li className="nav-item">
+                      <Link className="nav-link mb-0 px-0 py-1 active" to={`/fund/editFund`} state={fund}>
+                        <i className="material-icons text-lg position-relative">edit</i>
+                        <span className="ms-1">Edit</span>
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link onClick={removeFundbtn} className="nav-link mb-0 px-0 py-1 text-primary">
+                        <i className="material-icons text-lg position-relative">delete</i>
+                        <span className="ms-1">Remove</span>
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            ) : null
+          }
           {isLoaded ? (
             <div className="row">
               <div className="col-sm-5 row">

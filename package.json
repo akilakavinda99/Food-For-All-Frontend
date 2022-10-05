@@ -22,6 +22,7 @@
     "dayjs": "^1.11.5",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.5.25",
+    "jspdf-invoice-template": "^1.4.3",
     "mdbootstrap": "^4.20.0",
     "mdbreact": "^5.2.0",
     "moment": "^2.29.4",

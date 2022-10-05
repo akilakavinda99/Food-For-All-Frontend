@@ -1,31 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavButton from "../NavButton";
 import FundraisingChart from "./dashboard/FundraisingChart";
 import LatestContributions from "./dashboard/LatestContributions";
 import DashboardSummary from "./dashboard/DashboardSummary";
 import NewFundraisings from "./profile/NewFundraisings";
+import { getCookie } from "../common/getCookie";
+import { toggleSidenav } from "../common/toggleSidenav";
 
 export default function Dashboard() {
-    const [organizationId, setOrganizationId] = useState("631b45ab9d2dc36d4c12a8f3");
+    const [organizationId, setOrganizationId] = useState("");
 
-    const toggleSidenav = (e) => {
-        e.preventDefault();
-        document.body.classList.remove("g-sidenav-pinned");
-    };
+    useEffect(() => {
+        setOrganizationId(getCookie("_id"))
+    }, []);
 
     return (
         <>
             <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
                 <NavButton page="Dashboard" path="Organization" />
                 <div className="container-fluid py-4 " onClick={toggleSidenav}>
-                    <DashboardSummary />
+                    <DashboardSummary organizationId={organizationId} />
                     <hr className="dark horizontal my-3" />
                     <div className="row mt-3">
                         <div className="col-lg-4 col-md-6 my-4">
-                            <LatestContributions />
+                            <LatestContributions organizationId={organizationId} limit={7} />
                         </div>
                         <div className="col-lg-8 col-md-6 my-4">
-                            <FundraisingChart />
+                            <FundraisingChart organizationId={organizationId} />
                         </div>
                     </div>
                     <div className="row mt-3">

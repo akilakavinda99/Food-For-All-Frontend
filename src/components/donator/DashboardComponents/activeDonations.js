@@ -1,12 +1,67 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavButton from "../../NavButton";
 import DashboardCard from "./dashboardCard";
 import SideNav from "../sideNav";
 import LatestRequestsDisplay from "./latestRequests";
 import FundraisingChart from "../../organization/dashboard/FundraisingChart";
 import DonationChart from "./donationChart";
+import {
+  getOngoingDonations,
+  getPendingDonations,
+  getRejectedDonations,
+} from "../../../api/donator.api";
 
 export default function ActiveDonations() {
+  const id = "123";
+  const [rejectedDonations, setRejected] = useState([]);
+  const [pendingDonations, setPending] = useState([]);
+  const [activeDonations, setActive] = useState([]);
+  useEffect(() => {
+    //fetching all inbound item data from the database
+    getPendingDonations(id)
+      .then((res) => {
+        if (res.data.length > 0) {
+          setPending(res.data);
+          console.log(res.data);
+          // console.log(donations);
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+        // console.log(donations);
+      });
+  }, []);
+  useEffect(() => {
+    //fetching all inbound item data from the database
+    getOngoingDonations(id)
+      .then((res) => {
+        if (res.data.length > 0) {
+          setPending(res.data);
+          console.log(res.data);
+          // console.log(donations);
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+        // console.log(donations);
+      });
+  }, []);
+  useEffect(() => {
+    //fetching all inbound item data from the database
+    getRejectedDonations(id)
+      .then((res) => {
+        if (res.data.length > 0) {
+          setPending(res.data);
+          console.log(res.data);
+          // console.log(donations);
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+        // console.log(donations);
+      });
+  }, []);
+
   const toggleSidenav = (e) => {
     e.preventDefault();
     document.body.classList.remove("g-sidenav-pinned");
@@ -24,14 +79,14 @@ export default function ActiveDonations() {
                 <DashboardCard
                   image="https://i.postimg.cc/5t0vBGNQ/ds-5.png"
                   title="Pending Donations"
-                  count="10"
+                  count={pendingDonations.length}
                 />
               </div>
               <div class="col-4">
                 <DashboardCard
                   image="https://i.postimg.cc/T12tg0Sk/ds-4.png"
                   title="Active Donations"
-                  count="10"
+                  count={activeDonations.length}
                 />
               </div>
               <div class="col-4">
@@ -39,7 +94,7 @@ export default function ActiveDonations() {
                 <DashboardCard
                   image="https://i.postimg.cc/tCFmYzKx/ds-8.png"
                   title="Rejected Donations"
-                  count="10"
+                  count={rejectedDonations.length}
                 />
               </div>
             </div>
