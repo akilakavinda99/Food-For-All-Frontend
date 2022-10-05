@@ -5,7 +5,7 @@ import NavBar from '../NavBar';
 import "./footer.css"
 import { Link } from "react-router-dom";
 import {useRef, useState, useEffect, useContext} from 'react'
-import AuthContext from '../../context/AuthProvider';
+import useAuth from '../../hooks/useAuth';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 // import { API_URL } from '../../api/config';
@@ -18,7 +18,7 @@ export default function RequesterSignIn() {
   const Navigate = useNavigate();
 
 
-  const { setAuth } = useContext(AuthContext);
+  const { setAuth } = useAuth();
   const userRef = useRef();
  const errRef = useRef();
 
@@ -46,7 +46,7 @@ export default function RequesterSignIn() {
               JSON.stringify({ username, password }),
               {
                   headers: { 'Content-Type': 'application/json' },
-                  withCredentials: false
+                  withCredentials: true
               }
           );
           //console.log(JSON.stringify(response?.data));
