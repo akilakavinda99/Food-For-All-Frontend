@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function DonationIcon() {
+export default function DonationIcon(props) {
   return (
     <>
       <div
@@ -28,7 +28,7 @@ export default function DonationIcon() {
               </i>
             </div>
 
-            <div className="col">Galle</div>
+            <div className="col">{props.location}</div>
           </div>
         </div>
         <div class="col">
@@ -54,7 +54,7 @@ export default function DonationIcon() {
               </i>
             </div>
 
-            <div className="col"> 12 Requests</div>
+            <div className="col">{props.requests} Requests</div>
           </div>
         </div>
         <div class="col">
@@ -75,7 +75,7 @@ export default function DonationIcon() {
               </i>
             </div>
 
-            <div className="col">12 Days Remaining</div>
+            <div className="col">{props.remaining} Remaining</div>
           </div>
         </div>
       </div>
