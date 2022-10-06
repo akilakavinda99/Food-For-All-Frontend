@@ -29,7 +29,7 @@ export default function NewFund() {
     return (
         <div>
             {
-                getCookie("_id") && getCookie("access_token") && getCookie("roles") && getCookie("roles") === "5150" ? (
+                getCookie("uId") && getCookie("access_token") && getCookie("roles") && getCookie("roles") === "5150" ? (
                     <>
                         <SideNav fund="true" />
                         <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">

@@ -7,7 +7,7 @@ export default function SideNav(props) {
 
     const logOut = (e) => {
         e.preventDefault();
-        document.cookie = "_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "uId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         document.cookie = "roles=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         document.cookie = "access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         navigate("/requester/signin");
@@ -93,7 +93,7 @@ export default function SideNav(props) {
                 </div>
                 <div className="sidenav-footer position-absolute w-100 bottom-0 ">
                     <div className="mx-3">
-                        <Link onClick={logOut} className="btn bg-gradient-primary mt-4 w-100" href="#" type="button">Log out</Link>
+                        <Link onClick={logOut} className="btn bg-gradient-primary mt-4 w-100" to="#" type="button">Log out</Link>
                     </div>
                 </div>
             </aside>

@@ -60,8 +60,8 @@ export default function RequesterSignIn() {
           setCookie('access_token', accessToken, { path: '/',  expires});
           console.log("QQQQQQQQQQQ")
           setCookie('roles', roles ,{path: '/', expires});
-          setCookie('_id', _id ,{path: '/', expires});
-          console.log(setCookie("_id"))
+          setCookie('uId', _id ,{path: '/', expires});
+          console.log(_id)
           
           if (roles==("5150")) {
             Navigate('/organization/dashboard');
