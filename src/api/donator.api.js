@@ -24,4 +24,7 @@ export const markDonationAsCompleted = (donationID) =>
   API.put(`/markAsCompleted/${donationID}`);
 
 export const getOngoingDonations = (donationID) =>
-  API.put(`/getOngoingDonations/${donationID}`);
+  API.get(`/getOngoingDonations/${donationID}`);
+
+export const getOneDonation = (donationID) =>
+  API.get(`/getOneDonation/${donationID}`);

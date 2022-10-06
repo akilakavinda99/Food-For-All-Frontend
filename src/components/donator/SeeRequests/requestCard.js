@@ -96,31 +96,35 @@ export default function RequestCard(props) {
             <h6>Contact - {props.contact}</h6>
             <h6>Description - {props.description}</h6>
           </div>
-          <div
-            class="d-flex justify-content-around"
-            style={{
-              marginTop: 20,
-            }}
-          >
-            <button
-              type="button"
-              class="btn btn-success"
-              onClick={() => {
-                acceptRequest(props.id);
+          {props.accepted ? (
+            <></>
+          ) : (
+            <div
+              class="d-flex justify-content-around"
+              style={{
+                marginTop: 20,
               }}
             >
-              Accept Request
-            </button>
-            <button
-              type="button"
-              class="btn btn-danger"
-              onClick={() => {
-                rejectedRequest(props.id);
-              }}
-            >
-              Reject Request
-            </button>
-          </div>
+              <button
+                type="button"
+                class="btn btn-success"
+                onClick={() => {
+                  acceptRequest(props.id);
+                }}
+              >
+                Accept Request
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                onClick={() => {
+                  rejectedRequest(props.id);
+                }}
+              >
+                Reject Request
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </>

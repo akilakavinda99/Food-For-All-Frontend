@@ -2,16 +2,22 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import swal from "sweetalert";
 import { getPendingDonations } from "../../../api/donator.api";
+import { getCookie } from "../../common/getCookie";
 import LoadingSpinner from "../../common/LoadingSpinner";
 import NavButton from "../../NavButton";
+import NoItems from "../noItems";
 import SideNav from "../sideNav";
 import PendingDonationCard from "./pendingDonationCard";
 
 export default function PendingDonationView() {
   const [donations, setDonations] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [userId, setUserId] = useState("");
 
-  const id = 123;
+  useEffect(() => {
+    setUserId(getCookie("_id"));
+  }, []);
+  const id = userId;
   useEffect(() => {
     setLoading(true);
     //fetching all inbound item data from the database
@@ -56,6 +62,8 @@ export default function PendingDonationView() {
               >
                 <LoadingSpinner />
               </div>
+            ) : donations.length == 0 ? (
+              <NoItems />
             ) : (
               <div
                 class="row row-cols-2"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FileBase64 from "react-file-base64";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
@@ -7,6 +7,8 @@ import NavBar from "../NavBar";
 import DonatorDashboard from "./donatorDashboard";
 
 import LoadingSpinner from "../common/LoadingSpinner";
+import { getCookie } from "../common/getCookie";
+import Footer from "../Footer";
 // import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 export default function CreateDonation() {
@@ -19,6 +21,11 @@ export default function CreateDonation() {
   const [donationEndDate, setDonationEndDate] = useState("");
 
   const [loading, setLoading] = useState(false);
+  const [userId, setUserId] = useState("");
+
+  useEffect(() => {
+    setUserId(getCookie("_id"));
+  }, []);
 
   let filesarr = [];
   const fileUpload = (files) => {
@@ -84,7 +91,10 @@ export default function CreateDonation() {
           <LoadingSpinner />
         </div>
       ) : (
-        <div class="container my-auto" style={{ paddingTop: 30 }}>
+        <div
+          class="container my-auto"
+          style={{ paddingTop: 30, marginBottom: 100 }}
+        >
           <div class="row">
             <div class="mx-auto">
               <div class="card z-index-0 fadeIn3 fadeInBottom">
@@ -209,6 +219,13 @@ export default function CreateDonation() {
           </div>
         </div>
       )}
+      <div
+        style={{
+          marginTop: 100,
+        }}
+      >
+        <Footer />
+      </div>
     </>
   );
 }

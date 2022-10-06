@@ -20,11 +20,19 @@ import NoItems from "./noItems";
 import NavButton from "../NavButton";
 import SideNav from "./sideNav";
 import { markDonationAsCompleted } from "../../api/donator.api";
+import LoadingSpinner from "../common/LoadingSpinner";
+import { getCookie } from "../common/getCookie";
 
 export default function DonatorDashboard() {
-  const userId = "123";
+  const [userID, setUserId] = useState("");
+
+  useEffect(() => {
+    setUserId(getCookie("_id"));
+  }, []);
+  const userId = userID;
   const [donations, setDonations] = useState([]);
   const [ongoingDonations, setOngoingDonations] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const [searchTerm, setsearchTerm] = useState("");
   const toggleSidenav = (e) => {
@@ -129,10 +137,13 @@ export default function DonatorDashboard() {
   };
 
   useEffect(() => {
+    setLoading(true);
     //fetching all inbound item data from the database
     axios
       .get(`http://localhost:8070/donator/getOngoingDonations/${userId}`)
       .then((res) => {
+        setLoading(false);
+
         if (res.data.length > 0) {
           setDonations(res.data);
           console.log(res.data);
@@ -146,10 +157,14 @@ export default function DonatorDashboard() {
   }, []);
 
   useEffect(() => {
+    setLoading(true);
+
     //fetching all inbound item data from the database
     axios
       .get(`http://localhost:8070/donator/getCompletedDonations/${userId}`)
       .then((res) => {
+        setLoading(false);
+
         if (res.data.length > 0) {
           setOngoingDonations(res.data);
           console.log(res.data);
@@ -228,7 +243,16 @@ export default function DonatorDashboard() {
                         class="d-flex justify-content-between"
                         style={{ marginTop: 10 }}
                       >
-                        {ongoingDonations.length == 0 ? (
+                        {loading ? (
+                          <div
+                            style={{
+                              marginLeft: 100,
+                              marginTop: 100,
+                            }}
+                          >
+                            <LoadingSpinner />
+                          </div>
+                        ) : ongoingDonations.length == 0 ? (
                           <>
                             <NoItems />
                           </>
@@ -575,7 +599,11 @@ export default function DonatorDashboard() {
                                         <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
                                       </svg>
                                       <Link
-                                        to={"/donator/viewRequest/" + f._id}
+                                        to={{
+                                          pathname:
+                                            "/donator/viewRequest/" + f._id,
+                                          state: { fromAccepted: false },
+                                        }}
                                       >
                                         <span className="seereq">
                                           {" "}

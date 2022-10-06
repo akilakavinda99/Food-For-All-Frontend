@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ContactDetails() {
+export default function ContactDetails(props) {
   return (
     <>
       <div
@@ -48,7 +48,7 @@ export default function ContactDetails() {
               </span>
             </div>
             <div className="col">
-              <div>Akila Kavinda</div>
+              <div>{props.name}</div>
             </div>
           </div>
           <div
@@ -67,7 +67,7 @@ export default function ContactDetails() {
               </span>
             </div>
             <div className="col">
-              <div>akila@gmail.com</div>
+              <div>{props.email}</div>
             </div>
           </div>
           <div className="row">
@@ -81,7 +81,7 @@ export default function ContactDetails() {
               </span>
             </div>
             <div className="col">
-              <div> 0716287765</div>
+              <div> {props.mobile}</div>
             </div>
           </div>
         </div>
