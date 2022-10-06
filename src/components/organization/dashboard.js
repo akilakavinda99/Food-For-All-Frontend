@@ -11,7 +11,7 @@ export default function Dashboard() {
     const [organizationId, setOrganizationId] = useState("");
 
     useEffect(() => {
-        setOrganizationId(getCookie("_id"))
+        setOrganizationId(getCookie("uId"))
     }, []);
 
     return (

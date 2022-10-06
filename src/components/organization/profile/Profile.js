@@ -19,7 +19,7 @@ export default function Profile() {
         if (params.organizationID) {
             setOrganizationID(params.organizationID);
         } else {
-            setOrganizationID(getCookie("_id"));
+            setOrganizationID(getCookie("uId"));
             // console.log(organizationID);
         }
     }, [organizationID, params.organizationID]);
@@ -38,7 +38,7 @@ export default function Profile() {
         <>
             <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
                 {
-                    organizationID === getCookie("_id") ? (<NavButton page="Profile" path="Organization" />) : null
+                    organizationID === getCookie("uId") ? (<NavButton page="Profile" path="Organization" />) : null
                 }
                 <div className="container-fluid py-4 " onClick={toggleSidenav}>
                     <div className="card card-body">
@@ -60,13 +60,13 @@ export default function Profile() {
                                 </div>
                             </div>
                             {
-                                organizationID === getCookie("_id") ? (
+                                organizationID === getCookie("uId") ? (
                                     <>
                                         <div className="col-lg-2 col-sm-3 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
                                             <div className="nav-wrapper position-relative end-0">
                                                 <ul className="nav nav-pills nav-fill p-1" role="tablist">
                                                     <li className="nav-item">
-                                                        <Link className="nav-link mb-0 px-0 py-1 text-primary">
+                                                        <Link className="nav-link mb-0 px-0 py-1 text-primary" to="#">
                                                             {/* <i className="material-icons text-lg position-relative">edit</i> */}
                                                             <button className="btn btn-secondary m-0"
                                                                 type="button" data-bs-toggle="modal" data-bs-target="#passModel"
@@ -90,7 +90,7 @@ export default function Profile() {
                                                     <h6 className="mb-0 fs-5">Organization Information</h6>
                                                 </div>
                                                 {
-                                                    organizationID === getCookie("_id") ? (
+                                                    organizationID === getCookie("uId") ? (
                                                         <div className="col-md-4 text-end">
                                                             <a href="#" data-bs-toggle="modal" data-bs-target="#orgModel">
                                                                 <i className="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
@@ -135,7 +135,7 @@ export default function Profile() {
                                                     <h6 className="mb-0 fs-5">Board Member Details</h6>
                                                 </div>
                                                 {
-                                                    organizationID === getCookie("_id") ? (
+                                                    organizationID === getCookie("uId") ? (
                                                         <div className="col-md-4 text-end">
                                                             <a href="#" data-bs-toggle="modal" data-bs-target="#memberModel">
                                                                 <i className="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
@@ -172,7 +172,7 @@ export default function Profile() {
                     </div>
 
                     {
-                        organizationID === getCookie("_id") ? (
+                        organizationID === getCookie("uId") ? (
                             <>
                                 {/* Models */}
 

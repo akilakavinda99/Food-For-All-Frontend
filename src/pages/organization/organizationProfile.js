@@ -8,7 +8,7 @@ export default function OrganizationProfile() {
     return (
         <div>
             {
-                getCookie("_id") && getCookie("access_token") && getCookie("roles") && getCookie("roles") === "5150" ? (
+                getCookie("uId") && getCookie("access_token") && getCookie("roles") && getCookie("roles") === "5150" ? (
                     <>
                         <SideNav profile="true" />
                         <Profile />
