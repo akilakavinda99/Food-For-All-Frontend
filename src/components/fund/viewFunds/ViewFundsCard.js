@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { getCookie } from '../../common/getCookie';
 import { getRemainingTime } from '../../common/getRemainingTime';
 
 export default function ViewFundsCard({ fund }) {
@@ -17,7 +18,7 @@ export default function ViewFundsCard({ fund }) {
                                     <h5 className="card-title p-2 flex-grow-1">{fund.title}</h5>
                                     <div className='btn text-danger p-2'>
                                         {
-                                            fund.status === "pending" || fund.status === "approved" ?
+                                            (fund.status === "pending" || fund.status === "approved") && fund.organizationID === getCookie("uId") ?
                                                 (
                                                     <Link to={`/fund/editFund`} state={fund} >
                                                         <div className="material-icons opacity-10 d-inline-block">edit</div>

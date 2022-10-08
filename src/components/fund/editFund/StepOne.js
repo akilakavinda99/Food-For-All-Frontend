@@ -49,6 +49,7 @@ export default function StepOne() {
                     <label className="form-label">Description</label>
                     <div className="input-group input-group-outline mb-1">
                         <textarea
+                            rows="10"
                             className="form-control"
                             placeholder=""
                             value={fundData['description']}

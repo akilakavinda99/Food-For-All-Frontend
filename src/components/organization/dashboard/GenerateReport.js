@@ -35,7 +35,7 @@ export default function GenerateReport({ organizationId }) {
     var props = {
         outputType: OutputType.Save,
         returnJsPDFDocObject: true,
-        fileName: "Invoice " + randomNum + " " + date.getFullYear(),
+        fileName: "Report " + randomNum + " " + date.getFullYear(),
         orientationLandscape: false,
         compress: true,
         logo: {
@@ -105,7 +105,7 @@ export default function GenerateReport({ organizationId }) {
             invDesc: "This is an auto generated report for the month of " + monthName + ". Please contact the admin for any queries.",
         },
         footer: {
-            text: "The invoice is created on a computer and is valid without the signature and stamp.",
+            text: "The report is created on a computer and is valid without the signature and stamp.",
         },
         pageEnable: true,
         pageLabel: "Page ",
