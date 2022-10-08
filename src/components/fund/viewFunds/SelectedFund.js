@@ -186,7 +186,7 @@ export default function SelectedFund() {
                             <button onClick={closeDonateModal} type="button" className="btn fs-4">&times;</button>
                           </div>
                           <div className="modal-body">
-                            <DonateFund />
+                            <DonateFund organizationID={fund.organizationID} fundID={fund._id} />
                           </div>
                         </div>
                       </div>
