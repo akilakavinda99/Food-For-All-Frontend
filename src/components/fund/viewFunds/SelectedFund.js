@@ -8,6 +8,8 @@ import { getRemainingTime } from '../../common/getRemainingTime';
 import LoadingSpinner from '../../common/LoadingSpinner';
 import { getCookie } from '../../common/getCookie';
 import swal from "sweetalert";
+import NavBar from '../../NavBar';
+import DonateFund from './DonateFund';
 
 export default function SelectedFund() {
   const [fund, setFund] = useState({ organizationID: "", endingDate: "2022-09-27T12:20:02.029+00:00" });
@@ -65,12 +67,34 @@ export default function SelectedFund() {
     });
   }
 
+  const handleDonate = (e) => {
+    e.preventDefault();
+    if (getCookie("roles") === '1984') {
+      document.getElementById("donateModal").style.display = "block";
+    } else {
+      swal("You need to login first!", {
+        icon: "warning",
+        buttons: ["Cancel", "Login"],
+      }).then((willLogin) => {
+        if (willLogin) {
+          navigate(`/signin`);
+        }
+      });
+    }
+  }
+
+  const closeDonateModal = (e) => {
+    e.preventDefault();
+    document.getElementById("donateModal").style.display = "none";
+  }
+
+
 
   return (
     <>
       <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         {
-          getCookie("roles") === '5150' ? (<NavButton page="Funds" path="Organization" />) : null
+          getCookie("roles") === '5150' ? (<NavButton page="Funds" path="Organization" />) : (<div className='mb-3'><NavBar /></div>)
         }
 
 
@@ -144,7 +168,32 @@ export default function SelectedFund() {
                     <div className='p-2 text-justify'>{fund.description}</div>
                   </div>
                 </div>
+                {
+                  getCookie("roles") === '1984' || !getCookie("roles") ? (
+                    <div className='mt-3'>
+                      <button className="btn btn-primary" onClick={handleDonate}>Donate</button>
+                    </div>) : null
+                }
               </div>
+              {
+                getCookie("roles") === '1984' ? (
+                  <div className="modal blur-my-dark" id="donateModal">
+                    <div className="modal-dialog">
+                      <div className="w-100 h-100 d-flex justify-content-center align-items-center">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <h4 className="modal-title">Donate</h4>
+                            <button onClick={closeDonateModal} type="button" className="btn fs-4">&times;</button>
+                          </div>
+                          <div className="modal-body">
+                            <DonateFund />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : null
+              }
             </div>
           ) : <LoadingSpinner />}
 
