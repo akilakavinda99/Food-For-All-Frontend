@@ -3024,7 +3024,7 @@ textarea.form-control-lg {
   background-size: contain;
   border: none;
   appearance: none;
-  print-color-adjust: exact;
+  /* print-color-adjust: exact; */
   transition: background-color 0.25s ease, border-color 0.25s ease, background-position 0.15s ease-in-out, opacity 0.15s ease-out, box-shadow 0.15s ease-in-out;
 }
 
@@ -27263,7 +27263,7 @@ span.flatpickr-weekday {
   background: #fff;
   cursor: default;
   box-shadow: inset 0 0 1px #fff, inset 0 1px 7px #EBEBEB, 0 3px 6px -3px #BBB;
-  webkit-transition: .3s ease 0s;
+  /* webkit-transition: .3s ease 0s; */
   -moz-transition: .3s ease 0s;
   -ms-transition: .3s ease 0s;
   -o-transform: .3s ease 0s;
