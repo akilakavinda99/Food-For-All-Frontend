@@ -74,8 +74,8 @@ td {
 
 @media (max-width: 768px) {
   .DashTable {
-    margin-left: 0px;
     margin: 10px;
+    margin-left: 0px;
     width: 95%;
   }
 }
