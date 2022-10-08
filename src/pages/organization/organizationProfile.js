@@ -2,7 +2,6 @@ import React from 'react'
 import { getCookie } from '../../components/common/getCookie'
 import Profile from '../../components/organization/profile/Profile'
 import SideNav from '../../components/organization/sideNav'
-import Unauthorized from "../../components/common/unauthorized";
 
 export default function OrganizationProfile() {
     return (
