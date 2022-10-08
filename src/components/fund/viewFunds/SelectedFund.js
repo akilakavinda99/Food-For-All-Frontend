@@ -70,7 +70,7 @@ export default function SelectedFund() {
     <>
       <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         {
-          fund.organizationID === getCookie("_id") ? (<NavButton page="Funds" path="Organization" />) : null
+          getCookie("roles") === '5150' ? (<NavButton page="Funds" path="Organization" />) : null
         }
 
 
@@ -79,7 +79,7 @@ export default function SelectedFund() {
             onClick={() => navigate(-1)}> Go back</i>
           <h3 className='mt-3'>{fund.title}</h3>
           {
-            fund.organizationID === getCookie("_id") && fund.status !== "completed" ? (
+            fund.organizationID === getCookie("uId") && fund.status !== "completed" ? (
               <div className="col-lg-2 col-sm-3 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
                 <div className="nav-wrapper position-relative end-0">
                   <ul className="nav nav-pills nav-fill p-1" role="tablist">
