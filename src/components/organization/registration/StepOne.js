@@ -9,32 +9,8 @@ import Box from '@mui/material/Box';
 export default function StepOne() {
     const { setCurrentStep, userData, setUserData, formErrors } = useContext(multiStepContext)
 
-    const testData = (e) => {
-        e.preventDefault()
-        setUserData({
-            ...userData,
-            "name": "test org",
-            "address": "kalutara",
-            "country": "sri lanka",
-            "zipCode": "12000",
-            "contactNumber": "0123456789",
-            "email": "test@test.com",
-            "registrationNumber": "abc/123",
-            "registrationDate": "2016-10-05",
-            "presidentName": "pres name",
-            "presidentEmail": "pres@test.com",
-            "presidentContactNumber": "0123456789",
-            "secretaryName": "secr",
-            "secretaryEmail": "secr@test.com",
-            "secretaryContactNumber": "0123456789",
-            "password": "123456789",
-            "repassword": "123456789",
-        })
-    }
-
     return (
         <>
-            <button className="bg-secondary text-white p-3 m-3" onClick={(e) => { testData(e) }}>Test data</button>
             <div className="card-body">
                 <form className="text-start">
                     <div className="form-group text-center pb-3">Organization Details</div>

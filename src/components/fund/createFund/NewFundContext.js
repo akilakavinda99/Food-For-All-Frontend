@@ -12,7 +12,7 @@ export default function NewFundContext() {
     const navigate = useNavigate()
 
     const [currentStep, setCurrentStep] = useState(1);
-    const [fundData, setFundData] = useState({ organizationID: getCookie("_id") });
+    const [fundData, setFundData] = useState({ organizationID: getCookie("uId") });
     const [fundImage, setFundImage] = useState(null);
     const [formErrorsStep1, setFormErrorsStep1] = useState({});
     const [formErrorsStep2, setFormErrorsStep2] = useState({});

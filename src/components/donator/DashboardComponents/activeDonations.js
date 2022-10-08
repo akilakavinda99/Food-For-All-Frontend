@@ -10,12 +10,19 @@ import {
   getPendingDonations,
   getRejectedDonations,
 } from "../../../api/donator.api";
+import { getCookie } from "../../common/getCookie";
 
 export default function ActiveDonations() {
-  const id = "123";
+  const [userId, setUserId] = useState("");
+
+  useEffect(() => {
+    setUserId(getCookie("_id"));
+  }, []);
+  const id = 123;
   const [rejectedDonations, setRejected] = useState([]);
   const [pendingDonations, setPending] = useState([]);
   const [activeDonations, setActive] = useState([]);
+
   useEffect(() => {
     //fetching all inbound item data from the database
     getPendingDonations(id)

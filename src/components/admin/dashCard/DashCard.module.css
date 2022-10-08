@@ -96,8 +96,8 @@
 
 @media (max-width: 768px) {
   .DashCard {
-    margin-left: 0px;
     margin: 10px;
+    margin-left: 0px;
     width: 100%;
   }
 }

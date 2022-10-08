@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function DonationDescription() {
+export default function DonationDescription(props) {
   return (
     <>
       <div
@@ -10,12 +10,7 @@ export default function DonationDescription() {
         }}
       >
         <h4>Description</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
-          architecto sunt aperiam corporis ad error aliquid inventore assumenda
-          alias ullam, sapiente facilis! Illum aliquid enim nisi sapiente
-          recusandae unde possimus!
-        </p>
+        <p>{props.description}</p>
       </div>
     </>
   );

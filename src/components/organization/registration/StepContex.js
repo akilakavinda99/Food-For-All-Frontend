@@ -24,6 +24,29 @@ export default function StepContex() {
     }
 
     useEffect(() => {
+        if (
+            formErrors.name ||
+            formErrors.address ||
+            formErrors.country ||
+            formErrors.zipCode ||
+            formErrors.contactNumber ||
+            formErrors.email ||
+            formErrors.registrationNumber
+        ) { setCurrentStep(1); }
+        else if (
+            formErrors.presidentName ||
+            formErrors.presidentEmail ||
+            formErrors.presidentContactNumber ||
+            formErrors.secretaryName ||
+            formErrors.secretaryEmail ||
+            formErrors.secretaryContactNumber
+        ) { setCurrentStep(2); }
+        else if (formErrors.registrationCertificate) {
+            setCurrentStep(3);
+        }
+    }, [formErrors])
+
+    useEffect(() => {
         // console.log(formErrors);
         if (Object.keys(formErrors).length === 0 && isSubmit) {
             // console.log(userData);
@@ -47,7 +70,7 @@ export default function StepContex() {
 
             })
         }
-    }, [formErrors])
+    }, [formErrors, isSubmit])
 
     return (
         <div>

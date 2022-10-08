@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getRequests } from "../../../api/donator.api";
+import { useLocation, useParams } from "react-router-dom";
+import { getOneDonation, getRequests } from "../../../api/donator.api";
 import LoadingSpinner from "../../common/LoadingSpinner";
 import NoItems from "../noItems";
 import RequestCard from "./requestCard";
 
 export default function SeeRequests() {
+  const location = useLocation();
+  const fromAccepted = location.state?.fromAccepted;
   const [requests, setRequests] = useState([]);
+  const [donation, setDonation] = useState([]);
+
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
   useEffect(() => {
@@ -19,6 +23,24 @@ export default function SeeRequests() {
         if (res.data.length > 0) {
           setRequests(res.data);
           console.log(res.data);
+        }
+      })
+      .catch((e) => {
+        setLoading(false);
+        console.log(e);
+      });
+  }, []);
+
+  useEffect(() => {
+    setLoading(true);
+    //fetching all inbound item data from the database
+    getOneDonation(id)
+      .then((res) => {
+        setLoading(false);
+        console.log(res);
+        if (res.data.length > 0) {
+          setDonation(res.data.donation);
+          // console.log(res.data);
         }
       })
       .catch((e) => {
@@ -42,7 +64,7 @@ export default function SeeRequests() {
           alignItems: "center",
         }}
       >
-        Donation Title - I woulkd like to donate
+        Donation Title - {donation.donationTitle}
       </h3>
       {loading ? (
         <div
@@ -96,6 +118,7 @@ export default function SeeRequests() {
                     contact={f.requesterContact}
                     description={f.requestDescription}
                     id={f._id}
+                    accepted={fromAccepted}
                   />
                 </div>
               </div>

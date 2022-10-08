@@ -27,7 +27,14 @@ export default function UpdateOrgInfo({ organizationId }) {
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       // console.log(userData);
-      updateOrganization(organizationId, userData)
+      updateOrganization(organizationId, {
+        name: userData.name,
+        address: userData.address,
+        country: userData.country,
+        zipCode: userData.zipCode,
+        contactNumber: userData.contactNumber,
+        email: userData.email,
+      })
         .then((res) => {
           // console.log(res.data);
           setAlert({

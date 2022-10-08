@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import swal from "sweetalert";
 import { getRejectedDonations } from "../../../api/donator.api";
+import { getCookie } from "../../common/getCookie";
 import NavButton from "../../NavButton";
 import NoItems from "../noItems";
 import SideNav from "../sideNav";
@@ -9,7 +10,12 @@ import RejectedDonationsCard from "./rejectedDonationsCard";
 
 export default function RejectedDonationView() {
   const [donations, setDonations] = useState([]);
-  const id = 123;
+  const [userId, setUserId] = useState("");
+
+  useEffect(() => {
+    setUserId(getCookie("_id"));
+  }, []);
+  const id = userId;
   useEffect(() => {
     //fetching all inbound item data from the database
     getRejectedDonations(id)

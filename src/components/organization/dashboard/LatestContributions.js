@@ -19,10 +19,13 @@ export default function LatestContributions({ organizationId, limit }) {
             <div className="card h-100">
                 <div className="card-header pb-0">
                     <h6>Latest Contributions</h6>
+                    {
+                        latestContributions.length === 0 ? (
+                            <p className='text-sm'>No contributions yet</p>) : null
+                    }
                 </div>
                 <div className="card-body p-3">
                     <div className="timeline timeline-one-side">
-
                         {
                             latestContributions.map((contribution, index) => (
                                 <div key={index}>

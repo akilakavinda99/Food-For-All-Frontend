@@ -27,7 +27,14 @@ export default function UpdateBoardInfo({ organizationId }) {
     useEffect(() => {
         if (Object.keys(formErrors).length === 0 && isSubmit) {
             // console.log(userData);
-            updateOrganizationBoard(organizationId, userData)
+            updateOrganizationBoard(organizationId, {
+                presidentName: userData.presidentName,
+                presidentContactNumber: userData.presidentContactNumber,
+                presidentEmail: userData.presidentEmail,
+                secretaryName: userData.secretaryName,
+                secretaryContactNumber: userData.secretaryContactNumber,
+                secretaryEmail: userData.secretaryEmail,
+            })
                 .then((res) => {
                     // console.log(res.data);
                     setAlert({
