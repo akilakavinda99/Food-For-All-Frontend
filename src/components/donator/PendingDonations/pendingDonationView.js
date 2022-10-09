@@ -15,14 +15,18 @@ export default function PendingDonationView() {
   const [userId, setUserId] = useState("");
 
   useEffect(() => {
-    setUserId(getCookie("_id"));
-  }, []);
-  const id = userId;
+    setUserId(getCookie("uId"));
+    // setLoading(true);
+    //fetching all inbound item data from the database
+  }, [userId]);
+  console.log(userId);
+
   useEffect(() => {
     setLoading(true);
-    //fetching all inbound item data from the database
-    getPendingDonations(id)
+
+    getPendingDonations(userId)
       .then((res) => {
+        console.log(res);
         if (res.data.length > 0) {
           setLoading(false);
           setDonations(res.data);
@@ -33,7 +37,7 @@ export default function PendingDonationView() {
       .catch((e) => {
         console.log(e);
       });
-  }, []);
+  }, [userId]);
   const toggleSidenav = (e) => {
     e.preventDefault();
     document.body.classList.remove("g-sidenav-pinned");
