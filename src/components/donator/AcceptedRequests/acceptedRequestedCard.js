@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function AcceptedRequestsCard(props) {
+  // const state = {
+  //   fromAccepted: true,
+  // };
   return (
     <div>
       <div>
@@ -32,9 +35,9 @@ export default function AcceptedRequestsCard(props) {
                     <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
                   </svg>
                   <Link
-                    to={{
-                      pathname: "/donator/viewRequest/" + props._id,
-                      state: { fromAccepted: true },
+                    to={"/donator/viewRequest/" + props._id}
+                    state={{
+                      fromAccepted: true,
                     }}
                   >
                     <span className="seereq"> See requests</span>

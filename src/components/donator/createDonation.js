@@ -12,6 +12,17 @@ import Footer from "../Footer";
 // import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 export default function CreateDonation() {
+  var dtToday = new Date();
+
+  var month = dtToday.getMonth() + 1;
+  var day = dtToday.getDate() + 1;
+  var year = dtToday.getFullYear();
+  if (month < 10) month = "0" + month.toString();
+  if (day < 10) day = "0" + day.toString();
+  var minDate = year + "-" + month + "-" + day;
+
+  console.log(minDate);
+
   const navigate = useNavigate();
   const [donationTitle, setDonationTitle] = useState("");
   const [email, setEmail] = useState("");
@@ -116,6 +127,7 @@ export default function CreateDonation() {
                     <div class="input-group mb-3 input-group input-group-outline mb-3">
                       <input
                         type="text"
+                        maxLength={35}
                         class="form-control"
                         placeholder="Donation Title*"
                         aria-label="Donation Title"
@@ -159,7 +171,7 @@ export default function CreateDonation() {
                         aria-label="Contact Number"
                         aria-describedby="basic-addon1"
                         title="Error Message"
-                        pattern="[1-9]{1}[0-9]{9}"
+                        pattern="[0]{1}[0-9]{9}"
                         class="form-control"
                         onChange={(e) => {
                           setContactNumber(e.target.value);
@@ -185,11 +197,13 @@ export default function CreateDonation() {
                         placeholder="Donation End Date"
                         class="form-control"
                         type="text"
+                        min={minDate}
+                        max="2025-05-20"
+                        id="datefield"
                         onFocus={(e) => (e.target.type = "date")}
                         onChange={(e) => {
                           setDonationEndDate(e.target.value);
                         }}
-                        id="date"
                       />
                     </div>
                     <div class="input-group mb-3 input-group input-group-outline mb-3">

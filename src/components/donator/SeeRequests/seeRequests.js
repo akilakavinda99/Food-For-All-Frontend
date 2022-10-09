@@ -8,6 +8,7 @@ import RequestCard from "./requestCard";
 export default function SeeRequests() {
   const location = useLocation();
   const fromAccepted = location.state?.fromAccepted;
+  console.log(location);
   const [requests, setRequests] = useState([]);
   const [donation, setDonation] = useState([]);
 

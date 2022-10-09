@@ -26,6 +26,8 @@ export default function PendingDonationView() {
 
     getPendingDonations(userId)
       .then((res) => {
+        setLoading(false);
+
         console.log(res);
         if (res.data.length > 0) {
           setLoading(false);
