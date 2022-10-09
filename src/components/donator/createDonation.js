@@ -24,7 +24,7 @@ export default function CreateDonation() {
   const [userId, setUserId] = useState("");
 
   useEffect(() => {
-    setUserId(getCookie("_id"));
+    setUserId(getCookie("uId"));
   }, []);
 
   let filesarr = [];
@@ -38,7 +38,7 @@ export default function CreateDonation() {
     e.preventDefault();
     const donationImage = filesarr.base64;
     console.log(donationImage);
-    const userID = 123;
+    const userID = userId;
 
     const donation = {
       userID,

@@ -27,9 +27,11 @@ export default function DonatorDashboard() {
   const [userID, setUserId] = useState("");
 
   useEffect(() => {
-    setUserId(getCookie("_id"));
-  }, []);
-  const userId = userID;
+    setUserId(getCookie("uId"));
+    // setLoading(true);
+    //fetching all inbound item data from the database
+  }, [userID]);
+  // const userId = userID;
   const [donations, setDonations] = useState([]);
   const [ongoingDonations, setOngoingDonations] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -140,7 +142,7 @@ export default function DonatorDashboard() {
     setLoading(true);
     //fetching all inbound item data from the database
     axios
-      .get(`http://localhost:8070/donator/getOngoingDonations/${userId}`)
+      .get(`http://localhost:8070/donator/getOngoingDonations/${userID}`)
       .then((res) => {
         setLoading(false);
 
@@ -154,18 +156,20 @@ export default function DonatorDashboard() {
         console.log(e);
         console.log(donations);
       });
-  }, []);
+  }, [userID]);
 
   useEffect(() => {
     setLoading(true);
 
     //fetching all inbound item data from the database
     axios
-      .get(`http://localhost:8070/donator/getCompletedDonations/${userId}`)
+      .get(`http://localhost:8070/donator/getCompletedDonations/${userID}`)
       .then((res) => {
         setLoading(false);
 
         if (res.data.length > 0) {
+          // setLoading(true);
+
           setOngoingDonations(res.data);
           console.log(res.data);
           console.log(donations);
@@ -175,7 +179,7 @@ export default function DonatorDashboard() {
         console.log(e);
         console.log(donations);
       });
-  }, []);
+  }, [userID]);
 
   return (
     <>

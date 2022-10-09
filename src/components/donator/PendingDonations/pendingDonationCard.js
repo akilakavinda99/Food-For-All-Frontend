@@ -85,7 +85,7 @@ export default function PendingDonationCard(props) {
               {/* <span class="progress-text">6/9 Challenges</span> */}
             </div>
             <Link
-              to={"/inbound/updateinbound/" + props._id}
+              to={"/donator/view/" + props._id}
               style={{
                 color: "black",
               }}
