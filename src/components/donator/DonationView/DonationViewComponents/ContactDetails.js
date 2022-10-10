@@ -47,7 +47,7 @@ export default function ContactDetails(props) {
                 Name:
               </span>
             </div>
-            <div className="col">
+            <div className="col-9">
               <div>{props.name}</div>
             </div>
           </div>

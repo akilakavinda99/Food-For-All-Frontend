@@ -361,7 +361,7 @@ export default function DonatorDashboard() {
                                     {/* <span class="progress-text">6/9 Challenges</span> */}
                                   </div>
                                   <Link
-                                    to={"/inbound/updateinbound/" + f._id}
+                                    to={"/donator/view/" + f._id}
                                     style={{
                                       color: "black",
                                     }}
@@ -369,7 +369,14 @@ export default function DonatorDashboard() {
                                     {" "}
                                     <h2>{f.donationTitle}</h2>{" "}
                                   </Link>
-                                  <h6>{f.donationDescription}</h6>
+                                  <div
+                                    style={{
+                                      textOverflow: "ellipsis",
+                                    }}
+                                  >
+                                    <h6>{f.donationDescription}</h6>
+                                  </div>
+
                                   <br></br>
                                   <div class="d-flex justify-content-around">
                                     {/* <div>
@@ -559,7 +566,7 @@ export default function DonatorDashboard() {
                                     {/* <span class="progress-text">6/9 Challenges</span> */}
                                   </div>
                                   <Link
-                                    to={"/inbound/updateinbound/" + f._id}
+                                    to={"/donator/view/" + f._id}
                                     style={{
                                       color: "black",
                                     }}

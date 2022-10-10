@@ -118,7 +118,7 @@ export default function RequestCard(props) {
                 type="button"
                 class="btn btn-danger"
                 onClick={() => {
-                  rejectedRequest(props.id);
+                  rejectedRequest(props.id, props.email);
                 }}
               >
                 Reject Request

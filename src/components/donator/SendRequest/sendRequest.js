@@ -23,10 +23,10 @@ export default function SendRequest() {
 
   const createDonation = (e) => {
     e.preventDefault();
-    const donationImage = filesarr.base64;
-    console.log(donationImage);
+    // const donationImage = filesarr.base64;
+    // console.log(donationImage);
     const userID = 123;
-    const donationID = "63373a88bffe8dc84fb722f1";
+    const donationID = id;
 
     const request = {
       donationID,
