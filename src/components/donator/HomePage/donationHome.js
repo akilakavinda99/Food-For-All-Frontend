@@ -1,11 +1,47 @@
 import React, { useEffect, useState } from "react";
-import { getAllDonations } from "../../../api/donator.api";
+import { Link, useNavigate } from "react-router-dom";
+import swal from "sweetalert";
+import {
+  getAllDonations,
+  markDonationAsCompleted,
+} from "../../../api/donator.api";
+import { getCookie } from "../../common/getCookie";
 import LoadingSpinner from "../../common/LoadingSpinner";
 import Footer from "../../Footer";
 import NavBar from "../../NavBar";
 import DonationDescription from "../DonationView/DonationViewComponents/DonationDescription";
 
 export default function DonationHome() {
+  const [userId, setUserId] = useState("");
+  const navigate = useNavigate();
+  const markAsCompleted = (id) => {
+    // console.log(id);
+    if (userId == false) {
+      //     swal()
+      //
+      swal({
+        title: "You are not logged in !!",
+        text: "Please login to create a donation",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          navigate("../../user/signin");
+        }
+      });
+    } else {
+      navigate("../createDonation");
+    }
+  };
+  useEffect(() => {
+    setUserId(getCookie("uId"));
+  }, []);
+  // const create = ()=>{
+  //   if(userId==false){
+  //     swal()
+  //   }
+  // }
   const [loading, setLoading] = useState(false);
   const [donation, setDonation] = useState([]);
   useEffect(() => {
@@ -35,9 +71,33 @@ export default function DonationHome() {
       ) : (
         <>
           <div
-            class="row row-cols-4"
+            className="container"
             style={{
               //   marginLeft: 150,
+              overflow: "hidden",
+            }}
+          >
+            <div
+              class="d-flex justify-content-between"
+              style={{
+                marginTop: 20,
+                marginBottom: 10,
+                overflow: "hidden",
+              }}
+            >
+              {" "}
+              <div></div>
+              <h2>All Donations</h2>
+              <button className="btn btn-primary" onClick={markAsCompleted}>
+                Create A Donation
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="row row-cols-4"
+            style={{
+              marginLeft: 70,
               overflow: "hidden",
             }}
           >
@@ -50,44 +110,37 @@ export default function DonationHome() {
                       marginTop: 10,
                     }}
                   >
-                    <div
-                      class="card"
-                      style={{
-                        width: "18rem",
-                      }}
-                    >
-                      <img
-                        class="card-img-top"
-                        src="https://i.postimg.cc/c15nzDbx/Food-Donation-For-100-Children.png"
-                        alt="Card image cap"
+                    <Link to={"/donator/view/" + f._id}>
+                      <div
+                        class="card"
                         style={{
-                          width: "100%",
-                          height: 150,
+                          width: "18rem",
                         }}
-                      />
-                      <div class="card-body">
-                        <h5 class="card-title">
-                          Donation for 100 children in galle
-                        </h5>
-                        <div
-                          className="para"
+                      >
+                        <img
+                          class="card-img-top"
+                          src={f.donationImage}
+                          alt="Card image cap"
                           style={{
                             width: "100%",
-                            //   height: 40,
-                            display: "inline-block",
-                            textOverflow: "ellipsis",
-                            overflow: "hidden",
-                            whiteSpace: "nowrap",
+                            height: 150,
                           }}
-                        >
-                          <div>
-                            The Alsos Mission was an Allied unit formed to
-                            investigate Axis scientific developments, especially
-                            nuclear, chemical and biological weapons, as part of
-                            the Manhattan Project during World War II. Colonel
-                            Boris Pash, a former Manhattan P
-                          </div>
-                          {/* <p
+                        />
+                        <div class="card-body">
+                          <h5 class="card-title">{f.donationTitle}</h5>
+                          <div
+                            className="para"
+                            style={{
+                              width: "100%",
+                              //   height: 40,
+                              display: "inline-block",
+                              textOverflow: "ellipsis",
+                              overflow: "hidden",
+                              whiteSpace: "nowrap",
+                            }}
+                          >
+                            <div>{f.donationDescription}</div>
+                            {/* <p
               class="card-text"
               style={{
                 textOverflow: "ellipsis",
@@ -96,9 +149,10 @@ export default function DonationHome() {
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </p> */}
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   </div>
                 </div>
               );

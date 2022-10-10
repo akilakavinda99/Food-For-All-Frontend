@@ -11,13 +11,13 @@ import Admin from "./routes/admin.routes";
 import Fund from "./routes/fund.routes";
 import RequireAuth from "./components/RequireAuth";
 import { AuthProvider } from "./context/AuthProvider";
+import User from "./routes/user.routes";
 
 const ROLES = {
-  'User': 2001,
-  'Organization': 1984,
-  'Admin': 5150
-}
-
+  User: 2001,
+  Organization: 1984,
+  Admin: 5150,
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -26,16 +26,15 @@ root.render(
       <Route path="/" element={<App />} />
       <Route path="/donator/*" element={<Donator />} />
       <Route path="/requester/*" element={<Requester />} />
-      
-      
+
       <Route path="/organization/*" element={<Organization />} />
-      
-      <Route element={<RequireAuth allowedRoles={[ROLES.Organization]}/>}>
-      <Route path="/admin/*" element={<Admin />}/>
+
+      <Route element={<RequireAuth allowedRoles={[ROLES.Organization]} />}>
+        <Route path="/admin/*" element={<Admin />} />
       </Route>
       <Route path="/fund/*" element={<Fund />} />
+      <Route path="/user/*" element={<User />} />
     </Routes>
-    
   </BrowserRouter>
 );
 
