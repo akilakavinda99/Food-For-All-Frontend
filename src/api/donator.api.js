@@ -30,3 +30,6 @@ export const getOneDonation = (donationID) =>
   API.get(`/getOneDonation/${donationID}`);
 
 export const getAllDonations = () => API.get(`/getDonations`);
+
+export const getApprovedRequests = (donationID) =>
+  API.get(`/getApprovedRequests/${donationID}`);

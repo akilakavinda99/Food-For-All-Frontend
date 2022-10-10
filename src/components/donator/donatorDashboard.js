@@ -22,6 +22,7 @@ import SideNav from "./sideNav";
 import { markDonationAsCompleted } from "../../api/donator.api";
 import LoadingSpinner from "../common/LoadingSpinner";
 import { getCookie } from "../common/getCookie";
+import { getRemainingTime } from "../common/getRemainingTime";
 
 export default function DonatorDashboard() {
   const [userID, setUserId] = useState("");
@@ -135,7 +136,7 @@ export default function DonatorDashboard() {
     });
 
     // doc.text(, 14, 23).setFontSize(9);
-    doc.save(`Inventory_report_${dateStr}.pdf`);
+    doc.save(`Donations_Report_${dateStr}.pdf`);
   };
 
   useEffect(() => {
@@ -264,7 +265,9 @@ export default function DonatorDashboard() {
                           <>
                             <button
                               class="btn btn-danger"
-                              onClick={() => generateCompletedReport(donations)}
+                              onClick={() =>
+                                generateCompletedReport(ongoingDonations)
+                              }
                             >
                               Generate Report
                             </button>
@@ -590,7 +593,7 @@ export default function DonatorDashboard() {
                                       </svg>
                                       <span className="timeleft">
                                         {" "}
-                                        Time left
+                                        {getRemainingTime(f.donationEndDate)}
                                       </span>
                                     </div>
                                     <div>
