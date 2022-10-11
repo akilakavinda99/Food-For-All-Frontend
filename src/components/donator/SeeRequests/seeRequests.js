@@ -142,6 +142,7 @@ export default function SeeRequests() {
                     description={f.requestDescription}
                     id={f._id}
                     accepted={fromAccepted}
+                    title={donation.donationTitle}
                   />
                 </div>
               </div>

@@ -21,7 +21,7 @@ export default function DonationIcon(props) {
               <i
                 className="material-icons opacity-10 "
                 style={{
-                  color: "black",
+                  color: "green",
                 }}
               >
                 location_on
@@ -47,7 +47,7 @@ export default function DonationIcon(props) {
               <i
                 className="material-icons opacity-10 "
                 style={{
-                  color: "black",
+                  color: "blue",
                 }}
               >
                 group
@@ -68,7 +68,7 @@ export default function DonationIcon(props) {
               <i
                 className="material-icons opacity-10"
                 style={{
-                  color: "black",
+                  color: "red",
                 }}
               >
                 schedule

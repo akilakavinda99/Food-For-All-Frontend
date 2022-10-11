@@ -6,6 +6,10 @@ import {
 } from "../../../api/donator.api";
 
 export default function RequestCard(props) {
+  var reqdata = {
+    email: props.email,
+    title: props.title,
+  };
   const acceptRequest = (id) => {
     swal({
       title: "Are you sure?",
@@ -15,7 +19,7 @@ export default function RequestCard(props) {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        acceptDonationRequest(id)
+        acceptDonationRequest(id, reqdata)
           .then((res) => {
             if (willDelete) {
               swal("Item Succesfully Deleted!!", {
@@ -109,7 +113,7 @@ export default function RequestCard(props) {
                 type="button"
                 class="btn btn-success"
                 onClick={() => {
-                  acceptRequest(props.id);
+                  acceptRequest(props.id, props.email, props.title);
                 }}
               >
                 Accept Request
