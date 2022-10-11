@@ -32,7 +32,7 @@ export default function ContactDetails(props) {
             }
           }
         >
-          <div
+          {/* <div
             className="row"
             style={{
               marginBottom: 10,
@@ -50,7 +50,7 @@ export default function ContactDetails(props) {
             <div className="col-9">
               <div>{props.name}</div>
             </div>
-          </div>
+          </div> */}
           <div
             className="row"
             style={{
@@ -66,12 +66,12 @@ export default function ContactDetails(props) {
                 Email:
               </span>
             </div>
-            <div className="col">
+            <div className="col-10">
               <div>{props.email}</div>
             </div>
           </div>
           <div className="row">
-            <div className="col-2">
+            <div className="col-3">
               <span
                 style={{
                   fontWeight: 1000,
@@ -80,7 +80,7 @@ export default function ContactDetails(props) {
                 Contact:
               </span>
             </div>
-            <div className="col">
+            <div className="col-9">
               <div> {props.mobile}</div>
             </div>
           </div>
