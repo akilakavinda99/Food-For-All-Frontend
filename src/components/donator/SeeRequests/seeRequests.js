@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { getOneDonation, getRequests } from "../../../api/donator.api";
+import {
+  getApprovedRequests,
+  getOneDonation,
+  getRequests,
+} from "../../../api/donator.api";
 import LoadingSpinner from "../../common/LoadingSpinner";
 import NoItems from "../noItems";
 import RequestCard from "./requestCard";
@@ -8,27 +12,46 @@ import RequestCard from "./requestCard";
 export default function SeeRequests() {
   const location = useLocation();
   const fromAccepted = location.state?.fromAccepted;
+  console.log(location);
   const [requests, setRequests] = useState([]);
   const [donation, setDonation] = useState([]);
 
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
+
   useEffect(() => {
     setLoading(true);
     //fetching all inbound item data from the database
-    getRequests(id)
-      .then((res) => {
-        setLoading(false);
-        console.log(res);
-        if (res.data.length > 0) {
-          setRequests(res.data);
-          console.log(res.data);
-        }
-      })
-      .catch((e) => {
-        setLoading(false);
-        console.log(e);
-      });
+    if (fromAccepted) {
+      getApprovedRequests(id)
+        .then((res) => {
+          setLoading(false);
+          console.log("sd");
+          console.log(res);
+          if (res.data.length > 0) {
+            setRequests(res.data);
+            console.log(res.data);
+          }
+        })
+        .catch((e) => {
+          setLoading(false);
+          console.log(e);
+        });
+    } else {
+      getRequests(id)
+        .then((res) => {
+          setLoading(false);
+          console.log(res);
+          if (res.data.length > 0) {
+            setRequests(res.data);
+            console.log(res.data);
+          }
+        })
+        .catch((e) => {
+          setLoading(false);
+          console.log(e);
+        });
+    }
   }, []);
 
   useEffect(() => {
@@ -37,11 +60,11 @@ export default function SeeRequests() {
     getOneDonation(id)
       .then((res) => {
         setLoading(false);
+        console.log("dsd");
         console.log(res);
-        if (res.data.length > 0) {
-          setDonation(res.data.donation);
-          // console.log(res.data);
-        }
+
+        setDonation(res.data.donation);
+        // console.log(res.data);
       })
       .catch((e) => {
         setLoading(false);
@@ -119,6 +142,7 @@ export default function SeeRequests() {
                     description={f.requestDescription}
                     id={f._id}
                     accepted={fromAccepted}
+                    title={donation.donationTitle}
                   />
                 </div>
               </div>

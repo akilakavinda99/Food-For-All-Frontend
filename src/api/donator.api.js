@@ -10,8 +10,8 @@ export const newDonation = (donation) => API.post("/createDonation", donation);
 export const newRequest = (request) => API.post("/sendRequest", request);
 export const getRequests = (donationID) =>
   API.get(`/getPendingRequests/${donationID}`);
-export const acceptDonationRequest = (requestID) =>
-  API.put(`/acceptRequest/${requestID}`);
+export const acceptDonationRequest = (requestID, reqdata) =>
+  API.put(`/acceptRequest/${requestID}`, reqdata);
 export const rejectDonationRequest = (requestID) =>
   API.put(`/rejectRequest/${requestID}`);
 export const getPendingDonations = (userId) =>
@@ -28,3 +28,8 @@ export const getOngoingDonations = (donationID) =>
 
 export const getOneDonation = (donationID) =>
   API.get(`/getOneDonation/${donationID}`);
+
+export const getAllDonations = () => API.get(`/getDonations`);
+
+export const getApprovedRequests = (donationID) =>
+  API.get(`/getApprovedRequests/${donationID}`);

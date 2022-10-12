@@ -12,6 +12,7 @@ import SendRequest from "../components/donator/SendRequest/sendRequest";
 import PendingDonationView from "../components/donator/PendingDonations/pendingDonationView";
 import RejectedDonationView from "../components/donator/RejectedDonations/rejectedDonationView";
 import AcceptedRequestView from "../components/donator/AcceptedRequests/acceptedRequestsView";
+import DonationHome from "../components/donator/HomePage/donationHome";
 
 export default function Donator() {
   return (
@@ -32,6 +33,7 @@ export default function Donator() {
         <Route path="/pendingDonations" element={<PendingDonationView />} />
         <Route path="/rejectedDonations" element={<RejectedDonationView />} />
         <Route path="/acceptedRequests" element={<AcceptedRequestView />} />
+        <Route path="/home" element={<DonationHome />} />
       </Routes>
     </>
   );

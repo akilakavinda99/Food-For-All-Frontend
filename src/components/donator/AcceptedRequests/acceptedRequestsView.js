@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getOngoingDonations } from "../../../api/donator.api";
+import { getCookie } from "../../common/getCookie";
 import LoadingSpinner from "../../common/LoadingSpinner";
 import NavButton from "../../NavButton";
 import NoItems from "../noItems";
@@ -9,10 +10,18 @@ import AcceptedRequestsCard from "./acceptedRequestedCard";
 export default function AcceptedRequestView() {
   const [donations, setDonation] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [userId, setUserId] = useState("");
+
+  useEffect(() => {
+    setUserId(getCookie("uId"));
+    // setLoading(true);
+    //fetching all inbound item data from the database
+  }, [userId]);
+  console.log(userId);
   useEffect(() => {
     setLoading(true);
     //fetching all inbound item data from the database
-    getOngoingDonations(123)
+    getOngoingDonations(userId)
       .then((res) => {
         setLoading(false);
         console.log(res);
@@ -27,7 +36,7 @@ export default function AcceptedRequestView() {
         setLoading(false);
         console.log(e);
       });
-  }, []);
+  }, [userId]);
   const toggleSidenav = (e) => {
     e.preventDefault();
     document.body.classList.remove("g-sidenav-pinned");

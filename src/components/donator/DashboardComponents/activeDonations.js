@@ -16,16 +16,18 @@ export default function ActiveDonations() {
   const [userId, setUserId] = useState("");
 
   useEffect(() => {
-    setUserId(getCookie("_id"));
-  }, []);
-  const id = 123;
+    setUserId(getCookie("uId"));
+    // setLoading(true);
+    //fetching all inbound item data from the database
+  }, [userId]);
+
   const [rejectedDonations, setRejected] = useState([]);
   const [pendingDonations, setPending] = useState([]);
   const [activeDonations, setActive] = useState([]);
 
   useEffect(() => {
     //fetching all inbound item data from the database
-    getPendingDonations(id)
+    getPendingDonations(userId)
       .then((res) => {
         if (res.data.length > 0) {
           setPending(res.data);
@@ -37,13 +39,13 @@ export default function ActiveDonations() {
         console.log(e);
         // console.log(donations);
       });
-  }, []);
+  }, [userId]);
   useEffect(() => {
     //fetching all inbound item data from the database
-    getOngoingDonations(id)
+    getOngoingDonations(userId)
       .then((res) => {
         if (res.data.length > 0) {
-          setPending(res.data);
+          setActive(res.data);
           console.log(res.data);
           // console.log(donations);
         }
@@ -52,13 +54,13 @@ export default function ActiveDonations() {
         console.log(e);
         // console.log(donations);
       });
-  }, []);
+  }, [userId]);
   useEffect(() => {
     //fetching all inbound item data from the database
-    getRejectedDonations(id)
+    getRejectedDonations(userId)
       .then((res) => {
         if (res.data.length > 0) {
-          setPending(res.data);
+          setRejected(res.data);
           console.log(res.data);
           // console.log(donations);
         }
@@ -67,7 +69,7 @@ export default function ActiveDonations() {
         console.log(e);
         // console.log(donations);
       });
-  }, []);
+  }, [userId]);
 
   const toggleSidenav = (e) => {
     e.preventDefault();

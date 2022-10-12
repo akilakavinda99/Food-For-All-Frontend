@@ -22,14 +22,17 @@ import SideNav from "./sideNav";
 import { markDonationAsCompleted } from "../../api/donator.api";
 import LoadingSpinner from "../common/LoadingSpinner";
 import { getCookie } from "../common/getCookie";
+import { getRemainingTime } from "../common/getRemainingTime";
 
 export default function DonatorDashboard() {
   const [userID, setUserId] = useState("");
 
   useEffect(() => {
-    setUserId(getCookie("_id"));
-  }, []);
-  const userId = userID;
+    setUserId(getCookie("uId"));
+    // setLoading(true);
+    //fetching all inbound item data from the database
+  }, [userID]);
+  // const userId = userID;
   const [donations, setDonations] = useState([]);
   const [ongoingDonations, setOngoingDonations] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -133,14 +136,14 @@ export default function DonatorDashboard() {
     });
 
     // doc.text(, 14, 23).setFontSize(9);
-    doc.save(`Inventory_report_${dateStr}.pdf`);
+    doc.save(`Donations_Report_${dateStr}.pdf`);
   };
 
   useEffect(() => {
     setLoading(true);
     //fetching all inbound item data from the database
     axios
-      .get(`http://localhost:8070/donator/getOngoingDonations/${userId}`)
+      .get(`http://localhost:8070/donator/getOngoingDonations/${userID}`)
       .then((res) => {
         setLoading(false);
 
@@ -154,18 +157,20 @@ export default function DonatorDashboard() {
         console.log(e);
         console.log(donations);
       });
-  }, []);
+  }, [userID]);
 
   useEffect(() => {
     setLoading(true);
 
     //fetching all inbound item data from the database
     axios
-      .get(`http://localhost:8070/donator/getCompletedDonations/${userId}`)
+      .get(`http://localhost:8070/donator/getCompletedDonations/${userID}`)
       .then((res) => {
         setLoading(false);
 
         if (res.data.length > 0) {
+          // setLoading(true);
+
           setOngoingDonations(res.data);
           console.log(res.data);
           console.log(donations);
@@ -175,7 +180,7 @@ export default function DonatorDashboard() {
         console.log(e);
         console.log(donations);
       });
-  }, []);
+  }, [userID]);
 
   return (
     <>
@@ -260,7 +265,9 @@ export default function DonatorDashboard() {
                           <>
                             <button
                               class="btn btn-danger"
-                              onClick={() => generateCompletedReport(donations)}
+                              onClick={() =>
+                                generateCompletedReport(ongoingDonations)
+                              }
                             >
                               Generate Report
                             </button>
@@ -357,7 +364,7 @@ export default function DonatorDashboard() {
                                     {/* <span class="progress-text">6/9 Challenges</span> */}
                                   </div>
                                   <Link
-                                    to={"/inbound/updateinbound/" + f._id}
+                                    to={"/donator/view/" + f._id}
                                     style={{
                                       color: "black",
                                     }}
@@ -365,7 +372,14 @@ export default function DonatorDashboard() {
                                     {" "}
                                     <h2>{f.donationTitle}</h2>{" "}
                                   </Link>
-                                  <h6>{f.donationDescription}</h6>
+                                  <div
+                                    style={{
+                                      textOverflow: "ellipsis",
+                                    }}
+                                  >
+                                    <h6>{f.donationDescription}</h6>
+                                  </div>
+
                                   <br></br>
                                   <div class="d-flex justify-content-around">
                                     {/* <div>
@@ -555,7 +569,7 @@ export default function DonatorDashboard() {
                                     {/* <span class="progress-text">6/9 Challenges</span> */}
                                   </div>
                                   <Link
-                                    to={"/inbound/updateinbound/" + f._id}
+                                    to={"/donator/view/" + f._id}
                                     style={{
                                       color: "black",
                                     }}
@@ -579,7 +593,7 @@ export default function DonatorDashboard() {
                                       </svg>
                                       <span className="timeleft">
                                         {" "}
-                                        Time left
+                                        {getRemainingTime(f.donationEndDate)}
                                       </span>
                                     </div>
                                     <div>
