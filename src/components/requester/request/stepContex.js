@@ -3,13 +3,14 @@ import { formValidationStep1, formValidationStep2 } from "./formValidation";
 import swal from "sweetalert";
 import { newRequest } from '../../../api/requester.api';
 import NewRequest from '../../../pages/requester/newRequest';
+import { getCookie } from '../../common/getCookie';
 
 export const multiStepContext = React.createContext()
 
 export default function StepContex() {
 
   const [currentStep, setCurrentStep] = useState(1);
-  const [requestData, setRequestData] = useState({});
+  const [requestData, setRequestData] = useState({userId: getCookie("uId")});
   const [requestImage, setRequestImage] = useState(null);
   const [formErrorsStep1, setFormErrorsStep1] = useState({});
   const [formErrorsStep2, setFormErrorsStep2] = useState({});
