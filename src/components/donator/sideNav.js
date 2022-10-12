@@ -177,7 +177,7 @@ export default function SideNav(props) {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-white " href="../pages/profile.html">
+              <a className="nav-link text-white " href="/">
                 <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                   <i className="material-icons opacity-10">person</i>
                 </div>

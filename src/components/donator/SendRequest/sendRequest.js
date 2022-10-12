@@ -23,10 +23,10 @@ export default function SendRequest() {
 
   const createDonation = (e) => {
     e.preventDefault();
-    const donationImage = filesarr.base64;
-    console.log(donationImage);
+    // const donationImage = filesarr.base64;
+    // console.log(donationImage);
     const userID = 123;
-    const donationID = "63373a88bffe8dc84fb722f1";
+    const donationID = id;
 
     const request = {
       donationID,
@@ -37,15 +37,15 @@ export default function SendRequest() {
     };
     newRequest(request)
       .then((res) => {
-        swal("Donation Succesfully Created", "", "success").then((value) => {
+        swal("Request successfully sent", "", "success").then((value) => {
           if (value) {
-            // navigate("../dashboard");
+            navigate(-1);
           }
         });
       })
       .catch((err) => {
         console.log(err);
-        swal("Donation creation failed", "Please try again", "error").then(
+        swal("Request sending failed", "Please try again", "error").then(
           (value) => {
             if (value) {
               navigate("../dashboard");
@@ -94,7 +94,7 @@ export default function SendRequest() {
                       aria-label="Contact Number"
                       aria-describedby="basic-addon1"
                       title="Error Message"
-                      pattern="[1-9]{1}[0-9]{9}"
+                      pattern="[0]{1}[0-9]{9}"
                       class="form-control"
                       onChange={(e) => {
                         setContactNumber(e.target.value);

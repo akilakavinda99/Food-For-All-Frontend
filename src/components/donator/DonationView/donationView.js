@@ -42,6 +42,7 @@ export default function DonationView() {
         <div
           style={{
             marginTop: 250,
+            minHeight: "100vh",
           }}
         >
           <LoadingSpinner />
@@ -67,7 +68,11 @@ export default function DonationView() {
           <DonationIcon
             location={donation.location}
             requests={donation.numberOfRequests}
-            remaining={getRemainingTime(donation.donationEndDate)}
+            remaining={
+              getRemainingTime(donation.donationEndDate).includes("-")
+                ? 0 + " Hours"
+                : getRemainingTime(donation.donationEndDate)
+            }
           />
           <div className="row">
             <div class="col">
@@ -77,13 +82,16 @@ export default function DonationView() {
                   marginLeft: 50,
                 }}
               >
-                <ContactDetails name={donation.email} />
+                <ContactDetails
+                  email={donation.email}
+                  mobile={donation.contactNumber}
+                />
               </div>
             </div>
             <div class="col-6">
               <DonationDescription description={donation.donationDescription} />
               <Link to={`/donator/sendRequest/${id}`}>
-                <button>Send Request</button>
+                <button class="btn btn-info">Send Request</button>
               </Link>
             </div>
           </div>

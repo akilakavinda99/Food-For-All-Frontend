@@ -2,11 +2,11 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import RequesterSignUp from "../components/requester/requesterSignUp";
-import RequesterSignIn from "../components/requester/requesterSignIn"
+import RequesterSignIn from "../components/requester/requesterSignIn";
 import RequesterProfile from "../components/requester/requesterProfile";
 import RequesterProfileUpdate from "../components/requester/updateProfileDetails";
 import MyRequests from "../components/requester/myRequests";
-import AllRequests from "../components/requester/allRequests"
+import AllRequests from "../components/requester/allRequests";
 
 import NewRequest from "../pages/requester/newRequest";
 import StepContext from "../components/requester/request/stepContex";
@@ -27,5 +27,5 @@ export default function Requester() {
         <Route path ="/view/request" element={<ViewRequest/>} />
       </Routes>
     </>
-  )
+  );
 }

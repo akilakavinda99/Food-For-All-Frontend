@@ -45,7 +45,7 @@ export default function ActiveDonations() {
     getOngoingDonations(userId)
       .then((res) => {
         if (res.data.length > 0) {
-          setPending(res.data);
+          setActive(res.data);
           console.log(res.data);
           // console.log(donations);
         }
@@ -60,7 +60,7 @@ export default function ActiveDonations() {
     getRejectedDonations(userId)
       .then((res) => {
         if (res.data.length > 0) {
-          setPending(res.data);
+          setRejected(res.data);
           console.log(res.data);
           // console.log(donations);
         }

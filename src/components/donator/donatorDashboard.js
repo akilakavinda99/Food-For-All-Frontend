@@ -22,6 +22,7 @@ import SideNav from "./sideNav";
 import { markDonationAsCompleted } from "../../api/donator.api";
 import LoadingSpinner from "../common/LoadingSpinner";
 import { getCookie } from "../common/getCookie";
+import { getRemainingTime } from "../common/getRemainingTime";
 
 export default function DonatorDashboard() {
   const [userID, setUserId] = useState("");
@@ -135,7 +136,7 @@ export default function DonatorDashboard() {
     });
 
     // doc.text(, 14, 23).setFontSize(9);
-    doc.save(`Inventory_report_${dateStr}.pdf`);
+    doc.save(`Donations_Report_${dateStr}.pdf`);
   };
 
   useEffect(() => {
@@ -264,7 +265,9 @@ export default function DonatorDashboard() {
                           <>
                             <button
                               class="btn btn-danger"
-                              onClick={() => generateCompletedReport(donations)}
+                              onClick={() =>
+                                generateCompletedReport(ongoingDonations)
+                              }
                             >
                               Generate Report
                             </button>
@@ -361,7 +364,7 @@ export default function DonatorDashboard() {
                                     {/* <span class="progress-text">6/9 Challenges</span> */}
                                   </div>
                                   <Link
-                                    to={"/inbound/updateinbound/" + f._id}
+                                    to={"/donator/view/" + f._id}
                                     style={{
                                       color: "black",
                                     }}
@@ -369,7 +372,14 @@ export default function DonatorDashboard() {
                                     {" "}
                                     <h2>{f.donationTitle}</h2>{" "}
                                   </Link>
-                                  <h6>{f.donationDescription}</h6>
+                                  <div
+                                    style={{
+                                      textOverflow: "ellipsis",
+                                    }}
+                                  >
+                                    <h6>{f.donationDescription}</h6>
+                                  </div>
+
                                   <br></br>
                                   <div class="d-flex justify-content-around">
                                     {/* <div>
@@ -559,7 +569,7 @@ export default function DonatorDashboard() {
                                     {/* <span class="progress-text">6/9 Challenges</span> */}
                                   </div>
                                   <Link
-                                    to={"/inbound/updateinbound/" + f._id}
+                                    to={"/donator/view/" + f._id}
                                     style={{
                                       color: "black",
                                     }}
@@ -583,7 +593,7 @@ export default function DonatorDashboard() {
                                       </svg>
                                       <span className="timeleft">
                                         {" "}
-                                        Time left
+                                        {getRemainingTime(f.donationEndDate)}
                                       </span>
                                     </div>
                                     <div>
