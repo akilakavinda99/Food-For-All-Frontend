@@ -66,7 +66,7 @@ export default function RequesterSignIn() {
           if (roles==("5150")) {
             Navigate('/organization/dashboard');
           } else if (roles==("1984")){
-            Navigate(`requester/profile/${_id}`);
+            Navigate(`/`);
           }
           
 
