@@ -33,6 +33,75 @@ export default function RequesterSignIn() {
   }, [username, password]);
 
   const handleSubmit = async (e) => {
+      e.preventDefault();
+      // console.log("AAAAAA");
+      // console.log(JSON.stringify({username,password}))
+
+      try {
+          console.log("HIIIII")
+          const response = await axios.post(LOGIN_URL,
+              JSON.stringify({ username, password }),
+              {
+                  headers: { 'Content-Type': 'application/json' },
+                  withCredentials: true
+              }
+          );
+          //console.log(JSON.stringify(response?.data));
+          //console.log(JSON.stringify(response));
+          const accessToken = response?.data?.accessToken;
+          const roles = response?.data?.roles;
+          const _id=response?.data?._id;
+
+          let expires = new Date()
+          expires.setTime(expires.getTime() + (response.data.expires_in * 1000))
+          setCookie('access_token', accessToken, { path: '/',  expires});
+          console.log("QQQQQQQQQQQ")
+          setCookie('roles', roles ,{path: '/', expires});
+          setCookie('uId', _id ,{path: '/', expires});
+          console.log(_id)
+          
+          if (roles==("5150")) {
+            Navigate('/organization/dashboard');
+          } else if (roles==("1984")){
+            Navigate(`/`);
+          }
+          
+
+          setAuth({ username, password, roles, accessToken });
+          setUser('');
+          setPwd('');
+          setSuccess(true);
+
+          console.log(roles)
+
+          
+          // response?.data.roles == 5150 ?
+          // // navigate('/staff/home')
+          // window.location.replace('/staff/home')
+          // : (response?.data.roles == 1984 ?
+          //   // navigate('/student/dashboard')
+          //   window.location.replace('/student/dashboard')
+          //   : response?.data.roles == 2001 ?
+          //     // navigate('/admins/home')
+          //     window.location.replace('/admins/home')
+          //     : navigate('/unauthorized'))
+
+
+
+
+      } catch (err) {
+          if (!err?.response) {
+              setErrMsg('No Server Response');
+          } else if (err.response?.status === 400) {
+              setErrMsg('Missing Username or Password');
+          } else if (err.response?.status === 401) {
+              setErrMsg('Unauthorized');
+          } else {
+              setErrMsg('Login Failed');
+          }
+          //  errRef.current.focus();
+          console.log("FFFFFFFF")
+=======
     e.preventDefault();
     // console.log("AAAAAA");
     // console.log(JSON.stringify({username,password}))
@@ -93,6 +162,7 @@ export default function RequesterSignIn() {
         setErrMsg("Unauthorized");
       } else {
         setErrMsg("Login Failed");
+
       }
       //  errRef.current.focus();
       console.log("FFFFFFFF");
