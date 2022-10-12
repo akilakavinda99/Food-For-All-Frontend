@@ -21,24 +21,24 @@ export default function HomePage() {
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-            <img src={Img1} class="img-1 d-block w-100" alt="..." />
+            <img src={Img1} class="img-1 d-block w-100 hd-image" alt="..." />
             <div class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>Some representative placeholder content for the first slide.</p>
+                <h1 className='welcome-image-heading'>HELP  WITH  HUNGER <br />  BY  <br />  DONATING TODAY</h1>
+                <h4 className='text-muted'>" If you cannot feed a hundred people, Then feed just one "</h4>
             </div>
             </div>
             <div class="carousel-item">
-            <img src={Img2} class="d-block w-100" alt="..." />
+            <img src={Img2} class="d-block w-100 hd-image" alt="..." />
             <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>Some representative placeholder content for the second slide.</p>
+                <h1 className='welcome-image-heading'>THE  GREATEST GOOD <br /> IS WHAT WE DO <br /> FOR ONE ANOTHER</h1>
+                <h4 className='text-muted'>" You have two hands. One to help yourself, the second to help others "</h4>
             </div>
             </div>
             <div class="carousel-item">
-            <img src={Img3} class="d-block w-100" alt="..." />
+            <img src={Img3} class="d-block w-100 hd-image" alt="..." />
             <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Some representative placeholder content for the third slide.</p>
+                <h1 className='welcome-image-heading'>NO ONE HAS EVER <br /> BECOME POOR <br/> FROM GIVING </h1> 
+                <h4 className='text-muted'>" All we need is to build human relations with our deeds. That's only thing that lasts forever "</h4>
             </div>
             </div>
         </div>
@@ -50,6 +50,10 @@ export default function HomePage() {
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
+        </div>
+
+        <div className='container mt-5'>
+            <h4 className='d-flex justify-content-center'>FEATURED EVENTS</h4>
         </div>
 
         <footer>
