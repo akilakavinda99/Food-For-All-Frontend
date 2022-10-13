@@ -57,7 +57,7 @@ export default function StepContex() {
                     "Please wait until review your application.",
                     "success"
                 ).then((value) => {
-                    navigate('/requester/signin')
+                    navigate('/user/signin')
                 })
 
             }).catch(err => {
