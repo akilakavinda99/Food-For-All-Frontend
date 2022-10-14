@@ -10,6 +10,7 @@ import LoadingSpinner from "../../common/LoadingSpinner";
 import Footer from "../../Footer";
 import NavBar from "../../NavBar";
 import DonationDescription from "../DonationView/DonationViewComponents/DonationDescription";
+import DonationHomeCard from "./donationHomeCard";
 
 export default function DonationHome() {
   const [userId, setUserId] = useState("");
@@ -122,12 +123,14 @@ export default function DonationHome() {
             <div
               class="row row-cols-4"
               style={{
-                marginLeft: 70,
+                marginLeft: 20,
+                marginRight: 20,
                 overflow: "hidden",
               }}
             >
               {donation
                 .filter((val) => {
+                  // console.log(val == 0);
                   if (searchTerm === "") {
                     return val;
                   } else if (
@@ -146,44 +149,43 @@ export default function DonationHome() {
                   }
                 })
                 .map(function (f) {
+                  console.log(f);
                   return (
-                    <div class="col">
-                      <div
+                    <Link to={"/donator/view/" + f._id}>
+                      <DonationHomeCard
+                        donationImage={f.donationImage}
+                        title={f.donationTitle}
+                        description={f.donationDescription}
+                      />
+                      {/* <div
+                        class="card"
                         style={{
-                          marginLeft: 10,
-                          marginTop: 10,
+                          width: "18rem",
                         }}
-                      >
-                        <Link to={"/donator/view/" + f._id}>
+                      > */}
+                      {/* <img
+                          class="card-img-top"
+                          src={f.donationImage}
+                          alt="Card image cap"
+                          style={{
+                            width: "100%",
+                            height: 150,
+                          }}
+                        />
+                        <div class="card-body">
+                          <h5 class="card-title">{f.donationTitle}</h5>
                           <div
-                            class="card"
+                            className="para"
                             style={{
-                              width: "18rem",
+                              width: "100%",
+                              //   height: 40,
+                              display: "inline-block",
+                              textOverflow: "ellipsis",
+                              overflow: "hidden",
+                              whiteSpace: "nowrap",
                             }}
-                          >
-                            <img
-                              class="card-img-top"
-                              src={f.donationImage}
-                              alt="Card image cap"
-                              style={{
-                                width: "100%",
-                                height: 150,
-                              }}
-                            />
-                            <div class="card-body">
-                              <h5 class="card-title">{f.donationTitle}</h5>
-                              <div
-                                className="para"
-                                style={{
-                                  width: "100%",
-                                  //   height: 40,
-                                  display: "inline-block",
-                                  textOverflow: "ellipsis",
-                                  overflow: "hidden",
-                                  whiteSpace: "nowrap",
-                                }}
-                              >
-                                {/* <div
+                          > */}
+                      {/* <div
                               class="row"
                               style={{
                                 marginBottom: 30,
@@ -240,7 +242,7 @@ export default function DonationHome() {
                                 </div>
                               </div>
                             </div> */}
-                                {/* <div class="d-flex justify-content-around">
+                      {/* <div class="d-flex justify-content-around">
                               <i
                                 className="material-icons opacity-10 "
                                 style={{
@@ -260,8 +262,8 @@ export default function DonationHome() {
                               </i>
                               <div>{f.numberOfRequests}</div>
                             </div> */}
-                                <div>{f.donationDescription}</div>
-                                {/* <p
+                      {/* <div>{f.donationDescription}</div> */}
+                      {/* <p
               class="card-text"
               style={{
                 textOverflow: "ellipsis",
@@ -270,12 +272,10 @@ export default function DonationHome() {
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </p> */}
-                              </div>
-                            </div>
-                          </div>
-                        </Link>
-                      </div>
-                    </div>
+                      {/* </div> */}
+                      {/* </div> */}
+                      {/* </div> */}
+                    </Link>
                   );
                 })}
             </div>
