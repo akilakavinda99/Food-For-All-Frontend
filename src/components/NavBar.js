@@ -5,7 +5,19 @@ import { getCookie } from "./common/getCookie";
 
 export default function NavBar() {
   const [userId, setUserId] = useState("");
-
+  const [showDonations, setShowDonations] = useState(false);
+  useEffect(() => {
+    userId
+      ? getUserDonations(userId)
+          .then((donations) => {
+            if (donations.length > 0) {
+              setShowDonations(true);
+            }
+            setShowDonations(false);
+          })
+          .catch((e) => console.log(e))
+      : setShowDonations(false);
+  }, [userId]);
   useEffect(() => {
     setUserId(getCookie("uId"));
     // setLoading(true);
@@ -71,6 +83,22 @@ export default function NavBar() {
                         Your Fund Request
                       </a>
                     </li>
+                    {setShowDonations ? (
+                      <li>
+                        <a className="dropdown-item" href="/donator/dashboard">
+                          Your donations
+                        </a>
+                      </li>
+                    ) : (
+                      <li>
+                        <a
+                          className="dropdown-item"
+                          href="donator/createDonation"
+                        >
+                          Create a donation
+                        </a>
+                      </li>
+                    )}
                     <Link to="/requester/profile/631aa3f99d2dc36d4c12a8f0">
                       <li>
                         <a className="dropdown-item" href="#">
