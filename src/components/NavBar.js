@@ -11,7 +11,7 @@ export default function NavBar() {
     // setLoading(true);
     //fetching all inbound item data from the database
   }, [userId]);
-  console.log(userId);
+  // console.log(userId);
   return (
     <div>
       <div className="navbar navbar-expand-lg navbar-light bg-light">
