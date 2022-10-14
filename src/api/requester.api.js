@@ -7,4 +7,5 @@ const API = axios.create({
 });
 
 export const newRequest= (newRequest) => API.post("/createRequest", newRequest);
+export const getAllRequests = () => API.get("/allRequests");
 export const getUserId = (userId) => API.get(`/${userId}`);
