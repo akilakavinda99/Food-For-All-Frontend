@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Logo from "../assets/images/logo-nav.png";
 import { Link } from "react-router-dom";
 import { getCookie } from "./common/getCookie";
+import { getUserDonations } from "../api/donator.api";
 
 export default function NavBar() {
   const [userId, setUserId] = useState("");
