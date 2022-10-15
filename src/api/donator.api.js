@@ -33,3 +33,6 @@ export const getAllDonations = () => API.get(`/getDonations`);
 
 export const getApprovedRequests = (donationID) =>
   API.get(`/getApprovedRequests/${donationID}`);
+
+export const getUserDonations = (userID) =>
+  API.get(`/getUserDonations/${userID}`);
