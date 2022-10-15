@@ -1,15 +1,18 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { myRequests } from '../../api/requester.api'
 import Footer from '../Footer'
 import NavBar from '../NavBar'
 import "./footer.css"
+import NoItems from "../common/noItems/noItems"
 
 export default function MyRequests() {
   const { userId } = useParams();
-  const [requests, setRequests] = useState();
+  const [showRequests, setShowRequests] = useState([]); 
+  const [requests, setRequests] = useState([]);
+  const [searchTerm, setsearchTerm] = useState("");
 
   useEffect(() => {
     myRequests(userId).then((res) => {
@@ -18,6 +21,13 @@ export default function MyRequests() {
     });
   }, [userId]);
 
+  useEffect(() => {
+    setShowRequests(requests.filter(request =>
+      request.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      request.description.toLowerCase().includes(searchTerm.toLowerCase())
+    ))
+}, [searchTerm, requests])
+
   return (
     <div>
         <nav>
@@ -25,53 +35,74 @@ export default function MyRequests() {
         </nav>
         <div className='container'>
         <div className='row'>
-          <div className='col-4'>
+          <div className='col-10'>
             <h4 className="pt-4 ms-4">My Requests</h4>
           </div>
-          
-          <div className='col-8'>
-            <div className='pt-3'>
-            <div class="input-group input-group-outline">
-              <div class="form-outline">
-                <input id="search-input" type="search" class="form-control btn-search" />
-                <label class="form-label" for="form1">Search</label>
-              </div>
-              <button id="search-button" type="button" class="btn btn-primary">
-                <i class="fas fa-search"></i>
-              </button>
-            </div>
 
-            </div>
+          <div className='col-2'>
+            <button class="btn btn-primary d-block m-0 mt-3"> Generate Report </button>
           </div>
-          </div>
-        <hr className='hr-request-fund mx-4'/>
+          <hr className='hr-request-fund'/>
 
-        {requests?.map((request) => (
-            <div class="card mx-4 mb-3">
-            <div class="row no-gutters">
-              <div class="col-md-4">
-                <img src={request.requestImage} class="card-img" alt="..." />
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <div className='row'>
-                    <div className='col-10'>
-                      <h5 class="card-title">{request.title}</h5>
+          {requests.length === 0 ? (
+                <NoItems message="No completed funds available." />
+            ) : (
+                <div className="d-flex justify-content-center mb-3">
+                    <div className="col-lg-4 col-md-6 col-sm-8">
+                        <div className="input-group input-group-outline bg-white">
+                            <input
+                                className="form-control"
+                                type="text"
+                                placeholder="Search here..."
+                                aria-label="Search"
+                                onChange={(e) => {
+                                    setsearchTerm(e.target.value);
+                                }}
+                            />{" "}
+                        </div>
                     </div>
-  
-                    <div className='col-2'>
-                    <h6><i className="bi bi-pencil-square ms-5"></i> Edit</h6>
-                    </div>
-  
-                  </div>
-                  <h6 class="card-title">By {request.fname} {request.lname}</h6>
-                  <p class="card-text">{request.description}</p>
                 </div>
-              </div>
-            </div>
+            )}
+         {
+                requests.length > 0 && showRequests.length === 0 ? (
+                    <NoItems message="No result found." />
+                ) :
+                
+                    <div className="row">
+                        {
+                            showRequests.map(request =>
+                              <Link to={`/requester/view/request/${request._id}`} key={request._id}>
+                              <div class="card mx-4 mb-3">
+                              <div class="row no-gutters">
+                                <div class="col-md-3 p-0">
+                                  <img src={request.requestImage} class="card-img" alt="..." />
+                                </div>
+                                <div class="col-md-9">
+                                  <div class="card-body">
+                                    <div className='row'>
+                                      <div className='col-10'>
+                                        <h5 class="card-title">{request.title}</h5>
+                                      </div>
+                    
+                                      <div className='col-2'>
+                                      <h6><i className="bi bi-pencil-square ms-5"></i> Edit</h6>
+                                      </div>
+                    
+                                    </div>
+                                    <h6 class="card-title">By {request.fname} {request.lname}</h6>
+                                    <p class="card-text">{request.description}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            </Link>
+                           
+                            )
+                        }
+                    </div>
+                   
+            }
           </div>
-        ))}
-
         </div>
         <footer>
             <Footer />
