@@ -85,7 +85,7 @@ export default function NavBar() {
                       </a>
                     </li>
 
-                    <Link to={`/requester/profile/${userId}`} key={userId}>
+                    
 
                     {setShowDonations ? (
                       <li>
@@ -103,8 +103,8 @@ export default function NavBar() {
                         </a>
                       </li>
                     )}
-                    <Link to="/requester/profile/631aa3f99d2dc36d4c12a8f0">
-
+                    
+                    <Link to={`/requester/profile/${userId}`} key={userId}>
                       <li>
                         <a className="dropdown-item" href="#">
                           Account Settings
