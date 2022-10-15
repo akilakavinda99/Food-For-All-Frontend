@@ -7,7 +7,7 @@ import NavButton from "./orgrequestlist/NavButton";
 import swal from "sweetalert";
 import axios from "axios";
 
-export default function FundraiserRequestList() {
+export default function PendingDonations() {
 
     const toggleSidenav = (e) => {
         e.preventDefault();
@@ -22,7 +22,7 @@ export default function FundraiserRequestList() {
 
     const getReqOrgList=async()=>{
         try{
-            const data=await axios.get(`http://localhost:8070/admin/reqfunds`);
+            const data=await axios.get(`http://localhost:8070/admin//getpdon/`);
             setDatatable(data.data)
 
         }catch(e){
@@ -33,13 +33,6 @@ export default function FundraiserRequestList() {
     useEffect(()=>{
         getReqOrgList();
     },[]);
-
-
-    const onView=(id)=>{
-        const oid=id;
-        navigate(`/admin/viewreqfund/${oid}`)
-        console.log(oid);
-    }
 
  
     
@@ -128,7 +121,7 @@ export default function FundraiserRequestList() {
                         <td>{(org.endingDate).substring(0,10)}</td>
                         <td>
                         <div className={classes.ActionBtnSec}>
-                            <button className="btn btn-outline-info" onClick={()=>{onView(org._id)}} >View</button>
+                            <button className="btn btn-outline-info" >View</button>
                             <button className="btn btn-outline-success">Accept</button>
                             <button className="btn btn-outline-danger" >Delete</button>
                         </div>

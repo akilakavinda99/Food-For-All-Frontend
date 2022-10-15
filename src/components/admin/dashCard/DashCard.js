@@ -29,9 +29,9 @@ const DashCard = () => {
         </div>
       </div>
       <div className={classes.Card2}>
-        <div className={classes.CardHeading}>View Registered Organizations</div>
+        <div className={classes.CardHeading2}><Link to={"/admin/reqdon"}>View Donation Requests<br/> Requests</Link></div>
         <div className={classes.CardData}>
-          <div className={classes.Count}>10</div>
+          
         </div>
       </div>
       <div className={classes.Card2}>

@@ -14,14 +14,16 @@ import { AuthProvider } from "./context/AuthProvider";
 import User from "./routes/user.routes";
 
 const ROLES = {
-  User: 2001,
-  Organization: 1984,
-  Admin: 5150,
-};
+  'User': 1984,
+  'Organization': 5150,
+  'Admin': 2001
+}
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
+  
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/donator/*" element={<Donator />} />
@@ -29,9 +31,9 @@ root.render(
 
       <Route path="/organization/*" element={<Organization />} />
 
-      <Route element={<RequireAuth allowedRoles={[ROLES.Organization]} />}>
-        <Route path="/admin/*" element={<Admin />} />
-      </Route>
+      
+      <Route path="/admin/*" element={<Admin />}/>
+
       <Route path="/fund/*" element={<Fund />} />
       <Route path="/user/*" element={<User />} />
     </Routes>
