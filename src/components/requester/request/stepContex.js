@@ -22,6 +22,7 @@ export default function StepContex() {
     console.log(requestData);
     setFormErrorsStep2(formValidationStep2(requestData))
     setIsSubmit(true);
+    
   }
 
   function handleNext(e) {

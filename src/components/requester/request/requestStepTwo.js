@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import { FileUploader } from 'react-drag-drop-files';
 import { multiStepContext } from '../request/stepContex';
 import "../footer.css"
+import { Link } from 'react-router-dom';
 
 export default function RequestStepTwo() {
   const { requestData, setRequestData, submitData, requestImage, setRequestImage, formErrorsStep2 } = useContext(multiStepContext);
@@ -37,7 +38,7 @@ export default function RequestStepTwo() {
 
     <div class="container d-flex justify-content-center pt-5 pb-5">
       
-    <div className="card z-index-0 fadeIn3 fadeInBottom ">
+    <div className="card z-index-0 fadeIn3 fadeInBottom card-step-2">
     <div className="card-body">
         <form class="form-control"> 
           <p class="h3 fw-bold text-center mb-2 pt-4"> Let's make a request </p>
@@ -75,7 +76,7 @@ export default function RequestStepTwo() {
                         </div>
                         <p>{requestImage ? `File name: ${requestImage.name}` : "No files uploaded yet"}</p>
                         <p>{requestImage ?
-                            <img className='rounded img-fluid' src={requestData.requestImage} alt={requestImage.name} /> : ""}</p>
+                            <img className='rounded img-fluid w-50' src={requestData.requestImage} alt={requestImage.name} /> : ""}</p>
               </div>
                     <div className="text-danger form-label mb-3">
                         {formErrorsStep2.requestImage}
@@ -83,7 +84,7 @@ export default function RequestStepTwo() {
 
            <div class="row"> 
               <div class="mb-3 d-flex justify-content-center"> 
-                <button type='submit' onClick={submitData} class="btn btn-primary d-block "> SUBMIT </button> 
+                <button type='submit' onClick={submitData} class="btn btn-primary d-block "> SUBMIT </button>
               </div> 
            </div>
            

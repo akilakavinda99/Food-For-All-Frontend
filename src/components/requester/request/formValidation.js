@@ -25,7 +25,7 @@ export const formValidationStep1 = (values) => {
     }
 
     if (!values.country) {
-        errors.target = 'country is required';
+        errors.country = 'country is required';
     }
 
     if (!values.zipcode) {
