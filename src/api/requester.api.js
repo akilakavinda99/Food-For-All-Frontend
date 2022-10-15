@@ -13,4 +13,5 @@ export const requesterProfile = (requestId) => API.get(`/profile/${requestId}`);
 export const updateProfile = (userId, user) => API.put(`/updateProfile/${userId}`, user);
 export const updatePassword = (userId, user) => API.put(`/updatePassword/${userId}`, user);
 export const myRequests = (userId) => API.get(`/my/requests/${userId}`);
+export const removeRequest = (requestId) => API.delete(`/delete/${requestId}`);
 export const getUserId = (userId) => API.get(`/${userId}`);
