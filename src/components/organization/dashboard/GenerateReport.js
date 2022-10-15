@@ -128,6 +128,7 @@ export default function GenerateReport({ organizationId }) {
                 phone: org.contactNumber,
                 email: org.email,
             }
+            console.log(date.getMonth() + 1);
             getReport(organizationId, date.getMonth() + 1).then((res) => {
                 setReportData(res.data.report);
                 props.invoice.table = res.data.report

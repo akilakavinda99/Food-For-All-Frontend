@@ -47,7 +47,7 @@ export default function RegisterOrganization() {
             {/* <div className='d-flex justify-content-center'> */}
             <div className="container my-auto mb-5">
                 <div className="row">
-                    <div className="mx-auto col-lg-8 col-md-10 col-sm-12">
+                    <div className="mx-auto col-lg-6 col-md-10 col-sm-12">
                         <div className="card z-index-0 fadeIn3 fadeInBottom ">
                             <Stepper style={{ width: '100%' }} activeStep={currentStep - 1} alternativeLabel>
                                 <Step onClick={() => clickStepLabel(1)} className='cursor-pointer'>

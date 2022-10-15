@@ -4,7 +4,7 @@ import { donateFund } from "../../../api/fund.api";
 import { getCookie } from "../../common/getCookie";
 import { cardValidation } from "../cardValidation";
 
-export default function DonateFund({ organizationID, fundID }) {
+export default function DonateFund({ organizationID, fundID, fund }) {
   const [formErrors, setFormErrors] = useState({});
   const [cardDetails, setCardDetails] = useState({});
   const [donationAmount, setDonationAmount] = useState();
@@ -19,13 +19,18 @@ export default function DonateFund({ organizationID, fundID }) {
         ...formErrors,
         donationAmount: "Donation amount must be greater than 0",
       });
+    } else if (donationAmount > fund.budget - fund.currentAmount) {
+      setFormErrors({
+        ...formErrors,
+        donationAmount: "Donation amount must be less than the remaining budget",
+      });
     }
     setIsSubmit(true);
   };
 
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log("Donation successful");
+      // console.log("Donation successful");
       donateFund(fundID, {
         userID: getCookie("uId"),
         fundID: fundID,
