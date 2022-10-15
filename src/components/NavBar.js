@@ -80,7 +80,7 @@ export default function NavBar() {
                     aria-labelledby="navbarDropdownMenuLink"
                   >
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item" href={`/requester/my/requests/${userId}`} key={userId}>
                         Your Fund Request
                       </a>
                     </li>
@@ -104,7 +104,7 @@ export default function NavBar() {
                       </li>
                     )}
                     
-                    <Link to={`/requester/profile/${userId}`} key={userId}>
+                    <Link to={`/user/profile/${userId}`} key={userId}>
                       <li>
                         <a className="dropdown-item" href="#">
                           Account Settings
