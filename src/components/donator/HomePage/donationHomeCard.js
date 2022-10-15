@@ -8,6 +8,7 @@ export default function DonationHomeCard(props) {
         style={{
           maxHeight: 280,
           minHeight: 280,
+          marginBottom: 20,
         }}
       >
         <img
