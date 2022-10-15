@@ -35,8 +35,12 @@ export default function DonateFund({ organizationID, fundID }) {
         .then((res) => {
           setCardDetails({});
           setDonationAmount();
-          swal("Donation Successful", "", "success");
-          window.location.reload();
+          swal("Donation Successful", "", "success")
+            .then((willLogin) => {
+              if (willLogin) {
+                window.location.reload();
+              }
+            });
         })
         .catch((err) => {
           console.log(err);

@@ -1,29 +1,26 @@
-import React from 'react'
-import Footer from '../Footer'
-import NavBar from '../NavBar'
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
+import { getAllRequests } from '../../api/requester.api';
+import AllRequestsCard from './allRequestsCard'
 
 export default function AllRequests() {
-  return (
-    <div>
-        <nav>
-            <NavBar />
-        </nav>
-   
-    <div className='container'>
-        <div class="card-deck">
-        <div class="card">
-            <img src="..." class="card-img-top" alt="..."/>
-            <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    const [allRequests, setAllRequests] = useState();
+
+    useEffect(() => {
+        getAllRequests().then((res) => {
+            setAllRequests(res.data);
+        });
+    }, []);
+
+    return (
+        <div className='container'>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {allRequests?.map((request) => (
+                    <Link to={`/requester/view/request/${request._id}`} key={request._id}>
+                        <AllRequestsCard request={request} />
+                    </Link>
+                ))}
             </div>
         </div>
-        </div>
-    </div>
-    <footer>
-        <Footer />
-    </footer>
-    </div>
-  )
+    )
 }

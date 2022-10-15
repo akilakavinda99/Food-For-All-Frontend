@@ -40,3 +40,18 @@
 .carousel-item{
   height: 500px;
 }
+
+.welcome-image-heading{
+  font-size: 70px;
+  color: rgba(0, 0, 0, 0.719);
+  letter-spacing: 2px;
+}
+
+.hd-image{
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+}
+
+.next-icon{
+  color: rgb(0, 0, 0);
+}

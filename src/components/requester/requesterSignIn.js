@@ -25,7 +25,7 @@ export default function RequesterSignIn() {
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    userRef.current.focus();
+    // userRef.current.focus();
   }, []);
 
   useEffect(() => {
@@ -168,7 +168,8 @@ export default function RequesterSignIn() {
       console.log("FFFFFFFF");
     }
   };
-}
+
+  }
 
   return (
     <div>
@@ -227,7 +228,9 @@ export default function RequesterSignIn() {
         <Footer />
       </footer>
     </div>
-  );        
+
+  );
+
 }
           
  

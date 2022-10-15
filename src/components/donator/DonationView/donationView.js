@@ -38,6 +38,8 @@ export default function DonationView() {
   return (
     <>
       <NavBar />
+
+      <div className="container">
       {loading ? (
         <div
           style={{
@@ -51,52 +53,66 @@ export default function DonationView() {
         <div
           className="mainDiv"
           style={{
-            marginLeft: 250,
+            marginLeft: 100,
             paddingTop: 20,
-            marginRight: 200,
+            marginRight: 100,
             marginBottom: 100,
           }}
         >
           <h2
             style={{
-              marginBottom: 10,
+              marginBottom: 15,
             }}
           >
             {donation.donationTitle}
           </h2>
-          <ViewImage image={donation.donationImage} />
-          <DonationIcon
-            location={donation.location}
-            requests={donation.numberOfRequests}
-            remaining={
-              getRemainingTime(donation.donationEndDate).includes("-")
-                ? 0 + " Hours"
-                : getRemainingTime(donation.donationEndDate)
-            }
-          />
+
+          <div className="d-flex justify-content-center">
+            <ViewImage image={donation.donationImage} />
+          </div>
+
+          <div className="mx-5 mt-2">
+            <DonationIcon
+              location={donation.location}
+              requests={donation.numberOfRequests}
+              remaining={
+                getRemainingTime(donation.donationEndDate).includes("-")
+                  ? 0 + " Hours"
+                  : getRemainingTime(donation.donationEndDate)
+              }
+            />
+          </div>
+
           <div className="row">
-            <div class="col">
-              <div
-                className="cntct"
-                style={{
-                  marginLeft: 50,
-                }}
-              >
+
+            <div class="col-6">
+            <div class="card bg-light">
+                <div class="card-body">
                 <ContactDetails
                   email={donation.email}
                   mobile={donation.contactNumber}
                 />
               </div>
+              </div>
             </div>
-            <div class="col-6">
-              <DonationDescription description={donation.donationDescription} />
+
+            <div class="col-6"> 
+              <div class="card bg-light">
+                <div class="card-body">
+                  <DonationDescription description={donation.donationDescription} />
+                </div>         
+             </div>
+            </div>
+            <div className="d-flex justify-content-center mt-4">
               <Link to={`/donator/sendRequest/${id}`}>
-                <button class="btn btn-info">Send Request</button>
-              </Link>
+                      <button class="btn btn-info">Send Request</button>
+              </Link> 
             </div>
           </div>
         </div>
       )}
+
+</div>
       <Footer />
     </>
   );

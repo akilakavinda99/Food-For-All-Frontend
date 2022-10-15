@@ -10,7 +10,8 @@ export default function SideNav(props) {
         document.cookie = "uId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         document.cookie = "roles=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         document.cookie = "access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        navigate("/requester/signin");
+        document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        navigate("/user/signin");
     };
 
     return (
@@ -58,13 +59,13 @@ export default function SideNav(props) {
                         </li>
                         <li className="nav-item">
                             {props.requests ?
-                                (<Link className="nav-link text-white active bg-gradient-primary" to="/request/myrequest">
+                                (<Link className="nav-link text-white active bg-gradient-primary" to="/organization/all-requests">
                                     <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                         <i className="material-icons opacity-10">receipt_long</i>
                                     </div>
                                     <span className="nav-link-text ms-1">Requests</span>
                                 </Link>)
-                                : (<Link className="nav-link text-white" to="/request/myrequest">
+                                : (<Link className="nav-link text-white" to="/organization/all-requests">
                                     <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                         <i className="material-icons opacity-10">receipt_long</i>
                                     </div>

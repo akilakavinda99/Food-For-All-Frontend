@@ -4,16 +4,16 @@ export default function ContactDetails(props) {
   return (
     <>
       <div
-        className="conMain"
+        className=""
         style={{
-          width: 280,
+          // width: 380,
           //   borderWidth: 1,
           //   borderColor: "black",
           //   borderStyle: "solid",
-          borderRadius: 15,
-          padding: 15,
-          boxShadow:
-            "rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px",
+          // borderRadius: 10,
+          // padding: 15,
+          // boxShadow:
+          //   "rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px",
         }}
       >
         <div
@@ -57,7 +57,7 @@ export default function ContactDetails(props) {
               marginBottom: 10,
             }}
           >
-            <div className="col-2">
+            <div className="col-3">
               <span
                 style={{
                   fontWeight: 1000,
@@ -66,7 +66,7 @@ export default function ContactDetails(props) {
                 Email:
               </span>
             </div>
-            <div className="col-10">
+            <div className="col-9">
               <div>{props.email}</div>
             </div>
           </div>

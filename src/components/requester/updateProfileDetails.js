@@ -39,7 +39,6 @@ export default function UpdateProfileDetails() {
                             <label for="formFile">First name</label> 
                             <input type="text" 
                                     class="form-control"
-                                    defaultValue={"thushal"}
                                     /> 
                         </div> 
                     </div>
@@ -49,7 +48,6 @@ export default function UpdateProfileDetails() {
                             <label for="formFile">Last name</label>
                             <input type="text" 
                                     class="form-control"
-                                    defaultValue={"shaminda"}
                                     /> 
                         </div>
                     </div>
@@ -59,7 +57,6 @@ export default function UpdateProfileDetails() {
                     <label for="formFile">Telephone number</label>
                     <input type="text" 
                             class="form-control"
-                            defaultValue={"0771234567"}
                             /> 
                 </div>
 
@@ -67,7 +64,6 @@ export default function UpdateProfileDetails() {
                     <label for="formFile" >Email Address</label>
                     <input type="email" 
                             class="form-control"
-                            defaultValue={"thushal@gmail.com"}
                             /> 
                 </div>
 
@@ -78,7 +74,6 @@ export default function UpdateProfileDetails() {
                 <label for="formFile">Current Password</label>
                 <input type="password" 
                         class="form-control"
-                        defaultValue={"123"}
                         /> 
             </div> 
             <div class="mb-4 ms-5"> 
@@ -101,7 +96,7 @@ export default function UpdateProfileDetails() {
 
               <div class="mb-4 d-flex justify-content-center"> 
 
-              <Link to="/requester/profile/updated/631aa3f99d2dc36d4c12a8f0" ><button className="btn btn-success">
+              <Link to="/requester/profile/" ><button className="btn btn-success">
                     SAVE CHANGES
                   </button></Link>
               </div> 
