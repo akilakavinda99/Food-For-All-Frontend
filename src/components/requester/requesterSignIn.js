@@ -219,7 +219,7 @@ export default function RequesterSignIn() {
                 />
               </div>
             </div>
-            <p class="text-center mb-3 pt-2"> Forgot your password?</p>
+            <p class="text-center mb-3 pt-2"> Don't you have an account? <Link to="/user/signup">Sign up</Link></p>
           </form>
         </div>
       </div>

@@ -8,6 +8,9 @@ import {
 import LoadingSpinner from "../../common/LoadingSpinner";
 import NoItems from "../noItems";
 import RequestCard from "./requestCard";
+import jspdf from "jspdf";
+import "jspdf-autotable";
+import img from "./banner.png";
 
 export default function SeeRequests() {
   const location = useLocation();
@@ -71,6 +74,40 @@ export default function SeeRequests() {
         console.log(e);
       });
   }, []);
+
+  const generateReport = (tickets) => {
+    const doc = new jspdf();
+    const tableColumn = [
+      "Requester Name",
+      "Requester Email",
+      "Requester Contact",
+      "Request Description",
+    ];
+    const tableRows = [];
+
+    tickets.map((ticket) => {
+      const ticketData = [
+        ticket.requesterName,
+        ticket.requesterEmail,
+        ticket.requesterContact,
+        ticket.requestDescription,
+      ];
+      tableRows.push(ticketData);
+    });
+
+    const date = Date().split(" ");
+    const dateStr = date[1] + "-" + date[2] + "-" + date[3];
+    // right down width height
+    doc.addImage(img, "PNG", 0, 0, 250, 30);
+
+    doc.autoTable(tableColumn, tableRows, {
+      styles: { fontSize: 8 },
+      startY: 35,
+    });
+
+    // doc.text(, 14, 23).setFontSize(9);
+    doc.save(`Donations_Requests-${donation.donationTitle}_${dateStr}.pdf`);
+  };
   return (
     <div
       style={{
@@ -116,39 +153,50 @@ export default function SeeRequests() {
           No Requests Yet
         </h4>
       ) : (
-        <div
-          class="row row-cols-2"
-          style={{
-            marginLeft: 150,
-            overflow: "hidden",
-          }}
-        >
-          {requests.map(function (f) {
-            return (
-              <div
-              // style={{
-              //   display: "flex",
-              //   flexDirection: "column",
-              //   alignItems: "center",
-              //   justifyContent: "center",
-              //   alignContent: "center",
-              // }}
-              >
-                <div class="col">
-                  <RequestCard
-                    name={f.requesterName}
-                    email={f.requesterEmail}
-                    contact={f.requesterContact}
-                    description={f.requestDescription}
-                    id={f._id}
-                    accepted={fromAccepted}
-                    title={donation.donationTitle}
-                  />
+        <>
+          <div className="d-flex justify-content-center">
+            <button
+              className="btn btn-danger "
+              onClick={() => generateReport(requests)}
+            >
+              Generate Report
+            </button>
+          </div>
+
+          <div
+            class="row row-cols-2"
+            style={{
+              marginLeft: 150,
+              overflow: "hidden",
+            }}
+          >
+            {requests.map(function (f) {
+              return (
+                <div
+                // style={{
+                //   display: "flex",
+                //   flexDirection: "column",
+                //   alignItems: "center",
+                //   justifyContent: "center",
+                //   alignContent: "center",
+                // }}
+                >
+                  <div class="col">
+                    <RequestCard
+                      name={f.requesterName}
+                      email={f.requesterEmail}
+                      contact={f.requesterContact}
+                      description={f.requestDescription}
+                      id={f._id}
+                      accepted={fromAccepted}
+                      title={donation.donationTitle}
+                    />
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        </>
       )}
     </div>
   );

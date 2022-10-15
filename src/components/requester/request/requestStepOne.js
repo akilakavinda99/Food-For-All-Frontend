@@ -18,7 +18,7 @@ export default function RequestStepOne() {
         <form class="form-control"> 
           <p class="h3 fw-bold text-center mb-2 pt-4"> Let's make a request </p>
           
-          <p class="text-center d-flex ms-3 pt-3 text-muted fw-bold "> Requester's psersonal information </p> 
+          <p class="text-center d-flex ms-3 pt-3 text-muted fw-bold "> Requester's personal information </p> 
 
             <div class="row input-group input-group-outline m-0 pb-4 px-4"> 
               <div class="col-md-6 ps-0"> 

@@ -5,6 +5,7 @@ import swal from "sweetalert";
 
 export default function RejectedDonationsCard(props) {
   const deleteDonation = (id) => {
+    console.log(id);
     swal({
       title: "Are you sure?",
       text: "Item Is Not Available Once Deleted...",

@@ -8,6 +8,7 @@ export default function DonationHomeCard(props) {
         style={{
           maxHeight: 280,
           minHeight: 280,
+          marginBottom: 20,
         }}
       >
         <img
@@ -15,7 +16,8 @@ export default function DonationHomeCard(props) {
           class="card-img-top"
           alt="image"
           style={{
-            maxHeight: 150,
+            maxHeight: 180,
+            minHeight: 140,
           }}
         />
         <div class="card-body">
