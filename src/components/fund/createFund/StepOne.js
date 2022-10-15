@@ -62,6 +62,7 @@ export default function StepOne() {
                                     // console.log(newValue);
                                     setFundData({ ...fundData, "endingDate": newValue.$d });
                                 }}
+                                minDate={new Date()}
                                 renderInput={({ inputRef, inputProps, InputProps }) => (
                                     <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
                                         <input ref={inputRef} {...inputProps} placeholder='' className="form-control" readOnly />
