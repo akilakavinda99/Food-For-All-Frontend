@@ -41,7 +41,7 @@ export default function EditFundDetails() {
                                 <h3 className="font-weight-bolder mt-4 mb-3 text-center">Update fund details</h3>
                                 <div className="my-auto pb-5">
                                     <div className="row">
-                                        <div className="mx-auto col-lg-8 col-md-10 col-sm-12">
+                                        <div className="mx-auto col-lg-6 col-md-10 col-sm-12">
                                             <div className="card z-index-0 fadeIn3 fadeInBottom ">
                                                 {showStep(currentStep)}
                                             </div>
