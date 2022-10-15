@@ -40,7 +40,7 @@ export default function NavBar() {
 
   return (
     <div>
-      <div className="navbar navbar-expand-lg navbar-light bg-light">
+      <div id="navbar_top" className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
           <img className="img-navbar" src={Logo} />
           <button
