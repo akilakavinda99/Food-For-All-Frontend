@@ -71,17 +71,17 @@ export default function GetRequestedDonations() {
     const onDelete = (id)=>{
         swal({
             title: "Are you sure?",
-            text: "The Fundraiser Request Will be Removed from the System",
+            text: "The Donation Request Will be Rejected",
             icon: "warning",
             buttons: true,
             dangerMode: true,
           }).then((willDelete) => {
             if (willDelete) {
               axios
-                .delete(`http://localhost:8070/fund/delete/${id}`)
+                .put(`http://localhost:8070/admin/rejectdonation/${id}`)
                 .then(() => {
                   if (willDelete) {
-                    swal("The Fundraiser Request Has Been Successfully Deleted!", { icon: "success" })
+                    swal("The Donation Request Has Been Rejected!", { icon: "success" })
                     setTimeout(function () {
                       window.location.reload()
                     }, 3000)
@@ -158,9 +158,9 @@ export default function GetRequestedDonations() {
       <div className={classes.TableBack}>
         <table className={classes.Table}>
           <tr>
-            <th>Name</th>
+          <th>DonationTitle</th>
             <th>Email</th>
-            <th>Request Description</th>
+            <th>Description</th>
             <th id={classes.ActionSec}>Actions</th>
           </tr>
           {datatable.filter((org)=>{
@@ -176,14 +176,14 @@ export default function GetRequestedDonations() {
                 return(
 
                     <tr>
-                        <td>{org.requesterName}</td>
-                        <td>{org.requesterEmail}</td>
-                        <td>{org.requesteDescription}</td>
+                        <td>{org.donationTitle}</td>
+                        <td>{org.email}</td>
+                        <td>{org.donationDescription}</td>
                         <td>
                         <div className={classes.ActionBtnSec}>
                             <button className="btn btn-outline-info" onClick={()=>{onView(org._id)}} >View</button>
                             <button className="btn btn-outline-success">Accept</button>
-                            <button className="btn btn-outline-danger" >Delete</button>
+                            <button className="btn btn-outline-danger" onClick={()=>{onDelete(org._id)}} >Reject</button>
                         </div>
                         </td>
                     </tr>
