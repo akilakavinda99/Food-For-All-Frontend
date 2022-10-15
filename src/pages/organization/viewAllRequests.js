@@ -14,7 +14,7 @@ export default function viewAllRequests() {
                     <>
                         <SideNav requests="true" />
                         <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-                            <NavButton page="Dashboard" path="Organization" />
+                            <NavButton page="Requests" path="User" />
                             <div className="container-fluid py-4 " onClick={toggleSidenav}>
                                 <AllRequests />
                             </div>

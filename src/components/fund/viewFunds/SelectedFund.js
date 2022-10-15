@@ -10,6 +10,7 @@ import { getCookie } from '../../common/getCookie';
 import swal from "sweetalert";
 import NavBar from '../../NavBar';
 import DonateFund from './DonateFund';
+import { toggleSidenav } from '../../common/toggleSidenav';
 
 export default function SelectedFund() {
   const [fund, setFund] = useState({ organizationID: "", endingDate: "2022-09-27T12:20:02.029+00:00" });
@@ -38,10 +39,10 @@ export default function SelectedFund() {
       })
   }, [fund.organizationID])
 
-  const toggleSidenav = (e) => {
-    e.preventDefault();
-    document.body.classList.remove("g-sidenav-pinned");
-  };
+  // const toggleSidenav = (e) => {
+  //   e.preventDefault();
+  //   document.body.classList.remove("g-sidenav-pinned");
+  // };
 
   const removeFundbtn = (e) => {
     e.preventDefault();
