@@ -6,9 +6,9 @@ export default function ViewImage(props) {
       <div
         className="viewImage"
         style={{
-          width: 1000,
+          width:1500,
           height: 380,
-          borderRadius: 20,
+          borderRadius: 10,
           backgroundImage: `url(${props.image})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
