@@ -28,7 +28,7 @@ export default function DonationIcon(props) {
               </i>
             </div>
 
-            <div className="col">{props.location}</div>
+            <div className="col-11  ">{props.location}</div>
           </div>
         </div>
         <div class="col">

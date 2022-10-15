@@ -6,10 +6,10 @@ export default function DonationDescription(props) {
       <div
         className="mainDiv"
         style={{
-          marginRight: 80,
+          
         }}
       >
-        <h4>Description</h4>
+        <h5><center>Description</center></h5>
         <p>{props.description}</p>
       </div>
     </>
