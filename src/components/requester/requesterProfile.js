@@ -118,7 +118,7 @@ export default function RequesterProfile() {
             <div className="row pt-5"> 
 
               <div className="mb-4 d-flex justify-content-center"> 
-                <Link to={`/profile/update/${userId}`} key={userId}>
+                <Link to={`/user/profile/update/${userId}`} key={userId}>
                   <button class="btn btn-primary d-block px-5"> Edit Profile </button>
                 </Link>
               </div> 
