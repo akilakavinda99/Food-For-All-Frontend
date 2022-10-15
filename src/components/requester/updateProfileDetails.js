@@ -1,19 +1,57 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Footer from '../Footer'
 import NavBar from '../NavBar'
 import Profile from './profile.png';
+import swal from "sweetalert";
 import "./footer.css"
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useState } from 'react';
+import { requesterProfile, updateProfile } from '../../api/requester.api';
 
 export default function UpdateProfileDetails() {
   const { userId } = useParams();
-   
+  const [userData, setUserData] = useState({});
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    
+    requesterProfile(userId)
+    .then((res) => {
+      setUserData(res.data.requester)
+      // console.log(res.data)
+    })
+  },[]);
+
+  const handleUpdate = (e) => {
+    e.preventDefault()
+    // navigate(-1);
+
+    updateProfile(userId, {
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      contactNumber: userData.contactNumber,
+      email: userData.email
+    })
+    .then((res) => {
+      swal("User profile updated succesfully", "", "success").then((value) => {
+        if (value) {
+          navigate(-1);
+        }
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+    
+  }
 
   return (
     <div>
       <nav>
         <NavBar />
       </nav>
+      <div className='container'>
       <h4 className="pt-3 ms-4">Account settings</h4>
       <hr className='hr-request-fund mx-4'/>
 
@@ -39,6 +77,8 @@ export default function UpdateProfileDetails() {
                             <label for="formFile">First name</label> 
                             <input type="text" 
                                     class="form-control"
+                                    defaultValue={userData.firstName}
+                                    onChange={(e) => { setUserData({...userData, "firstName": e.target.value}) }}
                                     /> 
                         </div> 
                     </div>
@@ -48,6 +88,8 @@ export default function UpdateProfileDetails() {
                             <label for="formFile">Last name</label>
                             <input type="text" 
                                     class="form-control"
+                                    defaultValue={userData.lastName}
+                                    onChange={(e) => { setUserData({...userData, "lastName": e.target.value}) }}
                                     /> 
                         </div>
                     </div>
@@ -57,6 +99,8 @@ export default function UpdateProfileDetails() {
                     <label for="formFile">Telephone number</label>
                     <input type="text" 
                             class="form-control"
+                            defaultValue={userData.contactNumber}
+                            onChange={(e) => { setUserData({...userData, "contactNumber": e.target.value}) }}
                             /> 
                 </div>
 
@@ -64,6 +108,8 @@ export default function UpdateProfileDetails() {
                     <label for="formFile" >Email Address</label>
                     <input type="email" 
                             class="form-control"
+                            defaultValue={userData.email}
+                            onChange={(e) => { setUserData({...userData, "email": e.target.value}) }}
                             /> 
                 </div>
 
@@ -96,12 +142,13 @@ export default function UpdateProfileDetails() {
 
               <div class="mb-4 d-flex justify-content-center"> 
 
-              <Link to="/requester/profile/" ><button className="btn btn-success">
-                    SAVE CHANGES
-                  </button></Link>
+              <button className="btn btn-success" onClick={handleUpdate}>
+                 SAVE CHANGES
+              </button>
               </div> 
            </div>
         </form>
+      </div>
       </div>
       </div>
       </div>
