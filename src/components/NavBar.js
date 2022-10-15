@@ -59,8 +59,8 @@ export default function NavBar() {
                 </a>
               </li>
               <li className="nav-item ms-3">
-                <a className="nav-link" href="#">
-                  About us
+                <a className="nav-link" href="/requester/all/requests">
+                  Fund Requests
                 </a>
               </li>
               {userId ? (
@@ -81,7 +81,7 @@ export default function NavBar() {
                   >
                     <li>
                       <a className="dropdown-item" href={`/requester/my/requests/${userId}`} key={userId}>
-                        Your Fund Request
+                        Your Fund Requests
                       </a>
                     </li>
 
@@ -112,8 +112,8 @@ export default function NavBar() {
                       </li>
                     </Link>
                     <li>
-                      <a className="dropdown-item" href="#">
-                        Help center
+                      <a className="dropdown-item" href="/requester/new?">
+                        Create request
                       </a>
                     </li>
                     <Link to="/requester/signin">
