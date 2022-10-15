@@ -14,7 +14,7 @@ export default function ViewSelectedRequest({requestData}) {
         e.preventDefault();
         swal({
           title: "Are you sure?",
-          text: "If you remve the fundrais, all contributions collected so far will be lost and you wonn't be able to recover them.",
+          text: "If you remove the fund request, all contributions collected so far will be lost and you wonn't be able to recover them.",
           icon: "warning",
           buttons: true,
           dangerMode: true,
@@ -22,7 +22,7 @@ export default function ViewSelectedRequest({requestData}) {
           if (willDelete) {
             console.log(requesterId)
             removeRequest(requesterId).then(res => {
-              swal("Fund has been deleted!", {
+              swal("Fund request has been deleted!", {
                 icon: "success",
               });
               navigate("/requester/all/requests");

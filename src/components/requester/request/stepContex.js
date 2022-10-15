@@ -4,11 +4,13 @@ import swal from "sweetalert";
 import { newRequest } from '../../../api/requester.api';
 import NewRequest from '../../../pages/requester/newRequest';
 import { getCookie } from '../../common/getCookie';
+import { useNavigate } from 'react-router-dom';
 
 export const multiStepContext = React.createContext()
 
 export default function StepContex() {
 
+  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(1);
   const [requestData, setRequestData] = useState({userId: getCookie("uId")});
   const [requestImage, setRequestImage] = useState(null);
@@ -22,7 +24,7 @@ export default function StepContex() {
     console.log(requestData);
     setFormErrorsStep2(formValidationStep2(requestData))
     setIsSubmit(true);
-    
+
   }
 
   function handleNext(e) {
@@ -54,7 +56,7 @@ export default function StepContex() {
                   "",
                   "success"
               ).then((value) => {
-                  // navigate('/organization/funds')
+                  navigate('/requester/all/requests')
               })
 
 
