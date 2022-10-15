@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import { MDBDataTableV5 } from 'mdbreact'
-import SideNav from "./sideNav";
-import classes from "./dashTable/dashTable.module.css";
-import NavButton from "./orgrequestlist/NavButton";
+import SideNav from "../sideNav";
+import classes from "../dashTable/dashTable.module.css";
+import NavButton from "../orgrequestlist/NavButton";
 import swal from "sweetalert";
 import axios from "axios";
 
-export default function FundraiserRequestList() {
+export default function GetUserList() {
 
     const toggleSidenav = (e) => {
         e.preventDefault();
@@ -22,7 +22,7 @@ export default function FundraiserRequestList() {
 
     const getReqOrgList=async()=>{
         try{
-            const data=await axios.get(`http://localhost:8070/admin/reqfunds`);
+            const data=await axios.get(`http://localhost:8070/admin/getusers`);
             setDatatable(data.data)
 
         }catch(e){
@@ -76,7 +76,7 @@ export default function FundraiserRequestList() {
                 <NavButton />
                 <div className="container-fluid py-4" onClick={toggleSidenav}>
                     <div className="row">
-                        <h2>Requested Fundraisar Programs</h2>
+                        <h2>User List</h2>
                     </div>
                 </div>
                 <div className="row">
@@ -105,9 +105,9 @@ export default function FundraiserRequestList() {
       <div className={classes.TableBack}>
         <table className={classes.Table}>
           <tr>
-            <th>Title</th>
-            <th>Budget</th>
-            <th>Date</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
             <th id={classes.ActionSec}>Actions</th>
           </tr>
           {datatable.filter((org)=>{
@@ -123,9 +123,9 @@ export default function FundraiserRequestList() {
                 return(
 
                     <tr>
-                        <td>{org.title}</td>
-                        <td>{org.budget}</td>
-                        <td>{(org.endingDate).substring(0,10)}</td>
+                        <td>{org.firstName}</td>
+                        <td>{org.lastName}</td>
+                        <td>{org.email}</td>
                         <td>
                         <div className={classes.ActionBtnSec}>
                             <button className="btn btn-outline-info" onClick={()=>{onView(org._id)}} >View</button>
