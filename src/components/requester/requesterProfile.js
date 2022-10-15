@@ -34,12 +34,13 @@ export default function RequesterProfile() {
       <nav>
         <NavBar />
       </nav>
+      <div className='container'>
       <h4 className="pt-3 ms-4">Account settings</h4>
       <hr className='hr-request-fund mx-4'/>
 
-    <div className="container d-flex justify-content-center pt-4 pb-5">
-    <div className="card z-index-0 fadeIn3 fadeInBottom ">
-    <div className="card-body">
+      <div className="container d-flex justify-content-center pt-4 pb-5">
+      <div className="card z-index-0 fadeIn3 fadeInBottom ">
+      <div className="card-body">
 
         <form className="form-control form-profile m-3">
 
@@ -118,12 +119,13 @@ export default function RequesterProfile() {
             <div className="row pt-5"> 
 
               <div className="mb-4 d-flex justify-content-center"> 
-                <Link to={`/profile/update/${userId}`} key={userId}>
+                <Link to={`/user/profile/update/${userId}`} key={userId}>
                   <button class="btn btn-primary d-block px-5"> Edit Profile </button>
                 </Link>
               </div> 
            </div>
         </form>
+      </div>
       </div>
       </div>
       </div>
