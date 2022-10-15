@@ -41,7 +41,60 @@ export default function GetRequestedDonations() {
         console.log(oid);
     }
 
- 
+    const onAccept = (id)=>{
+        swal({
+            title: "Are you sure?",
+            text: "The Donation Request Will be Accepted",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          }).then((willDelete) => {
+            if (willDelete) {
+              axios
+                .put(`http://localhost:8070/admin/updostauts/${id}`)
+                .then(() => {
+                  if (willDelete) {
+                    swal("The Donation Request Has Been Successfully Accepted!", { icon: "success" })
+                    setTimeout(function () {
+                      window.location.reload()
+                    }, 3000)
+                  } else {
+                    swal("File Is Not Deleted")
+                  }
+                })
+            }
+          })
+        
+
+    }
+
+    const onDelete = (id)=>{
+        swal({
+            title: "Are you sure?",
+            text: "The Fundraiser Request Will be Removed from the System",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          }).then((willDelete) => {
+            if (willDelete) {
+              axios
+                .delete(`http://localhost:8070/fund/delete/${id}`)
+                .then(() => {
+                  if (willDelete) {
+                    swal("The Fundraiser Request Has Been Successfully Deleted!", { icon: "success" })
+                    setTimeout(function () {
+                      window.location.reload()
+                    }, 3000)
+                  } else {
+                    swal("File Is Not Deleted")
+                  }
+                })
+            }
+          })
+        
+
+    }
+
     
     
 

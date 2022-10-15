@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import swal from "sweetalert";
 import orgView from "./orgView.css"
 
-export default function AdminEditOrg() {
+export default function AdminReviewOrg() {
   const navigate = useNavigate();
   const {id}=useParams();
 
@@ -108,6 +108,62 @@ swal({
 
   }
 
+  const onAccept = (id)=>{
+    swal({
+        title: "Are you sure?",
+        text: "The Organization Register Request Will be Approved",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          axios
+            .put(`http://localhost:8070/admin/uporgstatus/${id}`)
+            .then(() => {
+              if (willDelete) {
+                swal("The Organization Register Request Has Been Successfully Approved!", { icon: "success" })
+                setTimeout(function () {
+                  window.location.reload()
+                }, 3000)
+              } else {
+                swal("File Is Not Deleted")
+              }
+            })
+        }
+      })
+    
+
+}
+
+const onDelete = (id)=>{
+    swal({
+        title: "Are you sure?",
+        text: "The Organization Register Request Will be Removed from the System",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          axios
+            .delete(`http://localhost:8070/admin/deletereqorg/${id}`)
+            .then(() => {
+              if (willDelete) {
+                swal("The Organization Register Request Has Been Successfully Deleted!", { icon: "success" })
+                setTimeout(function () {
+                  window.location.reload()
+                }, 3000)
+              } else {
+                swal("File Is Not Deleted")
+              }
+            })
+        }
+      })
+    
+
+}
+
+
+
 
 
   const[orgDetails, setOrgDetails]=useState([])
@@ -125,7 +181,7 @@ swal({
               <div class="card-body">
                 <form role="form" class="text-start" onSubmit={editOrganization} >
                   <div class="d-flex justify-content-center">
-                    <h4>Edit Organization Details</h4>
+                    <h4>Review Organization Details</h4>
                   </div>
                   <div class="d-flex justify-content-between">
                     <div></div>
@@ -159,6 +215,7 @@ swal({
                         setOrgName(e.target.value) 
                       }}
                       required
+                      disabled
                     />
                   </div>
                
@@ -175,6 +232,7 @@ swal({
                       setOrgAddress(e.target.value)
                       }}
                       required
+                      disabled
                     />
                   </div>
 
@@ -191,6 +249,7 @@ swal({
                          setOrgZipCode(e.target.value)
                       }}
                       required
+                      disabled
                     />
                   </div>
                   <label className={orgView.lable}>Organization Contact Number </label> 
@@ -204,6 +263,7 @@ swal({
                       pattern="[0]{1}[0-9]{9}"
                       class="form-control"
                       value={OrgContactNo}
+                      disabled
                       onChange={(e) => {
                         setOrgContactNo(e.target.value)
                       }}
@@ -223,6 +283,7 @@ swal({
                         setOrgEmail(e.target.value)
                       }}
                       required
+                      disabled
                     />
                   </div>
                   <label className={orgView.lable}>Secretary's Name </label> 
@@ -236,6 +297,7 @@ swal({
                          setSname(e.target.value);
                        }}
                       id="date"
+                      disabled
                     />
                   </div>
 
@@ -253,6 +315,7 @@ swal({
                       onChange={(e) => {
                         setSContactNo(e.target.value)
                       }}
+                      disabled
                     />
                   </div>
 
@@ -269,6 +332,7 @@ swal({
                         setSemail(e.target.value)
                       }}
                       required
+                      disabled
                     />
                   </div>
 
@@ -284,6 +348,7 @@ swal({
                          setPname(e.target.value)
                        }}
                       id="date"
+                      disabled
                     />
                   </div>
 
@@ -301,6 +366,7 @@ swal({
                       onChange={(e) => {
                         setPContactNo(e.target.value)
                       }}
+                      disabled
                     />
                   </div>
 
@@ -317,6 +383,7 @@ swal({
                         setPemail(e.target.value)
                       }}
                       required
+                      
                     />
                   </div>
 
@@ -331,16 +398,21 @@ swal({
                          setOrgStatus(e.target.value);
                        }}
                       id="date"
+                      disabled
                     />
                   </div>
                   
 
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-primary">
-                      Update Details
+
+                </form>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary" onClick={()=>{onAccept(id)}}>
+                      Accept
+                    </button>
+                    <button type="delete" class="btn btn-primary" onClick={()=>{onDelete(id)}}>
+                      Delete
                     </button>
                   </div>
-                </form>
               </div>
             </div>
           </div>

@@ -34,6 +34,39 @@ export default function ApprovedFundraiser() {
         getReqOrgList();
     },[]);
 
+    const onView=(id)=>{
+        const oid=id;
+        navigate(`/admin/viewreqfund/${oid}`)
+        console.log(oid);
+    }
+
+    const onDelete = (id)=>{
+        swal({
+            title: "Are you sure?",
+            text: "The Fundraiser Request Will be Removed from the System",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          }).then((willDelete) => {
+            if (willDelete) {
+              axios
+                .delete(`http://localhost:8070/fund/delete/${id}`)
+                .then(() => {
+                  if (willDelete) {
+                    swal("The Fundraiser Request Has Been Successfully Deleted!", { icon: "success" })
+                    setTimeout(function () {
+                      window.location.reload()
+                    }, 3000)
+                  } else {
+                    swal("File Is Not Deleted")
+                  }
+                })
+            }
+          })
+        
+
+    }
+
  
     
     
@@ -107,7 +140,7 @@ export default function ApprovedFundraiser() {
             if (search==""){
             console.log(org)
             return org;
-            }else if (org.name.toLowerCase().includes(search.toLocaleLowerCase())){
+            }else if (org.title.toLowerCase().includes(search.toLocaleLowerCase())){
                 return org
             }
           })
@@ -121,8 +154,8 @@ export default function ApprovedFundraiser() {
                         <td>{(org.endingDate).substring(0,10)}</td>
                         <td>
                         <div className={classes.ActionBtnSec}>
-                            <button className="btn btn-info" >View</button>
-                            <button className="btn btn-outline-danger" >Delete</button>
+                            <button className="btn btn-info" onClick={()=>{onView(org._id)}} >View</button>
+                            <button className="btn btn-outline-danger" onClick={()=>{onDelete(org._id)}} >Delete</button>
                         </div>
                         </td>
                     </tr>

@@ -77,7 +77,7 @@ export default function SelectedFund() {
         buttons: ["Cancel", "Login"],
       }).then((willLogin) => {
         if (willLogin) {
-          navigate(`/signin`);
+          navigate(`/user/signin`);
         }
       });
     }
@@ -114,7 +114,7 @@ export default function SelectedFund() {
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <Link onClick={removeFundbtn} className="nav-link mb-0 px-0 py-1 text-primary">
+                      <Link to="#" onClick={removeFundbtn} className="nav-link mb-0 px-0 py-1 text-primary">
                         <i className="material-icons text-lg position-relative">delete</i>
                         <span className="ms-1">Remove</span>
                       </Link>
@@ -149,6 +149,13 @@ export default function SelectedFund() {
                   <div className="d-flex">
                     <div className='text-dark font-weight-bold p-2 ps-0'>Budget:</div>
                     <div className='p-2'>Rs. {fund.budget}</div>
+                  </div>
+                  <div className="d-flex">
+
+                    <div className='text-dark font-weight-bold p-2 ps-0'>Funds collected:</div>
+
+                    <div className='p-2'>Rs. {fund.currentAmount}</div>
+
                   </div>
                   <div>
                     <ProgressBar
