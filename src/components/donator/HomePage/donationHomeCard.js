@@ -15,7 +15,8 @@ export default function DonationHomeCard(props) {
           class="card-img-top"
           alt="image"
           style={{
-            maxHeight: 150,
+            maxHeight: 180,
+            minHeight: 140,
           }}
         />
         <div class="card-body">

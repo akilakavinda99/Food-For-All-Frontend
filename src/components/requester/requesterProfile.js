@@ -95,13 +95,13 @@ export default function RequesterProfile() {
             </div>
 
             <div className="row input-group input-group-outline col align-self-end me-5">
-            <div className="mb-4 ms-5">
+            {/* <div className="mb-4 ms-5">
                 <label for="formFile">Current Password</label>
                 <input type="password" 
                         className="form-control"
                         placeholder="Current password" 
                         /> 
-            </div> 
+            </div>  */}
             <div className="mb-4 ms-5"> 
                 <label for="formFile">New Password</label>
                 <input type="password" 
