@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Logo from "../assets/images/logo-nav.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getCookie } from "./common/getCookie";
 import { getUserDonations } from "../api/donator.api";
 
 export default function NavBar() {
   const [userId, setUserId] = useState("");
+  const navigate = useNavigate()
   const [showDonations, setShowDonations] = useState(false);
   useEffect(() => {
     userId
@@ -25,6 +26,18 @@ export default function NavBar() {
     //fetching all inbound item data from the database
   }, [userId]);
   // console.log(userId);
+
+  const logOut = (e) => {
+
+    e.preventDefault();
+    document.cookie = "uId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "roles=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    navigate("/user/signin");
+
+};
+
   return (
     <div>
       <div className="navbar navbar-expand-lg navbar-light bg-light">
@@ -118,7 +131,7 @@ export default function NavBar() {
                     </li>
                     <Link to="/requester/signin">
                       <li>
-                        <a className="dropdown-item" href="#">
+                        <a className="dropdown-item" onClick={logOut} href="#">
                           Sign out
                         </a>
                       </li>
