@@ -129,7 +129,6 @@ export default function GetAcceptedDonations() {
                         <td>
                         <div className={classes.ActionBtnSec}>
                             <button className="btn btn-outline-info" onClick={()=>{onView(org._id)}} >View</button>
-                            <button className="btn btn-outline-success">Accept</button>
                             <button className="btn btn-outline-danger" >Delete</button>
                         </div>
                         </td>

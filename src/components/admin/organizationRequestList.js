@@ -38,7 +38,7 @@ export default function OrganizationRequestList() {
 
     const onView=(id)=>{
         const oid=id;
-        navigate(`/admin/editorg/${oid}`)
+        navigate(`/admin/revieworg/${oid}`)
         console.log(oid);
     }
 

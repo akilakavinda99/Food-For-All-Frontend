@@ -12,6 +12,7 @@ import GetUserList from "../components/admin/user/userlist";
 import GetAllUserList from "../pages/admin/adminUserList";
 import RequestedDonation from "../pages/admin/adminReqDonList";
 import AcceptedDonation from "../pages/admin/adminAcceptedDonList";
+import ReviewOrganization from "../pages/admin/adminReviewOrg";
 
 export default function Donator() {
     return (
@@ -24,10 +25,11 @@ export default function Donator() {
           <Route path="/regfund" element={<AdminRegFund/>}/>
           <Route path="/editorg/:id" element={<AdminEditOrg/>}/>
           <Route path="/login" element={<AdminLogin/>}/>
-          <Route path="/viewreqfund/:id" element={<ViewSelectedFund/>}/>
+          <Route path="/viewreqfund/:fundID" element={<ViewSelectedFund/>}/>
           <Route path="/getusers" element={<GetAllUserList/>}/>
           <Route path="/reqdon" element={<RequestedDonation/>}/>
           <Route path="/accepteddon" element={<AcceptedDonation/>}/>
+          <Route path="/revieworg/:id" element={<ReviewOrganization/>}/>
         </Routes>
       </>
     );
