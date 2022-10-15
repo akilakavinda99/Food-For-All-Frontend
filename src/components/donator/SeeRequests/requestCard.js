@@ -22,7 +22,7 @@ export default function RequestCard(props) {
         acceptDonationRequest(id, reqdata)
           .then((res) => {
             if (willDelete) {
-              swal("Item Succesfully Deleted!!", {
+              swal("Request accepted!!", {
                 icon: "success",
               });
               setTimeout(function () {
@@ -42,18 +42,22 @@ export default function RequestCard(props) {
   };
 
   const rejectedRequest = (id) => {
+    var reqdata = {
+      email: props.email,
+      title: props.title,
+    };
     swal({
       title: "Are you sure?",
-      text: "Request Will Be Accepted",
+      text: "Request Will Be Rejected",
       icon: "warning",
       buttons: true,
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        rejectDonationRequest(id)
+        rejectDonationRequest(id, reqdata)
           .then((res) => {
             if (willDelete) {
-              swal("Item Succesfully Deleted!!", {
+              swal("Request rejected!!", {
                 icon: "success",
               });
               setTimeout(function () {

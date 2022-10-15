@@ -12,8 +12,8 @@ export const getRequests = (donationID) =>
   API.get(`/getPendingRequests/${donationID}`);
 export const acceptDonationRequest = (requestID, reqdata) =>
   API.put(`/acceptRequest/${requestID}`, reqdata);
-export const rejectDonationRequest = (requestID) =>
-  API.put(`/rejectRequest/${requestID}`);
+export const rejectDonationRequest = (requestID, reqdata) =>
+  API.put(`/rejectRequest/${requestID}`, reqdata);
 export const getPendingDonations = (userId) =>
   API.get(`/getPendingDonations/${userId}`);
 
