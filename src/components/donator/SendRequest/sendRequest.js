@@ -80,6 +80,7 @@ export default function SendRequest() {
                       placeholder="Your Name*"
                       aria-label="Donation Title"
                       aria-describedby="basic-addon1"
+                      pattern="[a-z A-Z]*"
                       onChange={(e) => {
                         setName(e.target.value);
                       }}
@@ -99,6 +100,7 @@ export default function SendRequest() {
                       onChange={(e) => {
                         setContactNumber(e.target.value);
                       }}
+                      required
                     />
                     {/* <input type="text" name="country_code"></input> */}
                   </div>
@@ -122,6 +124,7 @@ export default function SendRequest() {
                       placeholder="Description about the request*"
                       id="exampleFormControlTextarea1"
                       rows="3"
+                      pattern="[a-z A-Z]*"
                       onChange={(e) => {
                         setRequestDescription(e.target.value);
                       }}
