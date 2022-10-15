@@ -182,7 +182,7 @@ export default function GetRequestedDonations() {
                         <td>
                         <div className={classes.ActionBtnSec}>
                             <button className="btn btn-outline-info" onClick={()=>{onView(org._id)}} >View</button>
-                            <button className="btn btn-outline-success">Accept</button>
+                            <button className="btn btn-outline-success" onClick={()=>{onAccept(org._id)}}>Accept</button>
                             <button className="btn btn-outline-danger" onClick={()=>{onDelete(org._id)}} >Reject</button>
                         </div>
                         </td>
