@@ -1,7 +1,40 @@
 import React from 'react'
+import swal from "sweetalert";
+import { useParams, useNavigate } from 'react-router-dom'
+import { removeRequest } from '../../api/requester.api';
 import { getCookie } from '../common/getCookie'
 
-export default function viewSelectedRequest({requestData}) {
+export default function ViewSelectedRequest({requestData}) {
+
+    const { requesterId } = useParams();
+    const navigate = useNavigate();
+    console.log(requesterId)
+
+    const deleteRequest = (e) => {
+        e.preventDefault();
+        swal({
+          title: "Are you sure?",
+          text: "If you remve the fundrais, all contributions collected so far will be lost and you wonn't be able to recover them.",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        }).then((willDelete) => {
+          if (willDelete) {
+            console.log(requesterId)
+            removeRequest(requesterId).then(res => {
+              swal("Fund has been deleted!", {
+                icon: "success",
+              });
+              navigate("/requester/all/requests");
+            }).catch(err => {
+              swal("Something went wrong!", {
+                icon: "error",
+              });
+            })
+          }
+        });
+      }
+
     return (
         <div>
             <h3>{requestData.title}</h3>
@@ -23,7 +56,7 @@ export default function viewSelectedRequest({requestData}) {
                     {requestData.userId === getCookie('uId')
                         ? (
                             <div className="d-flex justify-content-center mt-4">
-                                <button type="button" className="btn btn-outline-danger">Remove Fund Request</button>
+                                <button type="button" onClick={deleteRequest} className="btn btn-danger">Remove Fund Request</button>
                             </div>) : null
                     }
 
