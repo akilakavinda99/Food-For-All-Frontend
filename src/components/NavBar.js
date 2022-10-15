@@ -84,6 +84,9 @@ export default function NavBar() {
                         Your Fund Request
                       </a>
                     </li>
+
+                    <Link to={`/requester/profile/${userId}`} key={userId}>
+
                     {setShowDonations ? (
                       <li>
                         <a className="dropdown-item" href="/donator/dashboard">
@@ -101,6 +104,7 @@ export default function NavBar() {
                       </li>
                     )}
                     <Link to="/requester/profile/631aa3f99d2dc36d4c12a8f0">
+
                       <li>
                         <a className="dropdown-item" href="#">
                           Account Settings

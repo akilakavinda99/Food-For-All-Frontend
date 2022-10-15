@@ -1,8 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
+import { getOneRequest } from '../../api/requester.api';
 import Footer from '../Footer'
-import NavBar from '../NavBar'
+import NavBar from '../NavBar';
+import { getCookie } from "../common/getCookie";
 
 export default function ViewRequest() {
+
+  const { requesterId } = useParams();
+  const [requestData, setRequestData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    //fetching all inbound item data from the database
+    getOneRequest(requesterId)
+      .then((res) => {
+        setLoading(false);
+        console.log(res);
+
+        setRequestData(res.data.requests[0]);
+        // console.log(res.data);
+        console.log(requestData);
+        
+      })
+      .catch((e) => {
+        setLoading(false);
+        console.log(e);
+      });
+  }, []);
+
   return (
       <div>
         <nav>
@@ -10,25 +37,29 @@ export default function ViewRequest() {
         </nav>
 
         <div className="container mt-4 mb-4">
-          <h3>Request Title</h3>
+          <h3>{requestData.title}</h3>
           <div className="row">
             <div className="col-8">
             <div class="card-deck">
               <div class="card">
-                <img src="..." class="card-img-top" alt="..."/>
+                <img src={requestData.requestImage} class="card-img-top" alt="..."/>
                 <div class="card-body">
                   <div className='row border-bottom'>
-                    <h5 class="text-normal"><i class="bi bi-person-circle"></i> Thushal Shaminda is organizing this fund request.</h5>
+                    <h5 class="text-normal"><i class="bi bi-person-circle"></i> {requestData.fname} {requestData.lname} is organizing this fund request.</h5>
                   </div>
                   <div className='row border-bottom'>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text">{requestData.description}</p>
                   </div>
                 </div>
               </div>
             </div>
+            {requestData.userId == getCookie('uId')
+            ?(
             <div className="d-flex justify-content-center mt-4">
               <button type="button" class="btn btn-outline-danger">Remove Fund Request</button>
-            </div>
+            </div>) : null
+            } 
+            
             </div>
             <div className="col-4">
             <div class="card">
@@ -42,7 +73,7 @@ export default function ViewRequest() {
                     <h3><i class="bi bi-person-circle"></i></h3>
                   </div>
                   <div className='col-9 ps-0'>
-                    <h6 className='pt-2'>first name and last name</h6>
+                    <h6 className='pt-2'>{requestData.fname} {requestData.lname}</h6>
                   </div>
                 </div>
 
@@ -51,7 +82,7 @@ export default function ViewRequest() {
                     <h3><i class="bi bi-geo-alt-fill"></i></h3>
                   </div>
                   <div className='col-9 ps-0'>
-                    <h6 className='pt-2 text-muted'>address</h6>
+                    <h6 className='pt-2 text-muted'>{requestData.address}</h6>
                   </div>
                 </div>
 
@@ -60,7 +91,7 @@ export default function ViewRequest() {
                     <h3><i class="bi bi-phone-fill"></i></h3>
                   </div>
                   <div className='col-9 ps-0'>
-                    <h6 className='pt-2 text-muted'>telephone</h6>
+                    <h6 className='pt-2 text-muted'>{requestData.tpno}</h6>
                   </div>
                 </div>
 
@@ -69,7 +100,7 @@ export default function ViewRequest() {
                     <h3><i class="bi bi-envelope-open-fill"></i></h3>
                   </div>
                   <div className='col-9 ps-0'>
-                    <h6 className='pt-2 text-muted'>email</h6>
+                    <h6 className='pt-2 text-muted'>{requestData.email}</h6>
                   </div>
                 </div>
 

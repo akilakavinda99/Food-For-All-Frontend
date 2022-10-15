@@ -3,10 +3,10 @@ import Footer from '../Footer'
 import NavBar from '../NavBar'
 import Profile from './profile.png';
 import "./footer.css"
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function UpdateProfileDetails() {
-
+  const { userId } = useParams();
    
 
   return (

@@ -6,24 +6,28 @@ import NavBar from '../NavBar'
 import Profile from './profile.png';
 import { getCookie } from "../common/getCookie";
 import "./footer.css"
-
+import { requesterProfile } from '../../api/requester.api';
 
 
 
 export default function RequesterProfile() {
 
-    const params = useParams();
-    const [updateData, setUpdateData] = useState(false);
-    const [userId, setUserId] = useState();
+    const { userId } = useParams();
+    const [profileData, setProfileData] = useState(false);
 
-    useEffect(() => {
-      if (params.userId) {
-          setUserId(params.userId);
-      } else {
-          setUserId(getCookie("uId"));
-          // console.log(userId);
-      }
-  }, [userId, params.userId]);
+  useEffect(() => {
+    
+    requesterProfile(userId)
+      .then((res) => {
+        setProfileData(res.data.requester);
+        // console.log(res.data);
+        console.log(res);
+        
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
 
   return (
     <div>
@@ -55,6 +59,7 @@ export default function RequesterProfile() {
                             <label for="formFile">First name</label> 
                             <input type="text" 
                                     className="form-control"
+                                    defaultValue={profileData.firstName}
                                     /> 
                         </div> 
                     </div>
@@ -64,6 +69,7 @@ export default function RequesterProfile() {
                             <label for="formFile">Last name</label>
                             <input type="text" 
                                     className="form-control"
+                                    defaultValue={profileData.lastName}
                                     /> 
                         </div>
                     </div>
@@ -73,6 +79,7 @@ export default function RequesterProfile() {
                     <label for="formFile">Telephone number</label>
                     <input type="text" 
                             className="form-control"
+                            defaultValue={profileData.contactNumber}
                             /> 
                 </div>
 
@@ -80,6 +87,7 @@ export default function RequesterProfile() {
                     <label for="formFile" >Email Address</label>
                     <input type="email" 
                             className="form-control"
+                            defaultValue={profileData.email}
                             /> 
                 </div>
 
@@ -90,6 +98,7 @@ export default function RequesterProfile() {
                 <label for="formFile">Current Password</label>
                 <input type="password" 
                         className="form-control"
+                        placeholder="Current password" 
                         /> 
             </div> 
             <div className="mb-4 ms-5"> 
@@ -109,14 +118,15 @@ export default function RequesterProfile() {
             <div className="row pt-5"> 
 
               <div className="mb-4 d-flex justify-content-center"> 
-                <Link to="/requester/profile/update/631aa3f99d2dc36d4c12a8f0"><button class="btn btn-primary d-block px-5"> Edit Profile </button></Link>
+                <Link to={`/profile/update/${userId}`} key={userId}>
+                  <button class="btn btn-primary d-block px-5"> Edit Profile </button>
+                </Link>
               </div> 
            </div>
         </form>
       </div>
       </div>
       </div>
-
 
   <footer>
     <Footer />
