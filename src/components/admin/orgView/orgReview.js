@@ -109,6 +109,7 @@ swal({
   }
 
   const onAccept = (id)=>{
+    // navigate(-1)
     swal({
         title: "Are you sure?",
         text: "The Organization Register Request Will be Approved",
@@ -123,7 +124,7 @@ swal({
               if (willDelete) {
                 swal("The Organization Register Request Has Been Successfully Approved!", { icon: "success" })
                 setTimeout(function () {
-                  window.location.reload()
+                  navigate(-1)
                 }, 3000)
               } else {
                 swal("File Is Not Deleted")

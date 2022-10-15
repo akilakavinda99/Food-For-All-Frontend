@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
 import { MDBDataTableV5 } from 'mdbreact'
 import SideNav from "../sideNav";
 import classes from "../dashTable/dashTable.module.css";
@@ -103,7 +103,7 @@ export default function GetAcceptedDonations() {
                 <NavButton />
                 <div className="container-fluid py-4" onClick={toggleSidenav}>
                     <div className="row">
-                        <h2>User List</h2>
+                        <h2>Accepted Donations</h2>
                     </div>
                 </div>
                 <div className="row">
@@ -155,7 +155,16 @@ export default function GetAcceptedDonations() {
                         <td>{org.donationDescription}</td>
                         <td>
                         <div className={classes.ActionBtnSec}>
-                            <button className="btn btn-outline-info" onClick={()=>{onView(org._id)}} >View</button>
+                        <Link
+                              to={"/donator/view/" + org._id}
+                              state={{
+                                fromAdmin: true,
+                                accepted:true,
+                              }}
+                            >
+                            <button className="btn btn-outline-info" >View</button>
+                            </Link>
+
                             <button className="btn btn-outline-danger" onClick={()=>{onDelete(org._id)}} >Reject</button>
                         </div>
                         </td>

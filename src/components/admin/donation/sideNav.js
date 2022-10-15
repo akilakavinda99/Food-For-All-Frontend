@@ -41,7 +41,7 @@ export default function SideNav() {
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-white active bg-gradient-primary" href="http://localhost:3000/admin//accepteddon">
+                                <a className="nav-link text-white active bg-gradient-primary" href="http://localhost:3000/admin/accepteddon">
                                     <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                         <i className="material-icons opacity-10">receipt_long</i>
                                     </div>

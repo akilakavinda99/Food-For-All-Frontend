@@ -10,10 +10,14 @@ import ContactDetails from "./DonationViewComponents/ContactDetails";
 import DonationDescription from "./DonationViewComponents/DonationDescription";
 import DonationIcon from "./DonationViewComponents/DonationIcons";
 import ViewImage from "./DonationViewComponents/ViewImage";
+import swal from "sweetalert";
+import axios from "axios";
 
 export default function DonationView() {
   const location = useLocation();
   const fromAdmin = location.state?.fromAdmin;
+  const accepted = location.state?.accepted;
+  const req=location.state?.req;
   const [donation, setDonation] = useState([]);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
@@ -36,6 +40,59 @@ export default function DonationView() {
 
   var ddate = getRemainingTime(donation.donationEndDate);
   console.log(ddate);
+
+
+  const onAccept = (id) => {
+    swal({
+      title: "Are you sure?",
+      text: "The Donation Request Will be Accepted",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axios.put(`http://localhost:8070/admin/updostauts/${id}`).then(() => {
+          if (willDelete) {
+            swal("The Donation Request Has Been Successfully Accepted!", {
+              icon: "success",
+            });
+            setTimeout(function () {
+              window.location.reload();
+            }, 3000);
+          } else {
+            swal("File Is Not Deleted");
+          }
+        });
+      }
+    });
+  };
+
+  const onDelete = (id) => {
+    swal({
+      title: "Are you sure?",
+      text: "The Donation Request Will be Rejected",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axios
+          .put(`http://localhost:8070/admin/rejectdonation/${id}`)
+          .then(() => {
+            if (willDelete) {
+              swal("The Donation Request Has Been Rejected!", {
+                icon: "success",
+              });
+              setTimeout(function () {
+                window.location.reload();
+              }, 3000);
+            } else {
+              swal("File Is Not Deleted");
+            }
+          });
+      }
+    });
+  };
 
   return (
     <>
@@ -107,13 +164,15 @@ export default function DonationView() {
                 </div>
               </div>
               <div className="d-flex justify-content-center mt-4">
-                {fromAdmin ? (
+                {req && fromAdmin ? (
                   <>
-                    <button class="btn btn-info">Send Request</button>
-                    <button class="btn btn-info">Send Request</button>
-                    <button class="btn btn-info">Send Request</button>
+                    <button class="btn btn-success" onClick={()=>{onAccept(donation._id)}}>Accept</button>
+                    <button class="btn btn-danger"onClick={()=>{onDelete(donation._id)}}>Reject</button>
                   </>
-                ) : (
+                ) : accepted && fromAdmin ? (
+                  <>
+                  </>
+                ):(
                   <Link to={`/donator/sendRequest/${id}`}>
                     <button class="btn btn-info">Send Request</button>
                   </Link>
