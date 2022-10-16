@@ -139,14 +139,7 @@ export default function UpdateProfileDetails() {
 
                   </div>
 
-                  <div class="row input-group input-group-outline col align-self-end me-5">
-                    {/* <div class="mb-4 ms-5">
-                      <label for="formFile">Current Password</label>
-                      <input type="password"
-                        class="form-control"
-                        onChange={(e) => { setPassData({ ...passData, "cpassword": e.target.value }) }}
-                      />
-                    </div> */}
+                  <div class="row input-group input-group-outline col align-self-start me-5">
                     <div class="mb-4 ms-5">
                       <label for="formFile">New Password</label>
                       <input type="password"

@@ -126,12 +126,12 @@ export default function MyRequests() {
                               <h5 class="card-title">{request.title}</h5>
                             </div>
 
-                            <div className="col-2">
+                            {/* <div className="col-2">
                               <h6>
                                 <i className="bi bi-pencil-square ms-5"></i>{" "}
                                 Edit
                               </h6>
-                            </div>
+                            </div> */}
                           </div>
                           <h6 class="card-title">
                             By {request.fname} {request.lname}
