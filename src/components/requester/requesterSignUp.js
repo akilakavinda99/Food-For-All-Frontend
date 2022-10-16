@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import Footer from '../Footer';
 import NavBar from '../NavBar';
@@ -57,7 +57,7 @@ export default function RequesterSignUp() {
     <div className="card-body">
         <form className="form-control" onSubmit={registerUser}> 
           <p className="h3 fw-bold text-center mb-2 pt-4">Sign up for start supporting </p>
-          <p className="text-center mb-5"> Do you work for an organization? signup here</p> 
+          <p className="text-center mb-5"> Do you work for an organization? <Link to="/organization/new">Signup here</Link></p> 
 
             <div className="row input-group input-group-outline m-0 px-4"> 
               <div className="col-md-6 mb-4 ps-0"> 
