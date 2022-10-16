@@ -36,7 +36,7 @@ export default function StepTwo() {
                         </div>
                         <p>{fundImage ? `File name: ${fundImage.name}` : "No files uploaded yet"}</p>
                         <p>{fundImage ?
-                            <img className='rounded img-fluid' src={fundData.fundImage} alt={fundImage.name} /> : ""}</p>
+                            <img className='rounded img-fluid w-50 mx-auto d-block' src={fundData.fundImage} alt={fundImage.name} /> : ""}</p>
                     </div>
                     <div className="text-danger form-label mb-3">
                         {formErrorsStep2.fundImage}

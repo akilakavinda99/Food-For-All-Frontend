@@ -112,6 +112,7 @@ export default function StepOne() {
                             <DatePicker
                                 label="Registration Date"
                                 value={userData['registrationDate']}
+                                maxDate={new Date()}
                                 onChange={(newValue) => {
                                     // console.log(newValue);
                                     setUserData({ ...userData, "registrationDate": newValue.$d });

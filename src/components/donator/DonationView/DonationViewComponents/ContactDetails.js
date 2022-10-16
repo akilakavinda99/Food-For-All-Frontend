@@ -5,16 +5,18 @@ export default function ContactDetails(props) {
     <>
       <div
         className=""
-        style={{
-          // width: 380,
-          //   borderWidth: 1,
-          //   borderColor: "black",
-          //   borderStyle: "solid",
-          // borderRadius: 10,
-          // padding: 15,
-          // boxShadow:
-          //   "rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px",
-        }}
+        style={
+          {
+            // width: 380,
+            //   borderWidth: 1,
+            //   borderColor: "black",
+            //   borderStyle: "solid",
+            // borderRadius: 10,
+            // padding: 15,
+            // boxShadow:
+            // "rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px",
+          }
+        }
       >
         <div
           className="title"

@@ -4,6 +4,8 @@ import Footer from "../components/Footer";
 import Img1 from "./image-1.jpg"
 import Img2 from "./image-2.jpg"
 import Img3 from "./image-3.jpg"
+import Img4 from "./image-4.jpg"
+import Img5 from "./image-5.jpg"
 import "../App.css"
 
 export default function HomePage() {
@@ -53,7 +55,53 @@ export default function HomePage() {
         </div>
 
         <div className='container mt-5'>
-            <h4 className='d-flex justify-content-center'>FEATURED EVENTS</h4>
+            <h4 className='d-flex justify-content-center mb-4'>ABOUT FOOD BANK</h4>
+
+            <div className='row mb-5'>
+                <div className='col-5'>
+                    <img className="img-about" src={Img4} />
+                </div>
+
+                <div className='col-7'>
+                    <h6>A food bank is a non-profit, 
+                        charitable organization that distributes food to those who have difficulty purchasing enough to avoid hunger, 
+                        usually through intermediaries like food pantries and soup kitchens.
+                         Some food banks distribute food directly with their own food pantries.<br /><br />
+                         The rise of food banks has been broadly welcomed. Not only do they provide a solution to the problem of hunger that does not require resources from the state,
+                          but they can be viewed as evidence of increasing community spirit and of active, caring citizenship. In the UK for example, Patrick Butler, society editor for The Guardian,
+                           has written that the rise of foodbanks has been most enthusiastically welcomed by the right,
+                          but also by many on the left of the political spectrum, who were often "nervously excited" about them."Many feel they are firefighting, 
+                          finding a way to deal with the logistics of feeding more and more people,
+                           with no time to advocate for changes that would eradicate the need for food banks in the first place."
+                         
+                    </h6>
+                </div>
+
+            </div>
+
+            <h4 className='d-flex justify-content-center mb-4'>ABOUT Volunteer Contribution</h4>
+            <div className='row mt-2'>
+                <div className='col-7'>
+                    <h6>A food bank is a non-profit, 
+                        charitable organization that distributes food to those who have difficulty purchasing enough to avoid hunger, 
+                        usually through intermediaries like food pantries and soup kitchens.
+                         Some food banks distribute food directly with their own food pantries.<br /><br />
+                         The rise of food banks has been broadly welcomed. Not only do they provide a solution to the problem of hunger that does not require resources from the state,
+                          but they can be viewed as evidence of increasing community spirit and of active, caring citizenship. In the UK for example, Patrick Butler, society editor for The Guardian,
+                           has written that the rise of foodbanks has been most enthusiastically welcomed by the right,
+                          but also by many on the left of the political spectrum, who were often "nervously excited" about them."Many feel they are firefighting, 
+                          finding a way to deal with the logistics of feeding more and more people,
+                           with no time to advocate for changes that would eradicate the need for food banks in the first place."
+                         
+                    </h6>
+                </div>
+                <div className='col-5'>
+                    <img className="img-about" src={Img5} />
+                </div>
+
+
+            </div>
+
         </div>
 
         <footer>

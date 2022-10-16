@@ -134,6 +134,8 @@ export default function RequesterSignIn() {
         Navigate("/organization/dashboard");
       } else if (roles == "1984") {
         Navigate(`/`);
+      }else if (roles == "2001") {
+        Navigate(`/admin/dashboard`);
       }
 
       setAuth({ username, password, roles, accessToken });
@@ -219,7 +221,7 @@ export default function RequesterSignIn() {
                 />
               </div>
             </div>
-            <p class="text-center mb-3 pt-2"> Forgot your password?</p>
+            <p class="text-center mb-3 pt-2"> Don't you have an account? <Link to="/user/signup">Sign up</Link></p>
           </form>
         </div>
       </div>

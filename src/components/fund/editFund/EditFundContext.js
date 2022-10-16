@@ -61,7 +61,7 @@ export default function EditFundContext() {
                     "",
                     "success"
                 ).then((value) => {
-                    navigate('/organization/funds')
+                    navigate(-1)
                 })
 
 
