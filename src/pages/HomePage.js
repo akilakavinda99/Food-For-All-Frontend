@@ -79,19 +79,18 @@ export default function HomePage() {
 
             </div>
 
-            <h4 className='d-flex justify-content-center mb-4'>ABOUT Volunteer Contribution</h4>
+            <h4 className='d-flex justify-content-center mb-4'>About Volunteer Contribution</h4>
             <div className='row mt-2'>
                 <div className='col-7'>
-                    <h6>A food bank is a non-profit, 
-                        charitable organization that distributes food to those who have difficulty purchasing enough to avoid hunger, 
-                        usually through intermediaries like food pantries and soup kitchens.
-                         Some food banks distribute food directly with their own food pantries.<br /><br />
-                         The rise of food banks has been broadly welcomed. Not only do they provide a solution to the problem of hunger that does not require resources from the state,
-                          but they can be viewed as evidence of increasing community spirit and of active, caring citizenship. In the UK for example, Patrick Butler, society editor for The Guardian,
-                           has written that the rise of foodbanks has been most enthusiastically welcomed by the right,
-                          but also by many on the left of the political spectrum, who were often "nervously excited" about them."Many feel they are firefighting, 
-                          finding a way to deal with the logistics of feeding more and more people,
-                           with no time to advocate for changes that would eradicate the need for food banks in the first place."
+                    <h6 className='mt-5'>
+
+                    We recognize the limitations of directing a project from a distance. That’s why at each step we collaborate with local partners,
+                     from school leadership, to local NGOs, to the students themselves. <br /> <br />
+                      Each year,
+                      we award scholarships through a collaborative process between the Agua Blanca school and the Chaco Fund’s Board. 
+                      We communicate with the scholars to track their progress and provide ongoing support. Our aim is to create a holistic professional development program for scholars, 
+                      not just pay for room and board. We know that in Bolivia, just as in US and around the world, first-generation college students face unique challenges.
+                     The Fund is dedicated to ensuring the self-defined success of these young scholars both inside and outside of the classroom.
                          
                     </h6>
                 </div>
