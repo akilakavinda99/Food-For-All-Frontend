@@ -134,6 +134,8 @@ export default function RequesterSignIn() {
         Navigate("/organization/dashboard");
       } else if (roles == "1984") {
         Navigate(`/`);
+      }else if (roles == "2001") {
+        Navigate(`/admin/dashboard`);
       }
 
       setAuth({ username, password, roles, accessToken });
