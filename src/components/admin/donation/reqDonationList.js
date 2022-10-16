@@ -116,7 +116,7 @@ export default function GetRequestedDonations() {
         <NavButton />
         <div className="container-fluid py-4" onClick={toggleSidenav}>
           <div className="row">
-            <h2>User List</h2>
+            <h2>Donation Requests</h2>
           </div>
         </div>
         <div className="row">
@@ -181,6 +181,7 @@ export default function GetRequestedDonations() {
                               to={"/donator/view/" + org._id}
                               state={{
                                 fromAdmin: true,
+                                req:true
                               }}
                             >
                               <button className="btn btn-outline-info">
@@ -188,7 +189,11 @@ export default function GetRequestedDonations() {
                               </button>
                             </Link>
 
-                            <button className="btn btn-outline-success">
+                            <button className="btn btn-outline-success"
+                            onClick={() => {
+                                onAccept(org._id);
+                              }}
+                            >
                               Accept
                             </button>
                             <button
