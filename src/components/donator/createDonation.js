@@ -206,6 +206,25 @@ export default function CreateDonation() {
                         }}
                       />
                     </div>
+                    {/* <div
+                      class="alert alert-warning alert-dismissible fade show"
+                      role="alert"
+                    >
+                      The donation will be displayed in the homepage until you
+                      mark it as completed.
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="alert"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div> */}
+                    {/* <div class="alert alert-warning" role="alert">
+                      The donation will be displayed in the homepage until you
+                      mark it as completed.
+                    </div> */}
                     <div class="input-group mb-3 input-group input-group-outline mb-3">
                       <textarea
                         class="form-control"
